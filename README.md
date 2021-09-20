@@ -53,8 +53,13 @@ yarn start
 The second way:
 You can run this project on docker by using docker compose
 
-## Contributing
-
+## Author
+    [Nguyen Van Dat](https://github.com/Laughing6901)
+    [Pham Nguyen Ngoc Mai](https://github.com/MayPham2571)
+    [Phan Anh Ngoc](https://github.com/sarah-phan)
+    [Le Thi Huynh Giao](https://github.com/huynhgiao1012)
+    [Tran Hoang Thinh](https://github.com/tht216)
+    [Le Thanh Phuong Nam](https://github.com/NamBobby)
 
 ## License
 
