@@ -17,7 +17,7 @@ Banking name uses a number of open source projects to work properly:
 
 - [ReactJS] - library to code frontend
 - [Redux] - store state
-- [React Router] - Routing screen app
+- [ReactRouter] - Routing screen app
 - [Reactstrap] - great UI boilerplate for modern web apps
 - [Node] - environment to run service 
 - [Express] - fast node.js network app library
@@ -37,13 +37,17 @@ git clone https://github.com/Laughing6901/Web_Credit_Card_Bank.git
 ```
 There are 2 way to run this project: 
 First way:
+
 Frontend:
+
 ```bash
 cd Frontend
 npm i
 yarn start
 ```
+
 Backend:
+
 ```bash
 cd Backend
 npm i
@@ -54,17 +58,16 @@ The second way:
 You can run this project on docker by using docker compose
 
 ## Author
-    [Nguyen Van Dat](https://github.com/Laughing6901)
+    [Nguyen Van Dat]
+    - [Pham Nguyen Ngoc Mai]
 
-    [Pham Nguyen Ngoc Mai](https://github.com/MayPham2571)
+    [Phan Anh Ngoc]
 
-    [Phan Anh Ngoc](https://github.com/sarah-phan)
+    [Le Thi Huynh Giao]
 
-    [Le Thi Huynh Giao](https://github.com/huynhgiao1012)
+    [Tran Hoang Thinh]
 
-    [Tran Hoang Thinh](https://github.com/tht216)
-    
-    [Le Thanh Phuong Nam](https://github.com/NamBobby)
+    [Le Thanh Phuong Nam]
 
 ## License
 
@@ -82,5 +85,11 @@ MIT
    [express]: <http://expressjs.com>
    [ReactJS]: <https://reactjs.org>
    [Docker]: <https://www.docker.com>
-   [React Router]: <https://reactrouter.com>
+   [ReactRouter]: <https://reactrouter.com>
    [TypeORM]: <https://typeorm.io/#/>
+   [Nguyen Van Dat](https://github.com/Laughing6901)
+   [Pham Nguyen Ngoc Mai](https://github.com/MayPham2571)
+   [Phan Anh Ngoc](https://github.com/sarah-phan)
+   [Le Thi Huynh Giao](https://github.com/huynhgiao1012)
+   [Tran Hoang Thinh](https://github.com/tht216)
+   [Le Thanh Phuong Nam](https://github.com/NamBobby)
