@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+  web:
+    container_name: hcmiu_se_web
+    build: /var/www/frontend
+    ports:
+      - "3000:3000"
+    restart: always
+    command: 'yarn start'
+
   db:
     container_name: hcmiu_se_db
     image: mysql:5.7
