@@ -16,7 +16,7 @@ services:
     environment: 
       MYSQL_USER: nguyenvandat
       MYSQL_DATABASE: banking
-      MYSQL_PASSWORD: hcmiuse14
+      MYSQL_PASSWORD: hcmiuse@14
       MYSQL_ROOT_PASSWORD: hcmiuse@14
     volumes:
       - db_data:/var/lib/mysql
