@@ -5,8 +5,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ValidationPipe } from './config/validation.pipe';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import mySqlDbConfig from 'src/config/mysql.db.config'
-
+import mySqlDbConfig from 'src/config/ormconfig'
 @Module({
   imports: [
     UsersModule,
