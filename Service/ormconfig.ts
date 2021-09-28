@@ -17,7 +17,7 @@ const typeOrmConfig: MysqlConnectionOptions = {
     password: MS_DB_PASSWORD ||"hcmiuse@14",
     database: "banking",
     entities: ['dist/src/**/*.entity{.ts,.js}'],
-    synchronize: false, //Unsafe, not use for product and migration
+    synchronize: true, //Unsafe, not use for product and migration
     migrations: ['dist/src/migrations/*{.ts,.js}'],
     cli: {
         migrationsDir: 'src/migrations',
