@@ -4,10 +4,14 @@ import typeOrmConfig from '../ormconfig';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AccountModule } from './modules/account/account.module';
+import { LoginModule } from './modules/login/login.module';
+
+
 @Module({
   imports: [
-  TypeOrmModule.forRoot(typeOrmConfig),
-  AccountModule
+TypeOrmModule.forRoot(typeOrmConfig),
+  AccountModule,
+  LoginModule
   ],
   controllers: [AppController],
   providers: [ AppService ],
