@@ -1,12 +1,12 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Cards } from './card.entity';
 
-@Entity()
+@Entity('CardStatuses')
 export class CardStatus {
     @PrimaryGeneratedColumn({type:'int', name:'StatusID'})
     StatusID: number;
 
-    @Column({type:'string', name:'StatusName'})
+    @Column({type:'varchar', name:'StatusName'})
     StatusName: string;
 
     @OneToMany (() => Cards, card => card.CardStatus)

@@ -1,15 +1,16 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, TableInheritance } from "typeorm";
-import { User } from 'src/modules/account/entities/user.entity';
-import { Payments } from "src/modules/payment/entities/payment.entity";
-import { cardType } from "../dto/cardType.dto";
-import { CardType } from "./cardType.entity";
+import { User } from 'src/modules/account/entities/account.entity';
+import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
 import { CardStatus } from './cardStatus.entity';
+import { CardType } from "./cardType.entity";
 
 @Entity('Cards')
 export class Cards {
 
     @PrimaryColumn({type:'int', name:'CardID'})
     CardID: number;
+
+    @Column({type:'int', name: 'CurrentBalance'})
+    CurrentBalance: number;
 
     @Column({type:'int', name: 'CVV'})
     CVV:number;
@@ -22,9 +23,6 @@ export class Cards {
 
     @ManyToOne(() => User, user => user.Card)
     Account: User;
-
-    @OneToMany(() => Payments, payment => payment.Card)
-    Payment: Payments[];
 
     @ManyToOne(() => CardType, cardType => cardType.Card)
     CardType: CardType

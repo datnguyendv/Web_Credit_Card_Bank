@@ -3,12 +3,12 @@ import { ChildEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGe
 import { cardType, LineOfCredit } from '../dto/cardType.dto';
 import { Cards } from './card.entity';
 
-@Entity() 
+@Entity('CardTypes') 
 export class CardType {
     @PrimaryGeneratedColumn({type:'int', name:'CardTypeId'})
     CardTypeId: number;
 
-    @Column({type:'string', name: 'TypeName'})
+    @Column({type:'varchar', name: 'TypeName'})
     TypeName:string;
 
     @Column({type:'int', name:'LineOfDebit'})
