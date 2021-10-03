@@ -17,6 +17,6 @@ export class LoginHistory {
     @Column ({type:'time', name: 'Time'})
     Time:string;
 
-    @ManyToOne(() => User, user => user.AccountID)
-    AccountId: User
+    @ManyToOne(() => Accounts, account => account.LoginHistory)
+    AccountId: Accounts
 }

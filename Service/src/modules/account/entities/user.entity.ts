@@ -3,9 +3,10 @@ import { role } from "../dto/accountRole.dto";
 import { Accounts } from "./account.entity";
 import { LoginHistory } from '../../login/entities/loginHis.entity';
 import { Cards } from '../../card/entities/card.entity';
+import { Payments } from 'src/modules/payment/entities/payment.entity';
 
 @ChildEntity(role.User)
-export class User extends Accounts {
+export class User extends Accounts{
     @Column({type:'varchar', name: 'Address'})
     Address: string;
 
@@ -17,14 +18,10 @@ export class User extends Accounts {
 
     @Column({type:'int', name: 'PhoneNumber'})
     PhoneNumber: number;
-    
-    @OneToMany(() => LoginHistory, LoginHistory => LoginHistory.AccountId) 
-    LoginHistory: LoginHistory[];
 
-    @OneToMany(() => Cards, card => card.AccountID)
+    @OneToMany(() => Cards, card => card.Account)
     Card: Cards[];
 
-    @OneToOne(() => Accounts)
-    @JoinColumn({name: 'AccountId'})
-    account : Accounts
+    @OneToMany(() => Payments, payment => payment.User)
+    Payment:Payments[];
 }

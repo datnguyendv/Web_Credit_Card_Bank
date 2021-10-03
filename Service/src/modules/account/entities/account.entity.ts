@@ -17,6 +17,21 @@ export class Accounts {
     
     @Column({name: 'LastName', type: 'varchar', length: 20})
     LastName: string;
+    
+    @Column({type:'varchar', name: 'Address'})
+    Address: string;
+
+    @Column({type:'varchar', name:'Email'})
+    Email:string;
+
+    @Column({type:'date', name:'DateOfBirth'}) // format of mysql: yyyy-mm-dd
+    DateOfBirth: string;
+
+    @Column({type:'int', name: 'PhoneNumber'})
+    PhoneNumber: number;
+
+    @OneToMany(() => LoginHistory, LoginHistory => LoginHistory.AccountId) 
+    LoginHistory: LoginHistory[];
 }
 
 

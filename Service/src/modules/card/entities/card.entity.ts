@@ -2,11 +2,10 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, TableInheritance }
 import { User } from 'src/modules/account/entities/user.entity';
 import { Payments } from "src/modules/payment/entities/payment.entity";
 import { cardType } from "../dto/cardType.dto";
+import { CardType } from "./cardType.entity";
+import { CardStatus } from './cardStatus.entity';
 
 @Entity('Cards')
-@TableInheritance({
-    column: {type:'enum', name:'CardType', enum:cardType, nullable: false}
-})
 export class Cards {
 
     @PrimaryColumn({type:'int', name:'CardID'})
@@ -21,9 +20,15 @@ export class Cards {
     @Column({type:"datetime", name:'DateOfExpired'})
     DateOfExpired: string;
 
-    @ManyToOne(() => User, user => user.AccountID)
-    AccountID: User;
+    @ManyToOne(() => User, user => user.Card)
+    Account: User;
 
-    @OneToMany(() => Payments, payment => payment.CardID)
-    Payment: Payments[]
+    @OneToMany(() => Payments, payment => payment.Card)
+    Payment: Payments[];
+
+    @ManyToOne(() => CardType, cardType => cardType.Card)
+    CardType: CardType
+
+    @ManyToOne(() => CardStatus, status => status.Card)
+    CardStatus:CardStatus;
 }

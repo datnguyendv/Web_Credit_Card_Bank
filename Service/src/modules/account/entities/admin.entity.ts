@@ -6,7 +6,4 @@ import { Accounts } from './account.entity';
 
 @ChildEntity(role.Admin)
 export class Admin extends Accounts {
-    @OneToOne(() => Accounts)
-    @JoinColumn({name: 'AccountId'})
-    account : Accounts
 }

@@ -1,5 +1,9 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, TableInheritance } from "typeorm";
 import { Cards } from '../../card/entities/card.entity';
+import { paymentType } from "../dto/paymentType.dto";
+import { PaymentType } from "./paymentType.entity";
+import { User } from 'src/modules/account/entities/user.entity';
+import { PaymentStatus } from './paymentStatus.entity';
 
 @Entity('Payments')
 export class Payments {
@@ -16,7 +20,12 @@ export class Payments {
     @Column({type:'time', name: 'Time'})
     Time: string;
 
-    @ManyToOne(() => Cards, card => card.CardID)
-    CardID: Cards;
+    @ManyToOne(() => User, user => user.Payment)
+    User:User;
 
+    @ManyToOne(() => PaymentType, paymentType => paymentType.Payment)
+    PaymentType: PaymentType;
+
+    @ManyToOne(() => PaymentStatus, PaymentStatus => PaymentStatus.Payment)
+    PaymentStatus: PaymentStatus;
 }
