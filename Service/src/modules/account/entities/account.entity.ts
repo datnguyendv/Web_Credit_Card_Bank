@@ -2,7 +2,7 @@
 import { Payments } from 'src/modules/payment/entities/payment.entity';
 import { ChildEntity, Column, Entity, OneToMany, PrimaryColumn, TableInheritance } from 'typeorm';
 import { Cards } from '../../card/entities/card.entity';
-import { LoginHistory } from '../../login/entities/loginHis.entity';
+import { LoginHistory } from '../../auth/entities/loginHis.entity';
 import { role } from '../dto/accountRole.dto';
 
 @Entity('Accounts')
@@ -38,6 +38,9 @@ export class Accounts {
 @ChildEntity(role.User)
 export class User extends Accounts {
     
+    @Column({type:'int', name:'IdentifyCard'})
+    IdentifyCard:number;
+
     @Column({type:'date', name:'DateOfBirth'}) // format of mysql: yyyy-mm-dd
     DateOfBirth: string;
 
@@ -54,3 +57,4 @@ export class User extends Accounts {
 @ChildEntity(role.Admin)
 export class Admin extends Accounts {
 }
+

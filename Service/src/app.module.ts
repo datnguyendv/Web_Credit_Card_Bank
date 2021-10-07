@@ -4,7 +4,7 @@ import typeOrmConfig from '../ormconfig';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AccountModule } from './modules/account/account.module';
-import { LoginModule } from './modules/login/login.module';
+import { LoginModule } from './modules/auth/login.module';
 
 
 @Module({
