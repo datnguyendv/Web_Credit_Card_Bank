@@ -58,3 +58,9 @@ export type AccountInfoResponse = {
     DateOfBirth: string,
     Address: string,
 }
+
+export type fineOneDto = {
+    status: string,
+    id?: number,
+    account?: AccountLoginDto
+}

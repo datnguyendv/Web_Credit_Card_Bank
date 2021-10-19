@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { AccountLoginDto, AccountRegisterDto } from '../account/dto/account.dto';
+import { AccountLoginDto, AccountRegisterDto, fineOneDto } from '../account/dto/account.dto';
 import { AccountService } from '../account/services/account.service';
 import * as bcrypt from 'bcrypt';
 
@@ -12,7 +12,11 @@ export class AuthService {
     ){}
 
     async checkAccountExisted(account: AccountLoginDto):Promise<any>{
-        let res = await this.accountService.findOne("CheckExisted",0, account);
+        let Info: fineOneDto = {
+            status: "CheckExisted",
+            account: account
+        }
+        let res = await this.accountService.findOne(Info);
         if(res == false) {
             return true;
         }
@@ -20,7 +24,11 @@ export class AuthService {
     }
 
     async accountRegister(account: AccountRegisterDto):Promise<any>{
-        let accountExisted = await this.accountService.findOne("", account.IdentifyCard);
+        let Info: fineOneDto = {
+            status: "CheckExisted",
+            id: account.IdentifyCard
+        }
+        let accountExisted = await this.accountService.findOne(Info);
         if(accountExisted) {
             throw new BadRequestException("Account Existed");
         } else { 
@@ -29,11 +37,15 @@ export class AuthService {
     }
 
     async accountLogin(account: AccountLoginDto):Promise<any>{
-        let res = await this.accountService.findOne("Login",0, account);
-        if(res) {
-            return true;
+        let Info: fineOneDto = {
+            status: "Login",
+            account: account
         }
-        throw new BadRequestException("Wrong Username or Password");
+        let res = await this.accountService.findOne(Info);
+        if(res === undefined) {
+            throw new BadRequestException("Wrong Username or Password");
+        }
+        return true;
     }
 }
 

@@ -1,5 +1,5 @@
 import { Controller, Get, Param, UsePipes, ValidationPipe } from '@nestjs/common';
-import { AccountRegisterDto } from '../dto/account.dto';
+import { AccountRegisterDto, fineOneDto } from '../dto/account.dto';
 import { AccountService } from '../services/account.service';
 
 @Controller('account')
@@ -17,7 +17,10 @@ export class AccountController {
 
     @Get(':id')
     async fineOne( @Param('id') id:number):Promise<any> {
-        return this.accountService.findOne("GetRequest", id );
+        let Info:fineOneDto;
+        Info.status = "GetRequest";
+        Info.id = id;
+        return this.accountService.findOne(Info);
     }
 
 }
