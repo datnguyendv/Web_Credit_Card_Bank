@@ -2,7 +2,7 @@
 import { Payments } from 'src/modules/payment/entities/payment.entity';
 import { ChildEntity, Column, Entity, OneToMany, PrimaryColumn, TableInheritance } from 'typeorm';
 import { Cards } from '../../card/entities/card.entity';
-import { LoginHistory } from '../../auth/entities/loginHis.entity';
+import { LoginHistory } from '../../loginHis/entities/loginHis.entity';
 import { role } from '../dto/accountRole.dto';
 
 @Entity('Accounts')
@@ -11,7 +11,7 @@ import { role } from '../dto/accountRole.dto';
 })
 export class Accounts {
     @PrimaryColumn( {name: 'AccountId', type: 'int'})
-    AccountID: number;
+    AccountId: number;
 
     @Column({name: 'FirstName', type: 'varchar', length: 20})
     FirstName: string;
