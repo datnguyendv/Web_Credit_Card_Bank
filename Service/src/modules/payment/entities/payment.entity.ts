@@ -20,6 +20,9 @@ export class Payments {
     @Column({type:'time', name: 'Time'})
     Time: string;
 
+    @Column({type:'date', name:'Date'})
+    Date:string;
+
     @ManyToOne(() => User, user => user.Payment)
     User:User;
 

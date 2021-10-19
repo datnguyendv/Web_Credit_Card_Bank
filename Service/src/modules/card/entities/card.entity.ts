@@ -15,9 +15,6 @@ export class Cards {
     @Column({type:'int', name: 'CVV'})
     CVV:number;
 
-    @Column({type: 'varchar', name: 'Status'})
-    Status: string;
-
     @Column({type:"datetime", name:'DateOfExpired'})
     DateOfExpired: string;
 
