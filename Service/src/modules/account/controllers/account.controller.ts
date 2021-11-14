@@ -17,9 +17,10 @@ export class AccountController {
 
     @Get(':id')
     async fineOne( @Param('id') id:number):Promise<any> {
-        let Info:fineOneDto;
-        Info.status = "GetRequest";
-        Info.id = id;
+        let Info:fineOneDto = {
+            id : id,
+            status : "GetAccount"
+        }
         return this.accountService.findOne(Info);
     }
 

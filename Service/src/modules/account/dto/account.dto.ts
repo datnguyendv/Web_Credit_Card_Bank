@@ -1,4 +1,4 @@
-import { IsDate, IsEAN, IsEmail, IsInt, isInt, IsString, isString, length, Length, MaxLength, MinLength } from "class-validator";
+import { IsDate, IsEAN, IsEmail, IsInt, isInt, IsNumber, IsString, isString, length, Length, MaxLength, MinLength } from "class-validator";
 
 
 export class AccountRegisterDto {
@@ -21,16 +21,13 @@ export class AccountRegisterDto {
     @MaxLength(20)
     Password:string;
 
-    @IsInt()
-    @MaxLength(10)
+    @IsNumber()
     PhoneNumber: number;
 
-    @IsInt()
-    @MinLength(10)
-    @MaxLength(12)
+    @IsNumber()
     IdentifyCard:number;
 
-    @IsDate()
+    @IsString()
     DateOfBirth: string;
 
     @IsString()

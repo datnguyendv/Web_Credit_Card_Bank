@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { AccountLoginDto, AccountRegisterDto, fineOneDto } from '../account/dto/account.dto';
 import { AccountService } from '../account/services/account.service';
 import * as bcrypt from 'bcrypt';
@@ -17,23 +17,16 @@ export class AuthService {
             account: account
         }
         let res = await this.accountService.findOne(Info);
-        if(res == false) {
-            return true;
+        console.log(res);
+        
+        if(res) {
+            throw new UnauthorizedException("Account Existed");
         }
-        throw new BadRequestException("Account Existed");
+        return true;
     }
 
     async accountRegister(account: AccountRegisterDto):Promise<any>{
-        let Info: fineOneDto = {
-            status: "CheckExisted",
-            id: account.IdentifyCard
-        }
-        let accountExisted = await this.accountService.findOne(Info);
-        if(accountExisted) {
-            throw new BadRequestException("Account Existed");
-        } else { 
-            this.accountService.createAccount(account)
-        }
+        
     }
 
     async accountLogin(account: AccountLoginDto):Promise<any>{
@@ -43,7 +36,7 @@ export class AuthService {
         }
         let res = await this.accountService.findOne(Info);
         if(res === undefined) {
-            throw new BadRequestException("Wrong Username or Password");
+            throw new UnauthorizedException("User does not existed");
         }
         return true;
     }

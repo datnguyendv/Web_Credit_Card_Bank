@@ -10,7 +10,7 @@ export class AuthController {
         private AuthService:AuthService
     ) {}
 
-    @Post() 
+    @Post() // test fucntion check account existed when register for the first time
     async checkExistedAccount(@Body() accountCheck: AccountLoginDto) {
         return this.AuthService.checkAccountExisted(accountCheck);
     }
@@ -20,7 +20,7 @@ export class AuthController {
         return this.AuthService.accountRegister(accountRegister);
     }  
 
-    @Post('login')
+    @Post('login') 
     async login(@Body() accountLogin: AccountLoginDto ) {
         return this.AuthService.accountLogin(accountLogin)
     }

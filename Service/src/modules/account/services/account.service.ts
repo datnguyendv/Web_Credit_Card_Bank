@@ -10,20 +10,23 @@ export class AccountService {
         private userRepository: UserRepository,
     ){}
     async findOne(Info: fineOneDto) {
+        console.log(Info);
         switch(Info.status) {
-            case "GetRequest":
+            case "GetAccount":
                 let user:User = await this.userRepository.findOne(Info.id);
                 if(user !== undefined) {
-                    const {UserName, Password,...res} = user;
-                    return res;
+                    const {UserName, Password,...res} = user; // remove username and password from response
+                    return res; // because want to know the information of response
                 } else {
                     throw new BadRequestException("NotFound")
                 }
             case "CheckExisted": 
-                let {Password, ...InfoToFind} = Info.account;
-                let AccountRes: Accounts = await this.accountRepository.findOne(InfoToFind);
+                let {Password, ...InfotoFind} = Info.account; // because just using object username in Info account;
+                let AccountRes = await this.accountRepository.findOne(InfotoFind);
+                console.log(AccountRes);
                 if(AccountRes !== undefined) {
-                    return true
+
+                    return true //just need to know account existed or not 
                 }
                 return false
             case "Login": 
@@ -39,7 +42,6 @@ export class AccountService {
         account.Password = hashPassword;
     }
     async findAll () {
-        let accountInfoResponse: AccountInfoResponse;
-        return this.userRepository.find(accountInfoResponse);
+        return this.userRepository.find();
     }
 }
