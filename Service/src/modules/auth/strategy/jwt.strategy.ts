@@ -8,7 +8,7 @@ export class UserJwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     constructor() {
         super({
           jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-          ignoreExpiration: true, // reset after 15 minutes
+          ignoreExpiration: false, // reset after 15 minutes
           secretOrKey: "hcmiusebanking",
         });
       }

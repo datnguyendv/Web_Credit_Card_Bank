@@ -2,6 +2,7 @@ import { Controller, Get, Param, UseGuards, UsePipes, ValidationPipe } from '@ne
 import { AccountRegisterDto, fineOneDto } from '../dto/account.dto';
 import { AccountService } from '../services/account.service';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from 'src/utils/guards/jwt-auth.guard';
 
 @Controller('account')
 @UsePipes(new ValidationPipe())
@@ -10,7 +11,7 @@ export class AccountController {
         private accountService: AccountService,
 
     ) {}
-    @UseGuards(AuthGuard('jwt'))
+    @UseGuards(JwtAuthGuard)
     @Get()
     async findAll(): Promise<any> {
         return this.accountService.findAll();
