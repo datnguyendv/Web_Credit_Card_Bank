@@ -50,8 +50,6 @@ export class User extends Accounts {
     @OneToMany(() => Cards, card => card.Account)
     Card: Cards[];
 
-    @OneToMany(() => Payments, payment => payment.User)
-    Payment:Payments[];
 }
 
 @ChildEntity(role.Admin)

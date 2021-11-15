@@ -23,8 +23,8 @@ export class Payments {
     @Column({type:'date', name:'Date'})
     Date:string;
 
-    @ManyToOne(() => User, user => user.Payment)
-    User:User;
+    @ManyToOne(() => Cards, card => card.Payment)
+    Card:Cards;
 
     @ManyToOne(() => PaymentType, paymentType => paymentType.Payment)
     PaymentType: PaymentType;

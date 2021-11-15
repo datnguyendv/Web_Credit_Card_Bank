@@ -1,5 +1,6 @@
 import { User } from 'src/modules/account/entities/account.entity';
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Payments } from 'src/modules/payment/entities/payment.entity';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { CardStatus } from './cardStatus.entity';
 import { CardType } from "./cardType.entity";
 
@@ -26,4 +27,7 @@ export class Cards {
 
     @ManyToOne(() => CardStatus, status => status.Card)
     CardStatus:CardStatus;
+
+    @OneToMany(() => Payments, payment => payment.Card)
+    Payment:Payments[];
 }
