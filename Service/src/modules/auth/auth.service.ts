@@ -48,17 +48,17 @@ export class AuthService {
             if(res !== undefined) {
                 console.log("Admin");
                 return this.signUser(res.AccountId, res.UserName, "Admin");
-            }else throw new UnauthorizedException("Account Not Found");
+            }else throw new UnauthorizedException("Credential Incorrect");
         }
         
         
     }
-
+    // function to return jwt string 
     async signUser(userId:number, userName: string, role: string): Promise<any>{ 
         return this.jwtService.sign({
             sub: userId,
             userName,
-            claim: role
+            type: role
         })
     }
 }

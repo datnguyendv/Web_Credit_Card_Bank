@@ -1,4 +1,5 @@
-import { BadRequestException, Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { AccountLoginDto, AccountRegisterDto } from '../account/dto/account.dto';
 import { AuthService } from './auth.service';
 
@@ -19,7 +20,7 @@ export class AuthController {
     async register(@Body() accountRegister: AccountRegisterDto):Promise<any> {
         return this.AuthService.accountRegister(accountRegister);
     }  
-
+    // @UseGuards(AuthGuard('jwt'))
     @Post('login') 
     async login(@Body() accountLogin: AccountLoginDto ) {
         return this.AuthService.accountLogin(accountLogin)

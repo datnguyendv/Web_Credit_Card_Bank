@@ -6,11 +6,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Accounts } from '../account/entities/account.entity';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { JwtModule } from '@nestjs/jwt';
+import { UserJwtStrategy } from './strategy/jwt.strategy';
 
 @Module({
   imports:[
-    JwtModule.register({
-      secret: "hcmiusebanking"
+  JwtModule.register({
+      secret: "hcmiusebanking",
+      signOptions: {expiresIn: '60s'}
     }),
     TypeOrmModule.forFeature([
       AccountRepository,
@@ -21,6 +23,7 @@ import { JwtModule } from '@nestjs/jwt';
 controllers: [AuthController],
   providers: [
     AuthService,
-    AccountService]
+    AccountService,
+  UserJwtStrategy]
 })
 export class AuthModule {}

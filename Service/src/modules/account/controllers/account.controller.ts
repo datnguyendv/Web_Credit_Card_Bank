@@ -1,6 +1,7 @@
-import { Controller, Get, Param, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AccountRegisterDto, fineOneDto } from '../dto/account.dto';
 import { AccountService } from '../services/account.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('account')
 @UsePipes(new ValidationPipe())
@@ -9,7 +10,7 @@ export class AccountController {
         private accountService: AccountService,
 
     ) {}
-
+    @UseGuards(AuthGuard('jwt'))
     @Get()
     async findAll(): Promise<any> {
         return this.accountService.findAll();
