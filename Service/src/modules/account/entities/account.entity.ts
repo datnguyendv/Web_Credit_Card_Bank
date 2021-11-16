@@ -3,11 +3,11 @@ import { Payments } from 'src/modules/payment/entities/payment.entity';
 import { ChildEntity, Column, Entity, OneToMany, PrimaryColumn, TableInheritance } from 'typeorm';
 import { Cards } from '../../card/entities/card.entity';
 import { LoginHistory } from '../../loginHis/entities/loginHis.entity';
-import { role } from '../dto/accountRole.dto';
+import { Role } from '../dto/role.enum';
 
 @Entity('Accounts')
 @TableInheritance({
-    column: {type:'enum', enum: role, name: 'Role', nullable:false}
+    column: {type:'enum', enum: Role, name: 'Role', nullable:false}
 })
 export class Accounts {
     @PrimaryColumn( {name: 'AccountId', type: 'int'})
@@ -35,7 +35,7 @@ export class Accounts {
     LoginHistory: LoginHistory[];
 }
 
-@ChildEntity(role.User)
+@ChildEntity(Role.User)
 export class User extends Accounts {
     
     @Column({type:'int', name:'IdentifyCard'})
@@ -52,7 +52,7 @@ export class User extends Accounts {
 
 }
 
-@ChildEntity(role.Admin)
+@ChildEntity(Role.Admin)
 export class Admin extends Accounts {
 }
 
