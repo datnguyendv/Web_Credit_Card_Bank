@@ -8,11 +8,14 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { Login, SignUp, SignUser } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
+import * as dotenv from'dotenv';
+dotenv.config();
+const {JWT_SECRET} = process.env;
 
 @Module({
   imports:[
   JwtModule.register({
-      secret: "hcmiusebanking",
+      secret: JWT_SECRET,
       signOptions: {expiresIn: '60s'}
     }),
     TypeOrmModule.forFeature([
