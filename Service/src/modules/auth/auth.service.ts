@@ -1,40 +1,65 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { AccountLoginDto, AccountRegisterDto } from '../account/dto/account.dto';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { AccountLoginDto, AccountRegisterDto, fineOneDto } from '../account/dto/account.dto';
+import { Admin, User } from '../account/entities/account.entity';
 import { AccountService } from '../account/services/account.service';
-import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
     constructor(
         // private AccountRepository: AccountRepository,
         private accountService: AccountService,
-        
+        private jwtService: JwtService,
     ){}
 
     async checkAccountExisted(account: AccountLoginDto):Promise<any>{
-        let res = await this.accountService.findOne("CheckExisted",0, account);
-        if(res == false) {
-            return true;
+        let Info: fineOneDto = {
+            status: "CheckExisted",
+            account: account
         }
-        throw new BadRequestException("Account Existed");
+        let res = await this.accountService.findOne(Info);
+        console.log(res);
+        
+        if(res) {
+            throw new UnauthorizedException("Account Existed");
+        }
+        return true;
     }
 
     async accountRegister(account: AccountRegisterDto):Promise<any>{
-        let accountExisted = await this.accountService.findOne("", account.IdentifyCard);
-        if(accountExisted) {
-            throw new BadRequestException("Account Existed");
-        } else { 
-            this.accountService.createAccount(account)
-        }
+        
     }
 
     async accountLogin(account: AccountLoginDto):Promise<any>{
-        let res = await this.accountService.findOne("Login",0, account);
-        if(res) {
-            return true;
+        let Info: fineOneDto = {
+            status: "UserLogin",
+            account: account
         }
-        throw new BadRequestException("Wrong Username or Password");
+        let res:User = await this.accountService.findOne(Info);
+        if(res !== undefined) {
+            console.log("User");
+            return this.signUser(res.AccountId,res.UserName, "User" );
+        } else {
+            let Info: fineOneDto = {
+                status: "AdminLogin",
+                account: account
+            }
+            let res:Admin = await this.accountService.findOne(Info);
+            if(res !== undefined) {
+                console.log("Admin");
+                return this.signUser(res.AccountId, res.UserName, "Admin");
+            }else throw new UnauthorizedException("Credential Incorrect");
+        }
+        
+        
+    }
+    // function to return jwt string 
+    async signUser(userId:number, userName: string, role: string): Promise<any>{ 
+        return this.jwtService.sign({
+            sub: userId,
+            userName,
+            type: role
+        })
     }
 }
-
 

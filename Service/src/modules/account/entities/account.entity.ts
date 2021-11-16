@@ -42,7 +42,7 @@ export class User extends Accounts {
     IdentifyCard:number;
 
     @Column({type:'date', name:'DateOfBirth'}) // format of mysql: yyyy-mm-dd
-    DateOfBirth: string;
+    DateOfBirth: Date;
 
     @Column({type:'varchar', name: 'Address'})
     Address: string;
@@ -50,8 +50,6 @@ export class User extends Accounts {
     @OneToMany(() => Cards, card => card.Account)
     Card: Cards[];
 
-    @OneToMany(() => Payments, payment => payment.User)
-    Payment:Payments[];
 }
 
 @ChildEntity(role.Admin)

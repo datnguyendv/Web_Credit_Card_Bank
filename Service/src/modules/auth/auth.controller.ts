@@ -1,4 +1,5 @@
-import { BadRequestException, Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { AccountLoginDto, AccountRegisterDto } from '../account/dto/account.dto';
 import { AuthService } from './auth.service';
 
@@ -10,7 +11,7 @@ export class AuthController {
         private AuthService:AuthService
     ) {}
 
-    @Post() 
+    @Post() // test fucntion check account existed when register for the first time
     async checkExistedAccount(@Body() accountCheck: AccountLoginDto) {
         return this.AuthService.checkAccountExisted(accountCheck);
     }
@@ -19,8 +20,8 @@ export class AuthController {
     async register(@Body() accountRegister: AccountRegisterDto):Promise<any> {
         return this.AuthService.accountRegister(accountRegister);
     }  
-
-    @Post('login')
+    // @UseGuards(AuthGuard('jwt'))
+    @Post('login') 
     async login(@Body() accountLogin: AccountLoginDto ) {
         return this.AuthService.accountLogin(accountLogin)
     }
