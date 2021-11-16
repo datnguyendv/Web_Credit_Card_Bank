@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
+import { AccountService } from '../account/services/account.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { AccountService } from '../account/services/account.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Accounts } from '../account/entities/account.entity';
-import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
-import { JwtModule } from '@nestjs/jwt';
+import { Login } from './modules/Login';
+import { SignUser } from './modules/SignUser';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 
 @Module({
@@ -24,6 +25,8 @@ controllers: [AuthController],
   providers: [
     AuthService,
     AccountService,
-  UserJwtStrategy]
+    UserJwtStrategy, 
+    Login,
+    SignUser]
 })
 export class AuthModule {}
