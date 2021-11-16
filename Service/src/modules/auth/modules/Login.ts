@@ -1,10 +1,9 @@
 
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { AccountLoginDto, fineOneDto } from 'src/modules/account/dto/account.dto';
 import { Admin, User } from 'src/modules/account/entities/account.entity';
+import { SignUser } from './sign-user';
 import { AccountService } from '../../account/services/account.service';
-import { SignUser } from './SignUser';
 
 @Injectable()
 export class Login {

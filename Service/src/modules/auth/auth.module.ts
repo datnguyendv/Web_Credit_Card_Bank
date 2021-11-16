@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CreateAccount, FindOne } from '../account/modules';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { AccountService } from '../account/services/account.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { Login } from './modules/Login';
-import { SignUser } from './modules/SignUser';
+import { Login, SignUp, SignUser } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 
 @Module({
@@ -27,6 +27,9 @@ controllers: [AuthController],
     AccountService,
     UserJwtStrategy, 
     Login,
-    SignUser]
+    SignUp,
+    SignUser,
+    CreateAccount,
+    FindOne]
 })
 export class AuthModule {}
