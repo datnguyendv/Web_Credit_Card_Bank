@@ -61,3 +61,6 @@ export type fineOneDto = {
     id?: number,
     account?: AccountLoginDto
 }
+export type findUserDto = {
+    IdentifyCard: number
+}

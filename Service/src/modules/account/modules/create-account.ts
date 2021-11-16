@@ -7,9 +7,13 @@ export class CreateAccount {
     constructor(
         
     ) {}
-    async createAccount(account: AccountRegisterDto) { 
-        let hashPassword = await bcrypt.hash(account.Password, 12);
+    async createAccount(account: AccountRegisterDto):Promise<any> { 
+        let salt = await bcrypt.genSalt(10)
+        let hashPassword = await bcrypt.hash(account.Password, salt);
         account.Password = hashPassword;
+        console.log("createAccount(): ", account);
+        
+        return account;
     }
 
 }

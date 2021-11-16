@@ -6,7 +6,7 @@ import { AccountRepository, AdminRepository, UserRepository } from '../account/r
 import { AccountService } from '../account/services/account.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { Login, SignUp, SignUser } from './modules';
+import { Login, SignUp, SignUser, PasswordCompare } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 import * as dotenv from'dotenv';
 dotenv.config();
@@ -33,6 +33,7 @@ controllers: [AuthController],
     SignUp,
     SignUser,
     CreateAccount,
-    FindOne]
+    FindOne, 
+    PasswordCompare]
 })
 export class AuthModule {}

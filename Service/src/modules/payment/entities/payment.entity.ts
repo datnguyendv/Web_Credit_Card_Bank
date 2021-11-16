@@ -1,9 +1,7 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, TableInheritance } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Cards } from '../../card/entities/card.entity';
-import { paymentType } from "../dto/paymentType.dto";
-import { PaymentType } from "./paymentType.entity";
-import { User } from 'src/modules/account/entities/account.entity';
 import { PaymentStatus } from './paymentStatus.entity';
+import { PaymentType } from "./paymentType.entity";
 
 @Entity('Payments')
 export class Payments {

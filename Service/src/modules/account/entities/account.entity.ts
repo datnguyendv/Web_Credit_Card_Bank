@@ -1,6 +1,5 @@
 
-import { Payments } from 'src/modules/payment/entities/payment.entity';
-import { ChildEntity, Column, Entity, OneToMany, PrimaryColumn, TableInheritance } from 'typeorm';
+import { ChildEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, TableInheritance } from 'typeorm';
 import { Cards } from '../../card/entities/card.entity';
 import { LoginHistory } from '../../loginHis/entities/loginHis.entity';
 import { role } from '../dto/accountRole.dto';
@@ -10,7 +9,7 @@ import { role } from '../dto/accountRole.dto';
     column: {type:'enum', enum: role, name: 'Role', nullable:false}
 })
 export class Accounts {
-    @PrimaryColumn( {name: 'AccountId', type: 'int'})
+    @PrimaryGeneratedColumn( {name: 'AccountId', type: 'int'})
     AccountId: number;
 
     @Column({name: 'FirstName', type: 'varchar', length: 20})
