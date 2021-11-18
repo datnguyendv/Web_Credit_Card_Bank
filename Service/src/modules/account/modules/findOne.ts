@@ -1,8 +1,8 @@
 
-import { Injectable, BadRequestException } from '@nestjs/common';
-import { AccountLoginDto, findUserDto, fineOneDto } from 'src/modules/account/dto/account.dto';
-import { User, Admin } from '../entities/account.entity';
-import { UserRepository, AdminRepository, AccountRepository } from '../repositories/account.repository';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { AccountLoginDto, AccountTypeDto, findUserDto, fineOneDto } from 'src/modules/account/dto/account.dto';
+import { Admin, User } from '../entities/account.entity';
+import { AccountRepository, AdminRepository, UserRepository } from '../repositories/account.repository';
 
 @Injectable()
 export class FindOne {
@@ -20,7 +20,7 @@ export class FindOne {
     async findOne(Info: fineOneDto):Promise<any> { 
             switch(Info.status) {
                 case "GetAccount":
-                    let user:User = await this.userRepository.findOne(Info.id);
+                    let user:User= await this.userRepository.findOne(Info.id);
                     if(user !== undefined) {
                         const {Password,...res} = user; // remove username and password from response
                         return res; // because want to know the information of response
@@ -48,7 +48,7 @@ export class FindOne {
             }
     }
 
-    async findUserByIdentifyCard(Info: findUserDto): Promise<any> {
+    async findUserByIdentifyCard(Info: findUserDto): Promise<User> {
         let UserRes:User = await this.userRepository.findOne(Info)
         return UserRes;
     }

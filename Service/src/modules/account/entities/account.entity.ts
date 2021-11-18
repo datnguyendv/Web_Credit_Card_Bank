@@ -37,7 +37,7 @@ export class Accounts {
 @ChildEntity(role.User)
 export class User extends Accounts {
     
-    @Column({type:'int', name:'IdentifyCard'})
+    @Column({type:'bigint', name:'IdentifyCard'})
     IdentifyCard:number;
 
     @Column({type:'date', name:'DateOfBirth'}) // format of mysql: yyyy-mm-dd

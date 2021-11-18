@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 import { Login, SignUp, SignUser, PasswordCompare } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 import * as dotenv from'dotenv';
+import { AccountModule } from '../account/account.module';
 dotenv.config();
 const {JWT_SECRET} = process.env;
 
@@ -22,18 +23,17 @@ const {JWT_SECRET} = process.env;
       AccountRepository,
       UserRepository,
       AdminRepository]),
-    AccountRepository
   ],
 controllers: [AuthController],
   providers: [
-    AuthService,
     AccountService,
+    FindOne,
+    CreateAccount,
+    AuthService,
     UserJwtStrategy, 
     Login,
     SignUp,
     SignUser,
-    CreateAccount,
-    FindOne, 
     PasswordCompare]
 })
 export class AuthModule {}

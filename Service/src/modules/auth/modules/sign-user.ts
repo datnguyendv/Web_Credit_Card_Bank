@@ -9,6 +9,8 @@ export class SignUser {
     ) {}
 
     async signUser(userId:number, userName: string, role: string): Promise<any>{ 
+        console.log(userId, userName, role);
+        
         return this.jwtService.sign({
             sub: userId,
             userName,

@@ -24,6 +24,7 @@ export class Login {
 
     async processResponseLogin(res: User|Admin , password: string, type: string) {
         let match = await this.comparePassword.passCompare(password, res.Password);
+        // let match = true;
         if(match) {
             console.log(`Login(): ${type}`);
             return this.signUser.signUser(res.AccountId,res.UserName, type );

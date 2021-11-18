@@ -18,7 +18,9 @@ export class AccountService {
 
     // add account into database
     async createAccount(account: AccountRegisterDto): Promise<any> {
-        return this.createNewAccount.createAccount(account);
+        let accountCreated:AccountRegisterDto = await this.createNewAccount.createAccount(account);
+        await this.saveAccount(accountCreated);
+        return accountCreated;
     }
 
     async findAll () {
@@ -26,11 +28,13 @@ export class AccountService {
     }
 
     async findUserByIdentifyCard(Info: findUserDto): Promise<any> {
-        return this.findOneModule.findUserByIdentifyCard(Info);
+        let res = await this.findOneModule.findUserByIdentifyCard(Info);
+        return res
     }
 
     async saveAccount(account: AccountRegisterDto): Promise<any> {
         this.userRepository.save(account);
         return true;
     }
+
 }

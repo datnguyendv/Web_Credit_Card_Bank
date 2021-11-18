@@ -16,7 +16,8 @@ export class AccountController {
     async findAll(): Promise<any> {
         return this.accountService.findAll();
     }
-
+    
+    @UseGuards(JwtAuthGuard)
     @Get(':id')
     async fineOne( @Param('id') id:number):Promise<any> {
         let Info:fineOneDto = {
@@ -24,6 +25,12 @@ export class AccountController {
             status : "GetAccount"
         }
         return this.accountService.findOne(Info);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Get('/Iden/:IdentifyCard')
+    async findUserByIdentifyCard(@Param('IdentifyCard') IdentifyCard: number): Promise<any> {
+        return this.accountService.findUserByIdentifyCard({IdentifyCard: IdentifyCard});
     }
 
 }

@@ -1,29 +1,31 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { AccountRegisterDto, findUserDto } from "src/modules/account/dto/account.dto";
-import { CreateAccount, FindOne } from "src/modules/account/modules";
+import { User } from "src/modules/account/entities/account.entity";
 import { AccountService } from "src/modules/account/services/account.service";
+import { SignUser } from './sign-user';
 
 
 @Injectable()
 export class SignUp {
     constructor(
-        private createAccount: CreateAccount,
         private accountService: AccountService,
-        private checkUserService: FindOne
+        private signUser: SignUser
     ) {}
     async accountRegister(account: AccountRegisterDto):Promise<any>{
-        let infoID: findUserDto = account;
+        let infoID: findUserDto = {
+            IdentifyCard: account.IdentifyCard,
+        } 
         //check customer existed 
-        let UserExisted = await this.accountService.findUserByIdentifyCard(infoID);
+        let UserExisted:User = await this.accountService.findUserByIdentifyCard(infoID);
         if(UserExisted !== undefined) {
-            throw new UnauthorizedException("User existed")
+            throw new UnauthorizedException("User existed");
         } else {
             //create account 
-            let accountCreated = await this.createAccount.createAccount(account);
-            //save account 
-            await this.accountService.saveAccount(accountCreated);
-            
-            // create card    
+            let accountCreated:User = await this.accountService.createAccount(account);
+            console.log("SignUp(): ", accountCreated);
+            let findUser = await this.accountService.findUserByIdentifyCard(infoID);
+            console.log("fine:", findUser);
+            return this.signUser.signUser(accountCreated.IdentifyCard, accountCreated.UserName, "User");
         }
     }
 }

@@ -64,3 +64,19 @@ export type fineOneDto = {
 export type findUserDto = {
     IdentifyCard: number
 }
+
+export type AccountTypeDto = {
+    AccountId?: number,
+    FirstName: string,
+    LastName: string,
+    Email:string,
+    UserName:string,
+    Password:string,
+    PhoneNumber: number;
+    IdentifyCard?:number,
+    DateOfBirth?: Date,
+    Address?: string,
+    Card?: []
+    LoginHistory?: []
+
+}
