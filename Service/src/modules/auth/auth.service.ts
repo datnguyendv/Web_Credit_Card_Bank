@@ -1,17 +1,16 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { AccountLoginDto, AccountRegisterDto, fineOneDto } from '../account/dto/account.dto';
-import { Admin, User } from '../account/entities/account.entity';
 import { AccountService } from '../account/services/account.service';
-import { Login } from './modules/Login';
+import { Login, SignUp } from './modules';
+
 
 @Injectable()
 export class AuthService {
     constructor(
         // private AccountRepository: AccountRepository,
         private accountService: AccountService,
-        private jwtService: JwtService,
         private loginAccount: Login,
+        private signUp: SignUp,
     ){}
 
     async checkAccountExisted(account: AccountLoginDto):Promise<any>{
@@ -29,11 +28,11 @@ export class AuthService {
     }
 
     async accountRegister(account: AccountRegisterDto):Promise<any>{
-        
+        return this.signUp.accountRegister(account);
     }
 
     async accountLogin(account: AccountLoginDto):Promise<any>{
-        return this.loginAccount.accountLogin(account)
+        return this.loginAccount.accountLogin(account);
     }
 }
 

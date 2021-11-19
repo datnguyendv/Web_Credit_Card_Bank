@@ -1,4 +1,18 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/utils/guards/jwt-auth.guard';
+import { cardRequestDto, cardType } from '../dto/cardType.dto';
+import { CardService } from '../services/card.service';
 
 @Controller('card')
-export class CardController {}
+export class CardController {
+    constructor(
+        private cardService: CardService
+    ) {}
+
+    // @UseGuards(JwtAuthGuard)
+    @Post() 
+    async createBankCard(@Body() request: cardRequestDto): Promise<any>{ 
+        return this.cardService.createCard(request);
+    }
+
+}

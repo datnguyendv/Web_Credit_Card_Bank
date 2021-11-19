@@ -7,17 +7,17 @@ import { CardType } from "./cardType.entity";
 @Entity('Cards')
 export class Cards {
 
-    @PrimaryColumn({type:'int', name:'CardID'})
+    @PrimaryColumn({type:'bigint', name:'CardID'})
     CardID: number;
 
-    @Column({type:'int', name: 'CurrentBalance'})
+    @Column({type:'bigint', name: 'CurrentBalance'})
     CurrentBalance: number;
 
     @Column({type:'int', name: 'CVV'})
     CVV:number;
 
     @Column({type:"datetime", name:'DateOfExpired'})
-    DateOfExpired: string;
+    DateOfExpired: Date;
 
     @ManyToOne(() => User, user => user.Card)
     Account: User;
