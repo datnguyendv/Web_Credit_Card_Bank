@@ -1,6 +1,6 @@
 
 import { Injectable } from '@nestjs/common';
-import { cardType, typeCardToSearch } from '../dto/cardType.dto';
+import { CardSearchByIdDto, cardType, typeCardToSearch } from '../dto/cardType.dto';
 import { CardRepository } from '../repositories/card.repository';
 import { Cards } from '../entities/card.entity';
 
@@ -28,5 +28,14 @@ export class SearchCard {
         });
         return cardRes
         
+    }
+
+    async searchCardByCardId(cardRequest: number): Promise<any> {
+        let cardInfo: CardSearchByIdDto = {
+            CardID : cardRequest
+        }
+        let cardRes:Cards = await this.cardRepository.findOne(cardInfo);
+        console.log("searchCardById(): ", cardRes);
+        return cardRes;
     }
 }

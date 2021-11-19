@@ -21,7 +21,7 @@ export class internalPaymentDto {
     CardIdReceive: number
 }
 
-export class externalPayment {
+export class externalPaymentDto {
     @IsNumber()
     CardIdSend: number
     @IsNumber()
