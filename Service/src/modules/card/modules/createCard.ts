@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { time } from "console";
 import { newCardDto, typeCardToSearch } from "../dto/cardType.dto";
 import { CardRepository } from '../repositories/card.repository';
 import { SearchCard } from './searchCard';
@@ -23,7 +24,7 @@ export class CreateNewCard {
         let seconds: number | string = date_ob.getSeconds();
         if(seconds < 10)  seconds = "0" + seconds;
         // prints date & time in YYYY-MM-DD format
-        let dateTime = `${year}:${month}:${date} ${hours}:${minutes}:${seconds}`;
+        let dateTime = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
         return dateTime;
     }
 

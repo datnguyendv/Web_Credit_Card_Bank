@@ -16,10 +16,10 @@ export class Payments {
     Location: string;
 
     @Column({type:'time', name: 'Time'})
-    Time: string;
+    Time: Date;
 
     @Column({type:'date', name:'Date'})
-    Date:string;
+    Date:Date;
 
     @ManyToOne(() => Cards, card => card.Payment)
     Card:Cards;

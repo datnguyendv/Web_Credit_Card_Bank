@@ -15,7 +15,7 @@ export class LoginHistory {
     Location: string;
 
     @Column ({type:'time', name: 'Time'})
-    Time:string;
+    Time:Date;
 
     @Column({type:'varchar', name:'Username'})
     UserName:string;
