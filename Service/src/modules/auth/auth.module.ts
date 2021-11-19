@@ -10,6 +10,9 @@ import { Login, SignUp, SignUser, PasswordCompare } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 import * as dotenv from'dotenv';
 import { AccountModule } from '../account/account.module';
+import { CardService } from '../card/services/card.service';
+import { CreateNewCard, SearchCard } from '../card/modules';
+import { CardRepository } from '../card/repositories/card.repository';
 dotenv.config();
 const {JWT_SECRET} = process.env;
 

@@ -19,7 +19,6 @@ export class AccountService {
     // add account into database
     async createAccount(account: AccountRegisterDto): Promise<any> {
         let accountCreated:AccountRegisterDto = await this.createNewAccount.createAccount(account);
-        await this.saveAccount(accountCreated);
         return accountCreated;
     }
 
@@ -32,9 +31,6 @@ export class AccountService {
         return res
     }
 
-    async saveAccount(account: AccountRegisterDto): Promise<any> {
-        this.userRepository.save(account);
-        return true;
-    }
+    
 
 }
