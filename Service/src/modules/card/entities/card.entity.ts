@@ -22,10 +22,10 @@ export class Cards {
     @ManyToOne(() => User, user => user.Card)
     Account: User;
 
-    @ManyToOne(() => CardType, cardType => cardType.Card)
+    @ManyToOne(() => CardType, cardType => cardType.Card ,{eager:true})
     CardType: CardType
 
-    @ManyToOne(() => CardStatus, status => status.Card)
+    @ManyToOne(() => CardStatus, status => status.Card,{eager:true})
     CardStatus:CardStatus;
 
     @OneToMany(() => Payments, payment => payment.Card)

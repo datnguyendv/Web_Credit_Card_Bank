@@ -24,9 +24,9 @@ export class Payments {
     @ManyToOne(() => Cards, card => card.Payment)
     Card:Cards;
 
-    @ManyToOne(() => PaymentType, paymentType => paymentType.Payment)
+    @ManyToOne(() => PaymentType, paymentType => paymentType.Payment,{eager:true})
     PaymentType: PaymentType;
 
-    @ManyToOne(() => PaymentStatus, PaymentStatus => PaymentStatus.Payment)
+    @ManyToOne(() => PaymentStatus, PaymentStatus => PaymentStatus.Payment,{eager:true})
     PaymentStatus: PaymentStatus;
 }

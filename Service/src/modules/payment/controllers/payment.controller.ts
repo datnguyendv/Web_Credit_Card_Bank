@@ -10,11 +10,11 @@ export class PaymentController {
 
     @Post('internal')
     async internalTransfer(@Body() paymentData: internalPaymentDto) {
-        return this.paymentService.internalTransfer(paymentData);
+        return this.paymentService.internalTransfer(paymentData, "internal");
     }
 
     @Post('external')
     async externalTransfer(@Body() paymentData: externalPaymentDto) {
-        return this.paymentService.externalTransfer(paymentData)
+        return this.paymentService.externalTransfer(paymentData, "external")
     }
 }

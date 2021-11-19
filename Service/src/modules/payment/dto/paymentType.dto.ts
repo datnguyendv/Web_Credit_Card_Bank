@@ -28,3 +28,10 @@ export class externalPaymentDto {
     Balance: number
 
 }
+
+export type cardUpdateDto = {
+    CardId: number,
+    CurrentBalance: number,
+    Balance: number,
+    type:string
+}

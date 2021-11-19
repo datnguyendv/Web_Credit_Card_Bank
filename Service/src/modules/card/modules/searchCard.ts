@@ -1,5 +1,5 @@
 
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CardSearchByIdDto, cardType, typeCardToSearch } from '../dto/cardType.dto';
 import { CardRepository } from '../repositories/card.repository';
 import { Cards } from '../entities/card.entity';
@@ -34,8 +34,9 @@ export class SearchCard {
         let cardInfo: CardSearchByIdDto = {
             CardID : cardRequest
         }
-        let cardRes:Cards = await this.cardRepository.findOne(cardInfo);
-        console.log("searchCardById(): ", cardRes);
-        return cardRes;
+        let cardRes: Cards = await this.cardRepository.findOne(cardInfo);
+        console.log("searchCard(): ",cardRes);
+        
+        return cardRes
     }
 }
