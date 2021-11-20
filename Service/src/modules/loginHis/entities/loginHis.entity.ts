@@ -11,9 +11,6 @@ export class LoginHistory {
     @Column({type:'date', name: 'Date'})
     Date: string;
 
-    @Column({type: 'varchar', name:'Location'})
-    Location: string;
-
     @Column ({type:'time', name: 'Time'})
     Time:Date;
 
