@@ -1,18 +1,17 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as dotenv from 'dotenv';
 import { CreateAccount, FindOne } from '../account/modules';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { AccountService } from '../account/services/account.service';
+import { CreateHistory } from '../loginHis/modules';
+import { LoginHistoryRepository } from '../loginHis/repositories/loginHis.repository';
+import { LoginHisStatusRepository } from '../loginHis/repositories/loginHisStatus.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { Login, SignUp, SignUser, PasswordCompare } from './modules';
+import { Login, PasswordCompare, SignUp, SignUser } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
-import * as dotenv from'dotenv';
-import { AccountModule } from '../account/account.module';
-import { CardService } from '../card/services/card.service';
-import { CreateNewCard, SearchCard } from '../card/modules';
-import { CardRepository } from '../card/repositories/card.repository';
 dotenv.config();
 const {JWT_SECRET} = process.env;
 
@@ -25,13 +24,16 @@ const {JWT_SECRET} = process.env;
     TypeOrmModule.forFeature([
       AccountRepository,
       UserRepository,
-      AdminRepository]),
+      AdminRepository,
+      LoginHistoryRepository,
+      LoginHisStatusRepository]),
   ],
 controllers: [AuthController],
   providers: [
     AccountService,
     FindOne,
     CreateAccount,
+    CreateHistory,
     AuthService,
     UserJwtStrategy, 
     Login,
