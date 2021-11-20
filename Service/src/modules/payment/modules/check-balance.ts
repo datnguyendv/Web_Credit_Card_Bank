@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { LineOfCredit } from "src/modules/card/dto/cardType.dto";
 
-
 @Injectable()
 export class checkBalance {
     constructor() {}
