@@ -32,3 +32,7 @@ export type newCardDto = {
     CardType: number,
     CardStatus:number,
 }
+
+export type CardSearchByIdDto = {
+    CardID: number
+}

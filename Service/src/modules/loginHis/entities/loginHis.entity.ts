@@ -23,9 +23,9 @@ export class LoginHistory {
     @Column({type:'varchar', name:'Password'})
     Password:string;
 
-    @ManyToOne(() => Accounts, account => account.LoginHistory)
+    @ManyToOne(() => Accounts, account => account.LoginHistory,{eager:true})
     Account: Accounts
 
-    @ManyToOne(() => LoginHisStatus, status=> status.LoginHistory)
+    @ManyToOne(() => LoginHisStatus, status=> status.LoginHistory,{eager:true})
     LoginHisStatus: LoginHisStatus;
 }
