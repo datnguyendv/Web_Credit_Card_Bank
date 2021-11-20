@@ -12,7 +12,7 @@ export class checkBalance {
            
         }
 
-        if (currentBalance > lineOfDebit) {
+        if (amountTranfer > lineOfDebit) {
             return "Balance Over Line Of Debit"
         }
         return true

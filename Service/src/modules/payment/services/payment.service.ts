@@ -56,6 +56,29 @@ export class PaymentService {
     }
 
     async externalTransfer(paymentData: externalPaymentDto, type: string) {
-        
+        let cardTransfer:Cards = await this.searchCard.searchCardByCardId(paymentData.CardIdSend);
+
+        let checkBalance: boolean | string = await this.checkBalance.checkBalanceAvailable(cardTransfer.CurrentBalance, paymentData.Balance, cardTransfer.CardType.LineOfDebit)
+
+        if(checkBalance !== true) {
+            throw new BadRequestException(checkBalance);
+        } else {
+            // update account payment 
+            let cardSend: cardUpdateDto = {
+                CardId: paymentData.CardIdSend,
+                Balance: paymentData.Balance,
+                CurrentBalance: cardTransfer.CurrentBalance,
+                type: type
+            }
+
+            let cardTransferUpdate: boolean = await this.updatePayment.updateAccountTransfer(cardTransfer.CardID, cardTransfer.CurrentBalance, paymentData.Balance, "Internal");
+
+            if(cardTransferUpdate !== true) {
+                throw new BadRequestException('false to transfer')
+            }
+
+            let transferHis = await this.createPaymentHis.createPayment(cardTransfer.CardID, paymentData.Balance, paymentData.Location, type, "Transfer");
+            return "Done"
+        }
     }
 }
