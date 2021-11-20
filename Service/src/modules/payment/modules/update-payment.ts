@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { UpdateCard } from "src/modules/card/modules";
-import { cardUpdateDto, paymentFee } from "../dto/paymentType.dto";
+import { paymentFee } from "../dto/paymentType.dto";
 
 
 @Injectable()
@@ -27,7 +27,6 @@ export class UpdatePayment {
 
     async updateAccountReceive(cardId:number, currBalance: number, Balance: number): Promise<boolean> {
         currBalance = Number(currBalance);
-        console.log(typeof(currBalance));
         let newBalance = currBalance + Balance;
         return await this.updateAccount.updateAccountPayment(cardId, newBalance);
     }

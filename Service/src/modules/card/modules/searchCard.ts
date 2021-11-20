@@ -35,8 +35,6 @@ export class SearchCard {
             CardID : cardRequest
         }
         let cardRes: Cards = await this.cardRepository.findOne(cardInfo);
-        console.log("searchCard(): ",cardRes);
-        
         return cardRes
     }
 }

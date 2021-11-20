@@ -2,14 +2,15 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { Cards } from 'src/modules/card/entities/card.entity';
 import { SearchCard } from 'src/modules/card/modules';
 import { cardUpdateDto, externalPaymentDto, internalPaymentDto } from '../dto/paymentType.dto';
-import { checkBalance, UpdatePayment } from '../modules';
+import { checkBalance, CreatePayment, UpdatePayment } from '../modules';
 
 @Injectable()
 export class PaymentService {
     constructor(
         private searchCard: SearchCard,
         private checkBalance: checkBalance,
-        private updatePayment: UpdatePayment
+        private updatePayment: UpdatePayment,
+        private createPaymentHis: CreatePayment,
     ){}
 
     async internalTransfer(paymentData: internalPaymentDto, type:string) {
@@ -18,14 +19,18 @@ export class PaymentService {
         }
         //find card receive
         let cardReceive: Cards = await this.searchCard.searchCardByCardId(paymentData.CardIdReceive);
+        
         let cardTransfer:Cards = await this.searchCard.searchCardByCardId(paymentData.CardIdSend);
+
         if(cardReceive == undefined || cardTransfer == undefined || cardReceive.CardStatus.StatusName !== "open" || cardTransfer.CardStatus.StatusName !== "open") {
             throw new BadRequestException("card does not existed");
         }
+
         //check balance available
-        let checkBalance: boolean = await this.checkBalance.checkBalanceAvailable(cardTransfer.CurrentBalance, paymentData.Balance)
-        if(!checkBalance) {
-            throw new BadRequestException('false to transfer')
+        let checkBalance: boolean | string = await this.checkBalance.checkBalanceAvailable(cardTransfer.CurrentBalance, paymentData.Balance, cardTransfer.CardType.LineOfDebit)
+
+        if(checkBalance !== true) {
+            throw new BadRequestException(checkBalance);
         } else {
             // update account payment 
             let cardSend: cardUpdateDto = {
@@ -34,19 +39,20 @@ export class PaymentService {
                 CurrentBalance: cardTransfer.CurrentBalance,
                 type: type
             }
-            console.log(typeof(cardSend.CurrentBalance));
-            
+
             let cardTransferUpdate: boolean = await this.updatePayment.updateAccountTransfer(cardTransfer.CardID, cardTransfer.CurrentBalance, paymentData.Balance, "Internal");
+
             let cardReceiveUpdate: boolean = await this.updatePayment.updateAccountReceive(cardReceive.CardID,cardReceive.CurrentBalance, paymentData.Balance);
+
             if(cardTransferUpdate !== true || cardReceiveUpdate !== true) {
                 throw new BadRequestException('false to transfer')
             }
-            // create payment history
-            // 1. payment for account transfer 
-            // 2. payment for account receive
-            // 3.save payment history
+
+            let transferHis = await this.createPaymentHis.createPayment(cardTransfer.CardID, paymentData.Balance, paymentData.Location, type, "Transfer");
+
+            let receiveHis = await this.createPaymentHis.createPayment(cardReceive.CardID, paymentData.Balance, paymentData.Location, type, "Receive")
+            return "Done"
         }
-        
     }
 
     async externalTransfer(paymentData: externalPaymentDto, type: string) {

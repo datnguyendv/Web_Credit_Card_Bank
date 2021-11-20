@@ -1,5 +1,5 @@
 
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 export enum paymentType {
     Free = 'Free',
     Internal= 'Internal',   
@@ -19,6 +19,8 @@ export class internalPaymentDto {
     Balance: number
     @IsNumber()
     CardIdReceive: number
+    @IsString()
+    Location
 }
 
 export class externalPaymentDto {
@@ -26,6 +28,8 @@ export class externalPaymentDto {
     CardIdSend: number
     @IsNumber()
     Balance: number
+    @IsString()
+    Location
 
 }
 
@@ -34,4 +38,11 @@ export type cardUpdateDto = {
     CurrentBalance: number,
     Balance: number,
     type:string
+}
+
+export type paymentHis = {
+    Amount: number,
+    Location: string,
+    Time: Date,
+    Date: Date,
 }

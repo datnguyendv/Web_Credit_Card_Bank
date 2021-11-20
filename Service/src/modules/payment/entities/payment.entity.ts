@@ -10,7 +10,10 @@ export class Payments {
     PaymentID: number;
 
     @Column({type: 'int', name:'Amount'})
-    Amount: number;
+    Amounts: number;
+
+    @Column({type: 'bigint', name:'CurrentBalance'})
+    CurrentBalance: number;
 
     @Column({type:'varchar', name:'Location'})
     Location: string;
@@ -21,7 +24,7 @@ export class Payments {
     @Column({type:'date', name:'Date'})
     Date:Date;
 
-    @ManyToOne(() => Cards, card => card.Payment)
+    @ManyToOne(() => Cards, card => card.Payment,{eager:true})
     Card:Cards;
 
     @ManyToOne(() => PaymentType, paymentType => paymentType.Payment,{eager:true})

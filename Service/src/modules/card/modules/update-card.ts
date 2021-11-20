@@ -9,7 +9,6 @@ export class UpdateCard {
     ) {}
 
     async updateAccountPayment(cardId: number, newBalance: number):Promise<boolean> {
-        console.log(cardId, newBalance);
         let result = await this.cardRepository.update(cardId, {CurrentBalance: newBalance});
         return true
     }
