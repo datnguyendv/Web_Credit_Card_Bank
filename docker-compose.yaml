@@ -9,23 +9,7 @@ services:
   #   restart: always
   #   command: 'yarn start'
 
-  backend: 
-    container_name: hcmiu_se_backend
-    build: 
-      context: ./service
-    restart: always
-    ports:
-      - 3000:3000
-    depends_on: 
-      - db
-    links: 
-      - db
-    volumes: 
-      - ./service:/app
-      - app/node_modules
-    command: yarn start
-
-  db:
+  database:
     container_name: hcmiu_se_db
     image: mysql:5.7
     restart: always
@@ -38,6 +22,26 @@ services:
       - db_data:/var/lib/mysql
     ports: 
       - "3306:3306"
+
+  backend: 
+    container_name: hcmiu_se_backend
+    build: 
+      context: ./service
+    restart: always
+    env_file: 
+      - ./service/.env
+    ports:
+      - 3000:3000
+    depends_on: 
+      - database
+    links: 
+      - database
+    volumes: 
+      - ./service:/app
+      - app/node_modules
+    command: yarn start
+
+  
 
 volumes: 
   db_data: 

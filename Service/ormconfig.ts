@@ -9,11 +9,11 @@ const {MS_DB_TYPE,MS_DB_PORT, MS_DB_HOST, MS_DB_USERNAME, MS_DB_PASSWORD, MS_DB_
 const typeOrmConfig: MysqlConnectionOptions = {
     type: 'mysql',
     // name: 'hcmiu_se_db',
-    host: MS_DB_HOST || "0.0.0.0",
+    host: MS_DB_HOST ,
     // host: "",
-    port: parseInt(MS_DB_PORT) || 3306,
-    username: MS_DB_USERNAME || "nguyenvandat",
-    password: MS_DB_PASSWORD ||"hcmiuse@14",
+    port: parseInt(MS_DB_PORT),
+    username: MS_DB_USERNAME ,
+    password: MS_DB_PASSWORD ,
     database: "banking",
     entities: ['dist/src/**/*.entity{.ts,.js}'],
     synchronize: true, //Unsafe, not use for product and migration
