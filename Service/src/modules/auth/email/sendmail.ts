@@ -1,5 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+const {EMAIL_USERNAME, EMAIL_PASSWORD} =process.env;
 
 @Injectable()
 export class SendMail {
@@ -13,8 +17,8 @@ export class SendMail {
         let transporter = nodemailer.createTransport({
             service:'gmail',
             auth: {
-              user: '', // generated ethereal user
-              pass: '', // generated ethereal password
+              user: EMAIL_USERNAME, // generated ethereal user
+              pass: EMAIL_PASSWORD, // generated ethereal password
             },
         });
         let mailOption = {

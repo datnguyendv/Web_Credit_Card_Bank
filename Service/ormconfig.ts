@@ -1,6 +1,5 @@
 
-import { TypeOrmModuleOptions  } from '@nestjs/typeorm'
-import * as dotenv from'dotenv';
+import * as dotenv from 'dotenv';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 dotenv.config();
 const {MS_DB_TYPE,MS_DB_PORT, MS_DB_HOST, MS_DB_USERNAME, MS_DB_PASSWORD, MS_DB_DATABASE} = process.env;
