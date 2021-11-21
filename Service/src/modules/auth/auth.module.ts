@@ -10,6 +10,7 @@ import { LoginHistoryRepository } from '../loginHis/repositories/loginHis.reposi
 import { LoginHisStatusRepository } from '../loginHis/repositories/loginHisStatus.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { SendMail } from './email/sendmail';
 import { Login, PasswordCompare, SignUp, SignUser } from './modules';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 dotenv.config();
@@ -39,6 +40,7 @@ controllers: [AuthController],
     Login,
     SignUp,
     SignUser,
+    SendMail,
     PasswordCompare]
 })
 export class AuthModule {}
