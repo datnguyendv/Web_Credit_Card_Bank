@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AccountLoginDto, AccountRegisterDto } from '../account/dto/account.dto';
 import { AuthService } from './auth.service';
@@ -24,5 +24,10 @@ export class AuthController {
     @Post('login') 
     async login(@Body() accountLogin: AccountLoginDto ) {
         return this.AuthService.accountLogin(accountLogin)
+    }
+
+    @Get('sendmail/:id')
+    async getMail(@Param('id') id:number): Promise<any> {
+        return this.AuthService.sendMailOtp(id);
     }
 }

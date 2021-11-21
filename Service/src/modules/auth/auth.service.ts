@@ -1,6 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AccountLoginDto, AccountRegisterDto, fineOneDto } from '../account/dto/account.dto';
 import { AccountService } from '../account/services/account.service';
+import { SendMail } from './email/sendmail';
 import { Login, SignUp } from './modules';
 
 
@@ -11,6 +12,7 @@ export class AuthService {
         private accountService: AccountService,
         private loginAccount: Login,
         private signUp: SignUp,
+        private sendMail: SendMail
     ){}
 
     async checkAccountExisted(account: AccountLoginDto):Promise<any>{
@@ -33,6 +35,10 @@ export class AuthService {
 
     async accountLogin(account: AccountLoginDto):Promise<any>{
         return this.loginAccount.accountLogin(account);
+    }
+
+    async sendMailOtp(id:number):Promise<any> {
+        this.sendMail.sendMailOtp(id);
     }
 }
 
