@@ -9,6 +9,18 @@ services:
   #   restart: always
   #   command: 'yarn start'
 
+  backend: 
+    container_name: hcmiu_se_backend
+    build: 
+      context: ./service
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on: 
+      - db
+    links: 
+      - db
+
   db:
     container_name: hcmiu_se_db
     image: mysql:5.7

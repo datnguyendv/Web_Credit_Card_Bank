@@ -28,6 +28,6 @@ export class AuthController {
 
     @Get('sendmail/:id')
     async getMail(@Param('id') id:number): Promise<any> {
-        return this.AuthService.sendMailOtp(id);
+        return await this.AuthService.sendMailOtp(id);
     }
 }
