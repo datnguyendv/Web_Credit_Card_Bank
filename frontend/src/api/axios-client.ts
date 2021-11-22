@@ -18,3 +18,25 @@ const axiosClient = axios.create({
     },
     data: (data:any) => JSON.stringify(data),
 });
+
+axiosClient.interceptors.request.use(async (config) => {
+    // Handle token here ...
+    // const token = store.getState().auth.token;
+    // console.log(token);
+    
+    // config.headers.Authorization = token;
+    return config;
+});
+
+axiosClient.interceptors.response.use((response) => {
+    if (response && response.data) {
+        return response.data;
+    }
+
+    return response;
+}, (error) => {
+    // Handle errors
+    throw error;
+});
+
+export default axiosClient;
