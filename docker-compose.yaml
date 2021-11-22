@@ -9,7 +9,7 @@ services:
   #   restart: always
   #   command: 'yarn start'
 
-  db:
+  database:
     container_name: hcmiu_se_db
     image: mysql:5.7
     restart: always
@@ -22,6 +22,27 @@ services:
       - db_data:/var/lib/mysql
     ports: 
       - "3306:3306"
+
+  backend: 
+    container_name: hcmiu_se_backend
+    build: 
+      context: ./service
+    restart: always
+    env_file: 
+      - ./service/.env
+    ports:
+      - "8000:3000"
+    command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
+    depends_on: 
+      - database
+    links: 
+      - database
+    volumes: 
+      - ./service:/app
+      - /app/node_modules
+    command: 'yarn start'
+
+  
 
 volumes: 
   db_data: 
