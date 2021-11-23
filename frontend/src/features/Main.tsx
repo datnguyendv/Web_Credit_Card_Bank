@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 // import { AuthScreen } from './auth/Main';
-import { Outlet, BrowserRouter, Route, Routes, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import { Login, Register } from './auth';
+import { Counter } from './counter/Counter';
 
 const Main: React.FC = () => {
     return (
@@ -9,6 +10,7 @@ const Main: React.FC = () => {
             <Route element={<Layout />}>
               <Route path="/" element = {<Register/>} />
               <Route path="/login" element={<Login />} />
+              <Route path="counter" element = {<Counter/>}/>
             </Route>
           </Routes>
       );

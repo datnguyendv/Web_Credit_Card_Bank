@@ -1,34 +1,44 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { loginState, selectLoginState, setInfo } from './login-slice';
+import { loginFunction, selectLoginState } from './loginSlice';
 import { Formik, Form, Field  } from 'formik';
+import { loginInfo } from './login-dto';
+import { LoadingScreen } from '../../waiting/loading-screen';
+
+export const renderLogin = (params: any) => {
+    if(params.status  === "isLoading") {
+        return <LoadingScreen/>
+    } else if(params.errMsg !== '') {
+        return <h4>{params.errMsg}</h4>
+    } else 
+    return <h2>{params.token}</h2>
+}
 
 export const Login: React.FC = () => {
-    const loginInfor: loginState = useAppSelector(selectLoginState);
-    const initialValues = { firstName: '' };
+    const loginInfor: loginInfo = {
+        UserName: '',
+        Password: ''
+    }
     const dispatch = useAppDispatch();
 
     return(
         <div>
-            <p>{loginInfor.userName}</p>
-            <p>{loginInfor.password}</p>
             <Formik
             initialValues={loginInfor}
             onSubmit={(values, actions) => {
-            dispatch(setInfo({
-                userName: values.userName,
-                password: values.password
+            dispatch(loginFunction({
+                UserName: values.UserName,
+                Password: values.Password
             }));
             }}>
                 <Form>
-                    <label htmlFor="userName">User Name</label>
-                    <Field id="userName" name="userName" placeholder="userName" />
+                    <label htmlFor="UserName">User Name</label>
+                    <Field id="UserName" name="UserName" placeholder="userName" />
                     <label htmlFor="password">Password</label>
-                    <Field id="password" name="password" placeholder="password" />
+                    <Field id="Password" name="Password" placeholder="password" />
                     <button type="submit">Submit</button>
                 </Form>
             </Formik>
         </div>
-
-        )
-    }
+    )
+}

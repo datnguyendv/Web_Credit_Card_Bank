@@ -1,14 +1,15 @@
+import { isRejectedWithValue } from '@reduxjs/toolkit';
+import { rejects } from 'assert';
 import axios from 'axios'
-import * as dotenv from 'dotenv'
-dotenv.config()
+require('dotenv').config()
 
-const {SERVER_URL} = process.env;
+const {REACT_APP_SERVER_URL} = process.env;
 
 
 const axiosClient = axios.create({
-    baseURL: SERVER_URL,
+    baseURL: REACT_APP_SERVER_URL,
     headers: {
-        // 'content-type': 'application/json',
+        'content-type': 'application/json',
     },
     paramsSerializer: params =>  {
         let test = Object.values(params).join('/');
@@ -21,10 +22,15 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
     // Handle token here ...
-    // const token = store.getState().auth.token;
-    // console.log(token);
+    const token = localStorage.getItem("token");
+    console.log("token(): ",token);
+    if(token !== undefined){
+        config. headers = {
+            Authorization: 'Bearer ' + token
+        }
+
+    }
     
-    // config.headers.Authorization = token;
     return config;
 });
 
@@ -32,11 +38,12 @@ axiosClient.interceptors.response.use((response) => {
     if (response && response.data) {
         return response.data;
     }
-
-    return response;
+    return response; 
 }, (error) => {
     // Handle errors
-    throw error;
+    console.log("axiosClienterr(): ", error.response.data);
+    // return reject(error);
+    return error.response.data;
 });
 
 export default axiosClient;
