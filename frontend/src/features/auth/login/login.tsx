@@ -20,10 +20,7 @@ export const Login: React.FC = () => {
             <Formik
             initialValues={loginInfor}
             onSubmit={(values, actions) => {
-            dispatch(loginFunction({
-                UserName: values.UserName,
-                Password: values.Password
-            }));
+            dispatch(loginFunction(values));
             }}>
                 <Form>
                     <label htmlFor="UserName">User Name</label>
