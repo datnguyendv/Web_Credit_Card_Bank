@@ -1,6 +1,6 @@
 import React  from 'react';
 
-export const Home: React.FC = () => {
+export const UserHome: React.FC = () => {
     return (
         <h1>HOME</h1>
     )

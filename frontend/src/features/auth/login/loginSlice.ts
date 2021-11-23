@@ -1,19 +1,14 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loginApi } from "../../../api/login-api";
 import { RootState } from "../../../app/store";
-import { fetchCount } from "../../counter/counterAPI";
-import { loginInfo } from "./login-dto";
-
-export interface loginState {
-    token: string,
-    status: 'idle' | "isLoading" | "failed",
-    errMsg: string,
-}
+import { jwtDecodeFunc } from "../jwtProcess/decode-jwt";
+import { loginInfo, loginState } from "./login-dto";
 
 const initialState: loginState = {
-    token:' ',
+    token:'',
     status: 'idle',
-    errMsg:' '
+    errMsg:'',
+    type: ''
 }
 
 export const loginFunction = createAsyncThunk(
@@ -47,7 +42,8 @@ export const loginSlice = createSlice({
             state.status = 'idle';
             state.token = action.payload;
             localStorage.setItem("token",state.token);
-            console.log(state.token);
+            let decode = jwtDecodeFunc(state.token);
+            state.type = decode;
             
         })
         .addCase(loginFunction.rejected, (state, action: PayloadAction<any>) => {
