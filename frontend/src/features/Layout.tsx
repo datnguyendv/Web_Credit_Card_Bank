@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useAppSelector } from '../app/hooks';
-import { Login } from './auth';
+import { Login, Register } from './auth';
 import { loginState } from './auth/login/login-dto';
 import { selectLoginState } from './auth/login/loginSlice';
 import { AdminHome } from './home/admin/admin-home';

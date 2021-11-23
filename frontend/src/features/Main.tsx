@@ -14,9 +14,10 @@ const Main: React.FC = () => {
           <Route path="/" element = {<UserHome/>} />
           <Route path = "/admin" element = {<AdminHome/>}/>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register/>}/>
+          
           <Route path="counter" element = {<Counter/>}/>
         </Route>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
     );
   }
