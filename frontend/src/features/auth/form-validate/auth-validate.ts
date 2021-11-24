@@ -24,6 +24,7 @@ export const registerSchema = yup.object().shape({
     .min(2, 'Too Short')
     .max(20, 'Too Long')
     .required('Required'),
+    Email:yup.string().email('Not a Email'),
     LastName:yup.string()
     .min(2, 'Too Short')
     .max(20, 'Too Long')

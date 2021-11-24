@@ -3,11 +3,13 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CardSearchByIdDto, cardType, typeCardToSearch } from '../dto/cardType.dto';
 import { CardRepository } from '../repositories/card.repository';
 import { Cards } from '../entities/card.entity';
+import { CardTypeRepository } from '../repositories/cardType.repository';
 
 @Injectable()
 export class SearchCard {
     constructor(
-        private cardRepository: CardRepository
+        private cardRepository: CardRepository,
+        private cardTypeRepository: CardTypeRepository
     ) {}
 
     findCardTypeId(typeRequest: string) {
@@ -36,5 +38,9 @@ export class SearchCard {
         }
         let cardRes: Cards = await this.cardRepository.findOne(cardInfo);
         return cardRes
+    }
+
+    async searchAllCardType(): Promise<any> {
+        return await this.cardTypeRepository.find();
     }
 }

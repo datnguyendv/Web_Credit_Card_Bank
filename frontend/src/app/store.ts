@@ -1,13 +1,19 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import loginReducer from '../features/auth/login/loginSlice';
-import registerReducer from '../features/auth/register/registerSlice';
+import accountExistedReducer from '../features/auth/register/accountExistedSlice';
+import accountCreatedReducer from '../features/auth/register/accCreateSlice';
+import cardCreatedReducer from '../features/auth/register/cardCreateSlice';
+import registerReducer from '../features/auth/register/registerInfoSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     login: loginReducer,
-    register: registerReducer,
+    accountExisted: accountExistedReducer,
+    accountCreated: accountCreatedReducer,
+    cardCreated: cardCreatedReducer,
+    register:registerReducer,
   },
 });
 

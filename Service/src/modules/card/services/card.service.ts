@@ -34,4 +34,8 @@ export class CardService {
             return this.createNewCard.createNewCard(findCard);
         }
     }
+
+    async searchCardType():Promise<any> {
+        return await this.searchCardFunction.searchAllCardType();
+    }
 }
