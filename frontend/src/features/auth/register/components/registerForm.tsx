@@ -1,15 +1,15 @@
 import { Field, Form, Formik } from 'formik';
-import React, { useState, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { LoadingScreen } from '../../waiting/loading-screen';
-import { registerSchema } from '../form-validate/auth-validate';
-import { checkAccountExist } from './accountExistedSlice';
-import { generateArray } from './components';
-import { cardType, registerFormDataDto, registerFormDto, registerInfoFormDto } from './register-dto';
-import { cardTypeInfo, selectRegisterState } from './registerInfoSlice';
+import React, { useEffect } from 'react';
+import { generateArray } from '.';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { LoadingScreen } from '../../../waiting/loading-screen';
+import { registerSchema } from '../../form-validate/auth-validate';
+import { checkAccountExist } from '../accountExistedSlice';
+import { cardType, registerFormDataDto, registerFormDto, registerInfoFormDto } from '../register-dto';
+import { cardTypeInfo, selectRegisterState } from '../registerInfoSlice';
 
 
-export const Register: React.FC = () => {
+export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
     let registerForm: registerFormDto = registerFormDataDto;
     let registerInfo:registerInfoFormDto = useAppSelector(selectRegisterState);
     
@@ -36,6 +36,7 @@ export const Register: React.FC = () => {
 
     return(
         <div>
+            <h2>{errMsg}</h2>
             <div>
             <Formik
             initialValues={registerForm}

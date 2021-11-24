@@ -41,6 +41,7 @@ export const createCardSlice = createSlice ({
         .addCase(createCard.fulfilled, (state, actions: PayloadAction<any>) => {
             state.status = 'idle';
             state.isCreated = actions.payload;
+            state.errMsg ='';
         })
     }
 })

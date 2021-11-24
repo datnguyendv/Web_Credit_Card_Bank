@@ -75,3 +75,9 @@ export interface createCardInfoDto {
     IdentifyCard: number,
     type:string,
 }
+
+export interface registerLayout {
+    accountExisted: accountRegisterStateDto,
+    accountCreated: registerStateDto,
+    cardCreated: cardCreatedStateDto,
+}

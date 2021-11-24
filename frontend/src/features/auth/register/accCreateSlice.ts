@@ -54,6 +54,7 @@ export const accountCreateSlice = createSlice({
         .addCase(createAccountFunc.fulfilled, (state, actions: PayloadAction<any>)=> {
             state.token =actions.payload;
             state.status = 'idle';
+            state.errMsg ='';
         })
     }
 

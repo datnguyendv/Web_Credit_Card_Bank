@@ -43,6 +43,7 @@ export const accountExisted = createSlice({
         .addCase(checkAccountExist.fulfilled, (state, actions: PayloadAction<any>) => {
             state.status = 'idle';
             state.isExisted = actions.payload;
+            state.errMsg = '';
         })
     }
 })

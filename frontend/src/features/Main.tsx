@@ -1,7 +1,8 @@
 import React from 'react';
 // import { AuthScreen } from './auth/Main';
 import { Route, Routes } from 'react-router-dom';
-import { Login, Register } from './auth';
+import { Login } from './auth';
+import { RegisterLayout } from './auth/register/RegisterLayout';
 import { Counter } from './counter/Counter';
 import { AdminHome } from './home/admin/admin-home';
 import { UserHome } from './home/user/user-home';
@@ -17,7 +18,7 @@ const Main: React.FC = () => {
           
           <Route path="counter" element = {<Counter/>}/>
         </Route>
-        <Route path="/register" element={<Register/>}/>
+        <Route path="/register" element={<RegisterLayout/>}/>
       </Routes>
     );
   }
