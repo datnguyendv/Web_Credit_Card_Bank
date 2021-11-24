@@ -1,14 +1,15 @@
-import axios from 'axios'
-import * as dotenv from 'dotenv'
-dotenv.config()
+import axios from 'axios';
+import { checkExpToken } from '../features/auth/jwtProcess/check-exp-token';
+require('dotenv').config()
 
-const {SERVER_URL} = process.env;
+const {REACT_APP_SERVER_URL} = process.env;
 
+let tokenrefresh: boolean = false;
 
 const axiosClient = axios.create({
-    baseURL: SERVER_URL,
+    baseURL: REACT_APP_SERVER_URL,
     headers: {
-        // 'content-type': 'application/json',
+        'content-type': 'application/json',
     },
     paramsSerializer: params =>  {
         let test = Object.values(params).join('/');
@@ -21,10 +22,14 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
     // Handle token here ...
-    // const token = store.getState().auth.token;
-    // console.log(token);
-    
-    // config.headers.Authorization = token;
+    const token:any = localStorage.getItem("token");
+    if(token !== null){
+        if(checkExpToken(token)) {
+            config. headers = {
+                Authorization: 'Bearer ' + localStorage.getItem("token"),
+            }
+        }
+    }
     return config;
 });
 
@@ -32,11 +37,12 @@ axiosClient.interceptors.response.use((response) => {
     if (response && response.data) {
         return response.data;
     }
-
-    return response;
+    return response; 
 }, (error) => {
-    // Handle errors
-    throw error;
+    // Handle errorsÍ
+    console.log("axiosClienterr(): ", error.response.data);
+    // return reject(error);
+    return error.response.data;
 });
 
 export default axiosClient;

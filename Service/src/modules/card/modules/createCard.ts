@@ -49,6 +49,7 @@ export class CreateNewCard {
             CardStatus: 1
         }
         console.log(newCard);
-        this.cardRepository.save(newCard)
+        await this.cardRepository.save(newCard);
+        return "done"
     }
 }

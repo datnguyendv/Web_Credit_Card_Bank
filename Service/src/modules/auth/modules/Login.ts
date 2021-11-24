@@ -33,10 +33,10 @@ export class Login {
         // let match = true;
         if(match) {
             console.log(`Login(): ${type}`);
-            this.saveHistory(account,res.AccountId, "Successful");
+            this.saveHistory(account,res.AccountId, "Successful"); // save login when success
             return this.signUser.signUser(res.AccountId,res.UserName, type );
         } else{
-            this.saveHistory(account, res.AccountId, "Unsuccessful");
+            this.saveHistory(account, res.AccountId, "Unsuccessful");// save login when unsuccess
             throw new UnauthorizedException("Credential Incorrect");
         } 
         
@@ -47,7 +47,7 @@ export class Login {
     }
 
     async accountLogin(account: AccountLoginDto):Promise<any>{ 
-        let Info = this.setInfoLogin("UserLogin",account)
+        let Info = this.setInfoLogin("UserLogin",account) // info to find account
         let res:User = await this.accountService.findOne(Info); 
 
         if(res !== undefined) {

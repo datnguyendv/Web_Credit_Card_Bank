@@ -23,6 +23,7 @@ export class SignUp {
         } else {
             //create account 
             let accountCreated:User = await this.accountService.createAccount(account);
+            
             console.log("SignUp(): ", accountCreated);
             return this.signUser.signUser(accountCreated.IdentifyCard, accountCreated.UserName, "User");
         }

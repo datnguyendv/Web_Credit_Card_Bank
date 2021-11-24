@@ -1,34 +1,44 @@
+import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { loginState, selectLoginState, setInfo } from './login-slice';
-import { Formik, Form, Field  } from 'formik';
+import { loginSchema } from '../form-validate/auth-validate';
+import { loginInfo, loginState } from './login-dto';
+import { loginFunction, selectLoginState } from './loginSlice';
 
 export const Login: React.FC = () => {
-    const loginInfor: loginState = useAppSelector(selectLoginState);
-    const initialValues = { firstName: '' };
+    const loginInfor: loginInfo = {
+        UserName: '',
+        Password: ''
+    }
+    let loginStated:loginState = useAppSelector(selectLoginState);
     const dispatch = useAppDispatch();
 
     return(
         <div>
-            <p>{loginInfor.userName}</p>
-            <p>{loginInfor.password}</p>
+            <h2>{loginStated.errMsg}</h2>
+        <div>
             <Formik
             initialValues={loginInfor}
+            validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-            dispatch(setInfo({
-                userName: values.userName,
-                password: values.password
-            }));
+                dispatch(loginFunction(values));
             }}>
+            {({errors, touched}) => (
                 <Form>
-                    <label htmlFor="userName">User Name</label>
-                    <Field id="userName" name="userName" placeholder="userName" />
+                    {errors.UserName && touched.UserName ? (<div>{errors.UserName}</div>): null}
+                    <label htmlFor="UserName">User Name</label>
+                    <Field id="UserName" name="UserName" placeholder="userName" />
+                    {errors.Password && touched.Password ? (<div>{errors.Password}</div>): null}
                     <label htmlFor="password">Password</label>
-                    <Field id="password" name="password" placeholder="password" />
+                    <Field id="Password" name="Password" placeholder="password" />
                     <button type="submit">Submit</button>
                 </Form>
+            )}
             </Formik>
         </div>
-
-        )
-    }
+        <div>
+            <a href = 'http://localhost:3000/register'>Dont have account? </a>
+        </div>
+        </div>
+    )
+}
