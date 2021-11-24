@@ -8,6 +8,9 @@ export interface registerFormDto {
     IdentifyCard:number,
     DateOfBirth: string | null | Date ,
     Address: string, 
+    Day: string, 
+    Month: string, 
+    Year: string, 
 }
 
 export const registerFormDataDto: registerFormDto = {
@@ -19,4 +22,13 @@ export const registerFormDataDto: registerFormDto = {
     IdentifyCard:0,
     DateOfBirth: '',
     Address: '', 
+    Day:'',
+    Month: '',
+    Year: '',
+}
+
+export interface registerStateDto {
+    token: string,
+    status: 'idle' | "isLoading" | "failed",
+    errMsg: string
 }

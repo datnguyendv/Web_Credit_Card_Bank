@@ -3,14 +3,17 @@ import React, { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import { useAppDispatch } from '../../../app/hooks';
 import { registerSchema } from '../form-validate/auth-validate';
+import { generateArray } from './components';
 import { registerFormDataDto, registerFormDto } from './register-dto';
-import { generateArray } from './generate';
+
 
 export const Register: React.FC = () => {
     let registerInfo: registerFormDto = registerFormDataDto;
-    const [startDate, setStartDate] = useState(new Date());
+    // day just have from 1 to 31 
     let day = generateArray(1,31);
+    // just have 12 month per year
     let month = generateArray(1,12);
+    // see on web and see that from 1921 upto now 
     let year = generateArray(1921, 2021);
     let dispatch = useAppDispatch();
     return(
@@ -20,7 +23,7 @@ export const Register: React.FC = () => {
             initialValues={registerInfo}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
-                // values.DateOfBirth ;
+                //because phone number and indentifycard in form return string value so need change to number
                 values.PhoneNumber = Number(values.PhoneNumber);
                 values.IdentifyCard = Number(values.IdentifyCard);
                 console.log(values);
@@ -29,57 +32,58 @@ export const Register: React.FC = () => {
             {({errors, touched}) => (
                 <Form>
                     <div>
-                    {errors.UserName && touched.UserName ? (<div>{errors.UserName}</div>): null}
-                    <label htmlFor="UserName">User Name</label>
-                    <Field id="UserName" name="UserName" placeholder="userName" />
+                        {errors.UserName && touched.UserName ? (<span>{errors.UserName}</span>): null}
+                        <label htmlFor="UserName">User Name</label>
+                        <Field id="UserName" name="UserName" placeholder="userName" />
                     </div>
                     <div>
-                    {errors.Password && touched.Password ? (<div>{errors.Password}</div>): null}
-                    <label htmlFor="password">Password</label>
-                    <Field id="Password" name="Password" placeholder="password" />
+                        {errors.Password && touched.Password ? (<span>{errors.Password}</span>): null}
+                        <label htmlFor="password">Password</label>
+                        <Field id="Password" name="Password" placeholder="password" />
                     </div>
                     <div>
-                    {errors.FirstName && touched.FirstName ? (<div>{errors.FirstName}</div>): null}
-                    <label htmlFor="FirstName">First Name</label>
-                    <Field id="FirstName" name="FirstName" placeholder="First Name" />
+                        {errors.FirstName && touched.FirstName ? (<span>{errors.FirstName}</span>): null}
+                        <label htmlFor="FirstName">First Name</label>
+                        <Field id="FirstName" name="FirstName" placeholder="First Name" />
                     </div>
                     <div>
-                    {errors.LastName && touched.LastName ? (<div>{errors.LastName}</div>): null}
-                    <label htmlFor="LastName">LastN ame</label>
-                    <Field id="LastName" name="LastName" placeholder="Last Name" />
+                        {errors.LastName && touched.LastName ? (<span>{errors.LastName}</span>): null}
+                        <label htmlFor="LastName">LastN ame</label>
+                        <Field id="LastName" name="LastName" placeholder="Last Name" />
                     </div>
                     <div>
-                    {errors.PhoneNumber && touched.PhoneNumber ? (<div>{errors.PhoneNumber}</div>): null}
-                    <label htmlFor="PhoneNumber">Phone Number</label>
-                    <Field id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" />
+                        {errors.PhoneNumber && touched.PhoneNumber ? (<span>{errors.PhoneNumber}</span>): null}
+                        <label htmlFor="PhoneNumber">Phone Number</label>
+                        <Field id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" />
                     </div>
                     <div>
-                    {errors.IdentifyCard && touched.IdentifyCard ? (<div>{errors.IdentifyCard}</div>): null}
-                    <label htmlFor="IdentifyCard">Identify Card</label>
-                    <Field id="IdentifyCard" name="IdentifyCard" placeholder="Identify Card" />
+                        {errors.IdentifyCard && touched.IdentifyCard ? (<span>{errors.IdentifyCard}</span>): null}
+                        <label htmlFor="IdentifyCard">Identify Card</label>
+                        <Field id="IdentifyCard" name="IdentifyCard" placeholder="Identify Card" />
                     </div>
                     <div>
                     <label htmlFor="Date Of Birth">Date Of Birth </label>
 
-                    <Field name="day" component="select">
-                        {day.map(i => <option key={i} value={i} >{i}</option>)}
-                    </Field>
-                    <Field name="month" component="select">
-                        {/* <option value="red">Red</option> */}
-                        {month.map(i => <option  key={i} value={i} >{i}</option>)}
-                    </Field>
-                    <Field name="year" component="select">
-                        {/* <option value="red">Red</option> */}
-                        {year.map(i => <option key={i} value={i} >{i}</option>)}
-                    </Field>
+                        <Field name="day" component="select">
+                            {day.map(i => <option key={i} value={i} >{i}</option>)}
+                        </Field>
+
+                        <Field name="month" component="select">
+                            {month.map(i => <option  key={i} value={i} >{i}</option>)}
+                        </Field>
+
+                        <Field name="year" component="select">
+                            {/* render Option choose Year */}
+                            {year.map(i => <option key={i} value={i} >{i}</option>)}
+                        </Field>
                     </div>
                     <div>
-                    {errors.Address && touched.Address ? (<div>{errors.Address}</div>): null}
-                    <label htmlFor="Address">Address</label>
-                    <Field id="Address" name="Address" placeholder="Address" />
+                        {errors.Address && touched.Address ? (<span>{errors.Address}</span>): null}
+                        <label htmlFor="Address">Address</label>
+                        <Field id="Address" name="Address" placeholder="Address" />
                     </div>
                     <div>
-                    <button type="submit">Submit</button>
+                        <button type="submit">Submit</button>
                     </div>
                 </Form>
             )}
