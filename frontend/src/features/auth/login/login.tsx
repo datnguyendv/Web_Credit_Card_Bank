@@ -21,7 +21,7 @@ export const Login: React.FC = () => {
             initialValues={loginInfor}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-            dispatch(loginFunction(values));
+                dispatch(loginFunction(values));
             }}>
             {({errors, touched}) => (
                 <Form>

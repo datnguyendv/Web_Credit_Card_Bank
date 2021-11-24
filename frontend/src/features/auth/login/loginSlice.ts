@@ -3,6 +3,7 @@ import { loginApi } from "../../../api/login-api";
 import { RootState } from "../../../app/store";
 import { jwtDecodeFunc } from "../jwtProcess/decode-jwt";
 import { loginInfo, loginState } from "./login-dto";
+import { setLoginInfo } from "./loginInfoSlice";
 
 const initialState: loginState = {
     token:'',
@@ -20,6 +21,7 @@ export const loginFunction = createAsyncThunk(
         if (response.statusCode >300) {
             return thunkApi.rejectWithValue(response.message);
         }
+        thunkApi.dispatch(setLoginInfo(params));
       // The value we return becomes the `fulfilled` action payload
       return response;
     }
@@ -29,9 +31,6 @@ export const loginSlice = createSlice({
     name: 'Login',
     initialState,
     reducers: {
-        setInfo: (state) => {
-            state.token = "random token here";
-        }
     },
     extraReducers: (builder) => {
         builder
@@ -59,6 +58,6 @@ export const loginSlice = createSlice({
 
 
 export const { reducer, actions } = loginSlice;
-// export const {  } = actions;
+// export const { setloginInfo } = actions;
 export const selectLoginState = (state: RootState) => state.login;
 export default reducer;

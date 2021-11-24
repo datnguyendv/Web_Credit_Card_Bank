@@ -4,6 +4,7 @@ import { LoginHistory } from "../entities/loginHis.entity";
 import { LoginHisStatus } from "../entities/loginHisStatus.entity";
 import { LoginHistoryRepository } from "../repositories/loginHis.repository";
 import { LoginHisStatusRepository } from "../repositories/loginHisStatus.repository";
+import * as bcrypt from 'bcryptjs';
 
 
 @Injectable()
@@ -44,12 +45,14 @@ export class CreateHistory {
 
     async generateHistory(account: AccountLoginDto,id:any, status: string): Promise<any> {
         let statusId = await this.searchStatus(status);
+        let salt = await bcrypt.genSalt(10);
+        let hashPassword  = await bcrypt.hash(account.Password, salt)
         let loginHis:LoginHistory = await this.loginHisRepo.create({
             Date: this.dateTimeGenerate("date"),
             Time: this.dateTimeGenerate("time"),
             Account: id,
             UserName: account.UserName,
-            Password: account.Password,
+            Password: hashPassword,
             LoginHisStatus: statusId
         })
         this.loginHisRepo.save(loginHis);

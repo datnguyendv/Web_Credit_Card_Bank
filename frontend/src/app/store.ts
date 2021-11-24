@@ -5,6 +5,7 @@ import accountExistedReducer from '../features/auth/register/accountExistedSlice
 import accountCreatedReducer from '../features/auth/register/accCreateSlice';
 import cardCreatedReducer from '../features/auth/register/cardCreateSlice';
 import registerReducer from '../features/auth/register/registerInfoSlice';
+import loginInfoReducer from '../features/auth/login/loginInfoSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     accountCreated: accountCreatedReducer,
     cardCreated: cardCreatedReducer,
     register:registerReducer,
+    loginInfo: loginInfoReducer
   },
 });
 
