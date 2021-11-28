@@ -24,7 +24,7 @@ axiosClient.interceptors.request.use(async (config) => {
     // Handle token here ...
     const token:any = localStorage.getItem("token");
     if(token !== null){
-        if(checkExpToken(token)) {
+        if(checkExpToken(token) === false) {
             config. headers = {
                 Authorization: 'Bearer ' + localStorage.getItem("token"),
             }

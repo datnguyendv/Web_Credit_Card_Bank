@@ -43,4 +43,16 @@ export class SearchCard {
     async searchAllCardType(): Promise<any> {
         return await this.cardTypeRepository.find();
     }
+
+    async searchAllUserCard(id: number): Promise<any> {
+        let listCard: Cards[] = await this.cardRepository.find({
+            where: {
+                Account: id,
+            }
+        });
+        for (let i=0; i < listCard.length -1 ; i++) {
+            delete listCard[i].CVV;
+        }
+        return listCard;
+    }
 }
