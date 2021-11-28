@@ -54,4 +54,5 @@ export type cardInfoStateDto = {
     status: 'idle' | 'isLoading' | 'failed',
     errMsg: string,
     cardInfo: listCardInfoDto
+    card: cardInfoDto
 }

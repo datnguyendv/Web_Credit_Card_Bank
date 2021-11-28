@@ -46,5 +46,5 @@ export const sendMailSlice = createSlice({
 
 export const { reducer, actions } = sendMailSlice;
 // export const {  } = actions;
-export const selectPaymentState = (state: RootState) => state.sendMail;
+export const selectSendMailState = (state: RootState) => state.sendMail;
 export default reducer;

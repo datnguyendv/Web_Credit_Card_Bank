@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { paymentApi } from '../../api';
 import { RootState } from '../../app/store';
 import { internalPaymentDto, internalTransferInfoDto, location, paymentStateDto } from './payment-dto';
@@ -13,11 +12,11 @@ export const initialState:paymentStateDto = {
 
 export const internalTransfer = createAsyncThunk(
     'Payment/InternalTransfer', async(params: internalPaymentDto, thunkApi) => {
-        let randomLocation = Math.random() * (location.length - 1);
+        let randomLocation = Math.round(Math.random() * (location.length - 1));
         let internalRequest: internalTransferInfoDto = {
-            CardSendId: params.CardSendId,
-            CardReceiveId: params.CardReceiveId,
-            Balance: params.Balance,
+            CardSendId: parseInt(params.CardSendId),
+            Balance: parseInt(params.Balance),
+            CardReceiveId: parseInt(params.CardReceiveId),
             Location: location[randomLocation],
         } 
         let response:any = paymentApi.internalTransfer(internalRequest);
@@ -26,6 +25,7 @@ export const internalTransfer = createAsyncThunk(
         } else {
             return response
         }
+        return response;
     })
 
 export const externalTransfer = createAsyncThunk(
@@ -39,7 +39,10 @@ export const paymentSlice = createSlice ({
     name:'Payment',
     initialState,
     reducers: {
-
+        setErrMsg: (state, actions: PayloadAction<any>) => {
+            state.errMsg = actions.payload;
+            state.status = 'failed';
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -48,27 +51,29 @@ export const paymentSlice = createSlice ({
         })
         .addCase(internalTransfer.rejected, (state, actions: PayloadAction<any>) => {
             state.status = 'failed';
+            console.log(state.errMsg);
             state.errMsg = actions.payload;
         }) 
         .addCase(internalTransfer.fulfilled, (state, actions: PayloadAction<any>) => {
             state.status = 'idle';
             state.state = actions.payload
         })
-        .addCase(externalTransfer.pending, (state) => {
-            state.status = 'isLoading';
-        })
-        .addCase(externalTransfer.rejected, (state, actions: PayloadAction<any>) => {
-            state.status = 'failed';
-            state.errMsg = actions.payload;
-        }) 
-        .addCase(externalTransfer.fulfilled, (state, actions: PayloadAction<any>) => {
-            state.status = 'idle';
-            state.state = actions.payload
-        })
+        // .addCase(externalTransfer.pending, (state) => {
+        //     state.status = 'isLoading';
+        // })
+        // .addCase(externalTransfer.rejected, (state, actions: PayloadAction<any>) => {
+        //     state.status = 'failed';
+        //     console.log(state.errMsg);
+        //     state.errMsg = actions.payload;
+        // }) 
+        // .addCase(externalTransfer.fulfilled, (state, actions: PayloadAction<any>) => {
+        //     state.status = 'idle';
+        //     state.state = actions.payload
+        // })
     }
 })
 
 export const { reducer, actions } = paymentSlice;
-// export const {  } = actions;
+export const { setErrMsg } = actions;
 export const selectPaymentState = (state: RootState) => state.paymentState;
 export default reducer;

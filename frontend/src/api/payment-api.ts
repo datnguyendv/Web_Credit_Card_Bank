@@ -8,6 +8,7 @@ export const { REACT_APP_PAYMENT, REACT_APP_PAYMENT_INTERNAL, REACT_APP_PAYMENT_
 
 export const paymentApi = {
     internalTransfer: (params: internalTransferInfoDto) => {
+        console.log(params);
         const url = `${REACT_APP_PAYMENT}/${REACT_APP_PAYMENT_INTERNAL}`;
         return axiosClient.post(url, params)
     }

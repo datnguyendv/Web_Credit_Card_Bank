@@ -16,8 +16,9 @@ export const UserHome: React.FC = () => {
     useEffect(() => {
         dispatch(getAccountInfo(accountId));
         dispatch(getCardInfo(accountId));
+        dispatch(getCardInfo(accountId));
     }, [])
-    
+
     return (
         <div>
             <Button

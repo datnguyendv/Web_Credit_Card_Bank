@@ -6,17 +6,17 @@ export const location: string [] = [
     "An Giang", "Vung Tau", "Tp. HCM", "Bac Lieu", "Soc Trang", "Ha Noi", "Binh Duong", "Can Tho", "Dong Nai", "Gia Lai", "Ha Nam", "Ha Noi", "Hoa Binh", "Lang Son", "Nam Dinh", "Nghe An", "Ha Tinh","Tay Ninh", "Tra Vinh", "Long An", "Vinh Long", "Thua Thien Hue"
 ] 
 export type internalPaymentDto = {
-    CardSendId: number,
-    CardReceiveId: number,
-    Balance: number,
+    CardSendId: string,
+    CardReceiveId: string,
+    Balance: string,
     Description: string,
-    OTP: number
+    OTP: string,
 }
 export type externalPaymentDto = {
-    CardSendId: number,
-    CardReceiveId: number,
+    CardSendId: string,
+    CardReceiveId: string,
     Bank: string,
-    Balance: number,
+    Balance: string,
     Description: string   
 }
 

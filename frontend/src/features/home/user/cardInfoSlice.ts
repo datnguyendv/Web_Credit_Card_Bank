@@ -7,6 +7,20 @@ export const initialState: cardInfoStateDto = {
     status: 'idle',
     errMsg: '',
     cardInfo: [],
+    card:{
+        CardID: 0,
+        CurrentBalance: 0,
+        DateOfExpired: '',
+        CardStatus: {
+            StatusID: 0,
+            StatusName:'',
+        },
+        CardType:{
+            CardTypeId: 0,
+            LineOfDebit:0,
+            TypeName: '',
+        },
+    }
 }
 
 export const getCardInfo = createAsyncThunk(
@@ -24,7 +38,14 @@ export const cardInfoSlice = createSlice ({
     name:'CardInfo',
     initialState,
     reducers: {
-        
+        setOneCard: (state, action: PayloadAction<any>) => {
+            console.log(action);
+            for(let i = 0; i< state.cardInfo.length; i++) {
+                if (action.payload === state.cardInfo[i].CardID) {
+                    state.card = state.cardInfo[i];
+                }
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -44,6 +65,6 @@ export const cardInfoSlice = createSlice ({
 
 
 export const { reducer, actions } = cardInfoSlice;
-// export const { setUserInfo } = actions;
-export const selectUserHomeState = (state: RootState) => state.cardInfo;
+export const { setOneCard } = actions;
+export const selectCardState = (state: RootState) => state.cardInfo;
 export default reducer;

@@ -57,7 +57,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                     <div>
                         {errors.Password && touched.Password ? (<span>{errors.Password}</span>): null}
                         <label htmlFor="password">Password</label>
-                        <Field id="Password" name="Password" placeholder="password" />
+                        <Field id="Password" type="password" name="Password" placeholder="password" />
                     </div>
                     <div>
                         {errors.FirstName && touched.FirstName ? (<span>{errors.FirstName}</span>): null}
