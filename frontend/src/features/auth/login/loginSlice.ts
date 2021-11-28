@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loginApi } from "../../../api/login-api";
 import { RootState } from "../../../app/store";
-import { jwtDecodeTypeFunc } from "../jwtProcess/decode-jwt";
+import { decodeToken } from "../jwtProcess/decode-jwt";
 import { loginInfo, loginState } from "./login-dto";
 import { setLoginInfo } from "./loginInfoSlice";
 
@@ -41,7 +41,7 @@ export const loginSlice = createSlice({
             state.status = 'idle';
             state.token = action.payload;
             localStorage.setItem("token",state.token);
-            let decode = jwtDecodeTypeFunc(state.token);
+            let decode = decodeToken.jwtDecodeTypeFunc(state.token);
             state.type = decode;
             
         })

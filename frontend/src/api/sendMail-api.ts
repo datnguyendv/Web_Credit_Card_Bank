@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-import { internalTransferInfoDto } from "../features/payment/payment-dto";
 import axiosClient from "./axios-client";
 
 dotenv.config()

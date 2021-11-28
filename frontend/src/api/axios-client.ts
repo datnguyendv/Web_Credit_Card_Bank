@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { checkExpToken } from '../features/auth/jwtProcess/check-exp-token';
+import { decodeToken } from '../features/auth/jwtProcess/decode-jwt';
 require('dotenv').config()
 
 const {REACT_APP_SERVER_URL} = process.env;
@@ -24,7 +24,7 @@ axiosClient.interceptors.request.use(async (config) => {
     // Handle token here ...
     const token:any = localStorage.getItem("token");
     if(token !== null){
-        if(checkExpToken(token) === false) {
+        if(decodeToken.checkExpToken(token) === false) {
             config. headers = {
                 Authorization: 'Bearer ' + localStorage.getItem("token"),
             }

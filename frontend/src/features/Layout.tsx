@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../app/hooks';
 import { Login, Register } from './auth';
-import { checkExpToken } from './auth/jwtProcess/check-exp-token';
-import { jwtDecodeTypeFunc } from './auth/jwtProcess/decode-jwt';
+import { decodeToken } from './auth/jwtProcess/decode-jwt';
 import { loginState } from './auth/login/login-dto';
 import { selectLoginState } from './auth/login/loginSlice';
 import { AdminHome } from './home/admin/admin-home';
@@ -41,9 +40,9 @@ export const Layout: React.FC = () => {
     let type: string = '';
     let token: string = '';
     if(localToken !== null) {
-        if(checkExpToken(localToken) == false) {
+        if(decodeToken.checkExpToken(localToken) == false) {
             token = localToken;
-            type = jwtDecodeTypeFunc(token);
+            type = decodeToken.jwtDecodeTypeFunc(token);
         }
     }
     return (

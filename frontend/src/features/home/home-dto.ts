@@ -7,8 +7,26 @@ export type userInfoDto = {
     UserName: string,
     PhoneNumber: number,
     IdentifyCard: number,
-    DateOfBirth: Date,
+    DateOfBirth: string,
     Address: string,
+}
+
+export const userInfoInitial = {
+    AccountId: 0,
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    UserName: '',
+    PhoneNumber: 0,
+    IdentifyCard: 0,
+    DateOfBirth: '',
+    Address: '',
+}
+
+export type userInfoStateDto = {
+    status: 'idle' | 'isLoading' | 'failed',
+    errMsg: string,
+    accountInfo: userInfoDto
 }
 
 export type cardTypeDto = {
@@ -25,10 +43,15 @@ export type cardStatusDto = {
 export type cardInfoDto = {
     CardID: number,
     CurrentBalance: number,
-    CVV: number,
     DateOfExpired: string,
     CardType: cardTypeDto,
     CardStatus: cardStatusDto,
 }
 
 export type listCardInfoDto = cardInfoDto[]
+
+export type cardInfoStateDto = {
+    status: 'idle' | 'isLoading' | 'failed',
+    errMsg: string,
+    cardInfo: listCardInfoDto
+}

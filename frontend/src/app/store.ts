@@ -9,6 +9,7 @@ import loginInfoReducer from '../features/auth/login/loginInfoSlice';
 import paymentReducer from '../features/payment/paymentSlice';
 import userHomeReducer from '../features/home/user/userSlice';
 import sendMailReducer from '../features/sendmail/sendMailSlice';
+import cardInfoReducer from '../features/home/user/cardInfoSlice';
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     paymentState: paymentReducer,
     userHomeState: userHomeReducer,
     sendMail: sendMailReducer,
+    cardInfo: cardInfoReducer,
   },
 });
 
