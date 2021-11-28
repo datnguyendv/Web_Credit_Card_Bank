@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { registerApi } from '../../../api/register-api';
+import { registerApi } from '../../../api';
 import { RootState } from '../../../app/store';
 import { createAccountFunc } from './accCreateSlice';
-import { processDob } from './components';
-import { accountRegisterStateDto, registerFormDto, registerStateDto } from './register-dto';
+import { accountRegisterStateDto, registerFormDto } from './register-dto';
 
 const initialState:accountRegisterStateDto = {
     isExisted:'',

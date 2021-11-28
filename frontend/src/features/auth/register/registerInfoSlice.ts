@@ -1,8 +1,8 @@
 import { registerInfoFormDto } from "./register-dto";
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { registerApi } from "../../../api/register-api";
 import { RootState } from "../../../app/store";
+import { registerApi } from "../../../api";
 
 
 export const initialState:registerInfoFormDto = {

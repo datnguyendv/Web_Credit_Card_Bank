@@ -6,6 +6,9 @@ import accountCreatedReducer from '../features/auth/register/accCreateSlice';
 import cardCreatedReducer from '../features/auth/register/cardCreateSlice';
 import registerReducer from '../features/auth/register/registerInfoSlice';
 import loginInfoReducer from '../features/auth/login/loginInfoSlice';
+import paymentReducer from '../features/payment/paymentSlice';
+import userHomeReducer from '../features/home/user/userSlice';
+import sendMailReducer from '../features/sendmail/sendMailSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,7 +18,10 @@ export const store = configureStore({
     accountCreated: accountCreatedReducer,
     cardCreated: cardCreatedReducer,
     register:registerReducer,
-    loginInfo: loginInfoReducer
+    loginInfo: loginInfoReducer,
+    paymentState: paymentReducer,
+    userHomeState: userHomeReducer,
+    sendMail: sendMailReducer,
   },
 });
 

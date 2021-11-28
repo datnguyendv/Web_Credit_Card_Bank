@@ -1,10 +1,8 @@
 
 import jwt_decode from 'jwt-decode';
 import { decodeJwtDto, loginInfo } from '../login/login-dto';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { loginFunction, selectLoginState } from '../login/loginSlice';
-import { initialState, selectLoginInfoState } from '../login/loginInfoSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { initialState } from '../login/loginInfoSlice';
+import { loginFunction } from '../login/loginSlice';
 
 export const checkExpToken = (extoken:string):boolean => {
     let tokenDecoded:decodeJwtDto = jwt_decode(extoken);

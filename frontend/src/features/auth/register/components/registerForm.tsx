@@ -107,7 +107,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                     <div>
                         <label htmlFor="type">Card Type </label>
                         {/* render when fetching cardtype from server */}
-                        {registerInfo.status == 'isLoading'? <LoadingScreen/>:
+                        {registerInfo.status === 'isLoading'? <LoadingScreen/>:
                             <Field name="type" component="select">
                                 {cardType.map(item => <option key = {item.CardTypeId} value ={item.TypeName}> {item.TypeName}</option> )}
                             </Field>
