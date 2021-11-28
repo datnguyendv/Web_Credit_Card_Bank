@@ -50,7 +50,7 @@ export class SearchCard {
                 Account: id,
             }
         });
-        for (let i=0; i < listCard.length -1 ; i++) {
+        for (let i=0; i < listCard.length ; i++) {
             delete listCard[i].CVV;
         }
         return listCard;
