@@ -14,12 +14,13 @@ export const internalTransfer = createAsyncThunk(
     'Payment/InternalTransfer', async(params: internalPaymentDto, thunkApi) => {
         let randomLocation = Math.round(Math.random() * (location.length - 1));
         let internalRequest: internalTransferInfoDto = {
-            CardSendId: parseInt(params.CardSendId),
+            CardIdSend: parseInt(params.CardSendId),
             Balance: parseInt(params.Balance),
-            CardReceiveId: parseInt(params.CardReceiveId),
+            CardIdReceive: parseInt(params.CardReceiveId),
             Location: location[randomLocation],
         } 
-        let response:any = paymentApi.internalTransfer(internalRequest);
+        let response:any = await paymentApi.internalTransfer(internalRequest);
+        console.log(response);
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {

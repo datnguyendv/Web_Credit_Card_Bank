@@ -27,14 +27,14 @@ export type paymentStateDto = {
 }
 
 export type internalTransferInfoDto = {
-    CardSendId: number,
-    CardReceiveId: number,
+    CardIdSend: number,
+    CardIdReceive: number,
     Balance: number,
     Location: string,
 }
 
 export type externalTransferInfoDto = {
-    CardSendId: number,
+    CardIdSend: number,
     Balance: number,
     Location: string,
 }
