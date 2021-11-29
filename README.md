@@ -21,7 +21,7 @@ Banking name uses a number of open source projects to work properly:
 - [ReactRouter] - Routing screen app
 - [Reactstrap] - great UI boilerplate for modern web apps
 - [Node] - environment to run service 
-- [Express] - fast node.js network app library
+- [Nesjs] - fast node.js network app library
 - [Docker] - deploy project 
 - [TypeORM] - library connect service to database
 
