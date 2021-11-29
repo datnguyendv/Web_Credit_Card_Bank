@@ -20,7 +20,7 @@ const {JWT_SECRET} = process.env;
   imports:[
   JwtModule.register({
       secret: JWT_SECRET,
-      signOptions: {expiresIn: '60s'}
+      signOptions: {expiresIn: '9200s'}
     }),
     TypeOrmModule.forFeature([
       AccountRepository,

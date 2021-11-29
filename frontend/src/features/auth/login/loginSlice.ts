@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loginApi } from "../../../api/login-api";
 import { RootState } from "../../../app/store";
-import { jwtDecodeFunc } from "../jwtProcess/decode-jwt";
+import { decodeToken } from "../jwtProcess/decode-jwt";
 import { loginInfo, loginState } from "./login-dto";
 import { setLoginInfo } from "./loginInfoSlice";
 
@@ -15,9 +15,7 @@ const initialState: loginState = {
 export const loginFunction = createAsyncThunk(
     'Login/test',
     async (params: loginInfo, thunkApi) => {
-        console.log(params);
         const response:any = await loginApi.postLogin(params);
-        console.log("slide: ", response);
         if (response.statusCode >300) {
             return thunkApi.rejectWithValue(response.message);
         }
@@ -41,7 +39,7 @@ export const loginSlice = createSlice({
             state.status = 'idle';
             state.token = action.payload;
             localStorage.setItem("token",state.token);
-            let decode = jwtDecodeFunc(state.token);
+            let decode = decodeToken.jwtDecodeTypeFunc(state.token);
             state.type = decode;
             
         })

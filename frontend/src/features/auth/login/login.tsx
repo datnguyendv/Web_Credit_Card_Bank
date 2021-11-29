@@ -21,6 +21,7 @@ export const Login: React.FC = () => {
             initialValues={loginInfor}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
+                // loginFunction(values);
                 dispatch(loginFunction(values));
             }}>
             {({errors, touched}) => (
@@ -30,7 +31,7 @@ export const Login: React.FC = () => {
                     <Field id="UserName" name="UserName" placeholder="userName" />
                     {errors.Password && touched.Password ? (<div>{errors.Password}</div>): null}
                     <label htmlFor="password">Password</label>
-                    <Field id="Password" name="Password" placeholder="password" />
+                    <Field id="Password" type= 'password' name="Password" placeholder="password" />
                     <button type="submit">Submit</button>
                 </Form>
             )}

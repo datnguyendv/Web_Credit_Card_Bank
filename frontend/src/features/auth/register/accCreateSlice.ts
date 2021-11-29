@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import React from 'react';
-import { registerApi } from '../../../api/register-api';
+import { registerApi } from '../../../api';
 import { RootState } from '../../../app/store';
 import { createCard } from './cardCreateSlice';
 import { processDob } from './components';
-import { accountRegisterStateDto, createCardInfoDto, registerFormDataDto, registerFormDto, registerStateDto } from './register-dto';
+import { createCardInfoDto, registerFormDto, registerStateDto } from './register-dto';
 
 export const initialState: registerStateDto = {
     token: '',

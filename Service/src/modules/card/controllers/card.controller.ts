@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/utils/guards/jwt-auth.guard';
 import { cardRequestDto, cardType } from '../dto/cardType.dto';
 import { CardService } from '../services/card.service';
@@ -18,6 +18,11 @@ export class CardController {
     @Get('cardtype')
     async searchCardType():Promise<any> {
         return this.cardService.searchCardType();
+    }
+
+    @Get(":id")
+    async searchCardByAccount(@Param('id') id: number): Promise<any> {
+        return this.cardService.searchCardByAccount(id);
     }
 
 }
