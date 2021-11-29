@@ -2,7 +2,7 @@
 ## The project for Software Engineering course
 
 
- [![Build Status](https://img.shields.io/badge/Build-passing-success)](https://nodejs.org/en/download/) [![Build Status](https://img.shields.io/badge/Node-v14.17.6-brightgreen)][node] [![Build Status](https://img.shields.io/badge/React-v17.0.2-important)][reactjs] [![Build Status](https://img.shields.io/badge/Redux-v7.5.0-orange)][redux] [![Build Status](https://img.shields.io/badge/Express-v4.17.1-yellow)][express] [![Build Status](https://img.shields.io/badge/MySql-v8.0.0-success)][mysql]
+ [![Build Status](https://img.shields.io/badge/Build-passing-success)](https://nodejs.org/en/download/) [![Build Status](https://img.shields.io/badge/Node-v14.17.6-brightgreen)][node] [![Build Status](https://img.shields.io/badge/React-v17.0.2-important)][reactjs] [![Build Status](https://img.shields.io/badge/Redux-v7.5.0-orange)][redux] [![Build Status](https://img.shields.io/badge/Express-v4.17.1-yellow)][nestjs] [![Build Status](https://img.shields.io/badge/MySql-v8.0.0-success)][mysql]
 
 Banking name is a web banking 
 ReactJS-powered HTML5 Markdown editor.
