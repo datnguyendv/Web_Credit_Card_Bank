@@ -21,7 +21,7 @@ export const InternalPayment: React.FC = () => {
         Description: "",
         OTP: '',
     }
-    const [submitBtnState, setSubmitBtnState] = useState<boolean>(false);
+    const [submitBtnState, setSubmitBtnState] = useState<boolean>(true);
     const dispatch = useAppDispatch();
 
     const processOtp= () => {

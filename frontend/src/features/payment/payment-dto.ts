@@ -18,6 +18,7 @@ export type externalPaymentDto = {
     Bank: string,
     Balance: string,
     Description: string   
+    OTP: string,
 }
 
 export type paymentStateDto = {
@@ -38,3 +39,9 @@ export type externalTransferInfoDto = {
     Balance: number,
     Location: string,
 }
+
+export type Layout = 'internal' | 'external' | 'none';
+
+export type paymentLayoutState = {
+    Layout: Layout
+} 

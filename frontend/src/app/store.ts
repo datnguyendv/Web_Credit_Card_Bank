@@ -1,5 +1,4 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import loginReducer from '../features/auth/login/loginSlice';
 import accountExistedReducer from '../features/auth/register/accountExistedSlice';
 import accountCreatedReducer from '../features/auth/register/accCreateSlice';
@@ -10,10 +9,9 @@ import paymentReducer from '../features/payment/paymentSlice';
 import userHomeReducer from '../features/home/user/userSlice';
 import sendMailReducer from '../features/sendmail/sendMailSlice';
 import cardInfoReducer from '../features/home/user/cardInfoSlice';
-
+import paymentLayoutReducer from '../features/payment/paymentLayoutSlice';
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     login: loginReducer,
     accountExisted: accountExistedReducer,
     accountCreated: accountCreatedReducer,
@@ -24,6 +22,7 @@ export const store = configureStore({
     userHomeState: userHomeReducer,
     sendMail: sendMailReducer,
     cardInfo: cardInfoReducer,
+    paymentLayoutState: paymentLayoutReducer,
   },
 });
 

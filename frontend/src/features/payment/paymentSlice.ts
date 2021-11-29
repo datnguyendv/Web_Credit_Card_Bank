@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { paymentApi } from '../../api';
 import { RootState } from '../../app/store';
-import { internalPaymentDto, internalTransferInfoDto, location, paymentStateDto } from './payment-dto';
+import { externalPaymentDto, externalTransferInfoDto, internalPaymentDto, internalTransferInfoDto, location, paymentStateDto } from './payment-dto';
+import { setPaymentLayout } from './paymentLayoutSlice';
 
 
 export const initialState:paymentStateDto = {
@@ -20,19 +21,30 @@ export const internalTransfer = createAsyncThunk(
             Location: location[randomLocation],
         } 
         let response:any = await paymentApi.internalTransfer(internalRequest);
-        console.log(response);
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {
+            thunkApi.dispatch(setPaymentLayout('none'));
             return response
         }
         return response;
     })
 
 export const externalTransfer = createAsyncThunk(
-    'Payment/ExternalTransfer', async() => {
-        let response :string ='';
-        return response
+    'Payment/ExternalTransfer', async(params: externalPaymentDto, thunkApi) => {
+        let randomLocation = Math.round(Math.random() * (location.length - 1));
+        let externalRequest: externalTransferInfoDto = {
+            CardIdSend: parseInt(params.CardSendId),
+            Balance: parseInt(params.Balance),
+            Location: location[randomLocation],
+        }
+        let response:any = await paymentApi.externalTransfer(externalRequest);
+        if(response.statusCode >300 ) {
+            return thunkApi.rejectWithValue(response.message);
+        } else {
+            thunkApi.dispatch(setPaymentLayout('none'));
+            return response
+        }
     }
 )
 
@@ -59,18 +71,18 @@ export const paymentSlice = createSlice ({
             state.status = 'idle';
             state.state = actions.payload
         })
-        // .addCase(externalTransfer.pending, (state) => {
-        //     state.status = 'isLoading';
-        // })
-        // .addCase(externalTransfer.rejected, (state, actions: PayloadAction<any>) => {
-        //     state.status = 'failed';
-        //     console.log(state.errMsg);
-        //     state.errMsg = actions.payload;
-        // }) 
-        // .addCase(externalTransfer.fulfilled, (state, actions: PayloadAction<any>) => {
-        //     state.status = 'idle';
-        //     state.state = actions.payload
-        // })
+        .addCase(externalTransfer.pending, (state) => {
+            state.status = 'isLoading';
+        })
+        .addCase(externalTransfer.rejected, (state, actions: PayloadAction<any>) => {
+            state.status = 'failed';
+            console.log(state.errMsg);
+            state.errMsg = actions.payload;
+        }) 
+        .addCase(externalTransfer.fulfilled, (state, actions: PayloadAction<any>) => {
+            state.status = 'idle';
+            state.state = actions.payload
+        })
     }
 })
 
