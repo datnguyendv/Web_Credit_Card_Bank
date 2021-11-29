@@ -21,7 +21,7 @@ export const ExternalPayment: React.FC = () => {
         CardReceiveId: '',
         Balance:'',
         Description:'',
-        Bank:'',
+        Bank: bank[0],
         OTP:'',
     }
     const processOtp= () => {

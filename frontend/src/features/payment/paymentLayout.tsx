@@ -1,11 +1,15 @@
 import React from 'react';
 import { Navigate } from 'react-router';
 import { useAppSelector } from '../../app/hooks';
-import { ExternalPayment, InternalPayment } from './components';
-import { Layout, paymentLayoutState } from './payment-dto';
+import { ExternalPayment, InternalPayment, TransferSuccessFrom } from './components';
+import { externalPaymentDto, Layout, paymentLayoutState } from './payment-dto';
 import { selectPaymentLayoutState } from './paymentLayoutSlice';
+import { selectPaymentState } from './paymentSlice';
 
 export const RenderPaymentLayout: React.FC<paymentLayoutState> = ({Layout}) => {
+    const paymentInfo: externalPaymentDto = useAppSelector(selectPaymentState).paymentInfo;
+
+
     switch(Layout) {
         case 'internal': 
             return (
@@ -15,6 +19,18 @@ export const RenderPaymentLayout: React.FC<paymentLayoutState> = ({Layout}) => {
             return  (
                 <ExternalPayment />
             )
+        case 'success': {
+            return (
+                <TransferSuccessFrom 
+                    CardSendId={paymentInfo.CardSendId}
+                    CardReceiveId={paymentInfo.CardReceiveId}
+                    Balance={paymentInfo.Balance}
+                    Description={paymentInfo.Description}
+                    Bank ={paymentInfo.Bank}
+                    OTP = {paymentInfo.OTP}
+                    />
+            )
+        }
         default: 
             return (
                 <Navigate to='/' replace={true}/>

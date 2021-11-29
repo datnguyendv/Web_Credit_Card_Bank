@@ -4,8 +4,6 @@ require('dotenv').config()
 
 const {REACT_APP_SERVER_URL} = process.env;
 
-let tokenrefresh: boolean = false;
-
 const axiosClient = axios.create({
     baseURL: REACT_APP_SERVER_URL,
     headers: {

@@ -12,6 +12,25 @@ export type internalPaymentDto = {
     Description: string,
     OTP: string,
 }
+
+export const internalPaymentInit: internalPaymentDto = {
+    CardSendId:'',
+    CardReceiveId:'',
+    Balance:'',
+    Description:'',
+    OTP:'',
+
+}
+
+export const externalPaymentInit: externalPaymentDto = {
+    CardSendId:'',
+    CardReceiveId:'',
+    Bank: '',
+    Balance:'',
+    Description:'',
+    OTP:'',
+
+}
 export type externalPaymentDto = {
     CardSendId: string,
     CardReceiveId: string,
@@ -22,8 +41,9 @@ export type externalPaymentDto = {
 }
 
 export type paymentStateDto = {
+    paymentInfo: externalPaymentDto,
     state: string,
-    status:'idle' | 'isLoading' | 'failed',
+    status:'idle' | 'isLoading' | 'failed' | 'success',
     errMsg:'',
 }
 
@@ -40,8 +60,15 @@ export type externalTransferInfoDto = {
     Location: string,
 }
 
-export type Layout = 'internal' | 'external' | 'none';
+export type Layout = 'internal' | 'external' | 'none' | 'success';
 
 export type paymentLayoutState = {
     Layout: Layout
 } 
+
+export type SuccessTransferForm = {
+    CardIdSend: number,
+    CardIdReceive: number,
+    Bank?: string,
+
+}

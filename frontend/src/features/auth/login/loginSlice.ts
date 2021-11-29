@@ -15,9 +15,7 @@ const initialState: loginState = {
 export const loginFunction = createAsyncThunk(
     'Login/test',
     async (params: loginInfo, thunkApi) => {
-        console.log(params);
         const response:any = await loginApi.postLogin(params);
-        console.log("slide: ", response);
         if (response.statusCode >300) {
             return thunkApi.rejectWithValue(response.message);
         }

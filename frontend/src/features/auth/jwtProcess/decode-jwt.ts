@@ -11,7 +11,7 @@ export const decodeToken = {
         let tokenDecoded:decodeJwtDto = jwt_decode(extoken);
         let dateExp = Date.now();
         let loginInfo: loginInfo = initialState;
-        console.log(dateExp, tokenDecoded.exp * 1000);
+        console.log("token is expired?: ", dateExp > (tokenDecoded.exp * 1000));
         if(dateExp > tokenDecoded.exp* 1000) {
         //return true mean that token is expired        
         return true

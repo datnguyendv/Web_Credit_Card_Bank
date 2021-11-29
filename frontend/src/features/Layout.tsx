@@ -40,9 +40,11 @@ export const Layout: React.FC = () => {
     let type: string = '';
     let token: string = '';
     if(localToken !== null) {
-        if(decodeToken.checkExpToken(localToken) == false) {
+        if(decodeToken.checkExpToken(localToken) === false) {
             token = localToken;
             type = decodeToken.jwtDecodeTypeFunc(token);
+        } else {
+            localStorage.removeItem("token");
         }
     }
     return (
