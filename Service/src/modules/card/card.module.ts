@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CreateAccount, FindOne } from '../account/modules';
+import { ManageAccount, FindOne } from '../account/modules';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { AccountService } from '../account/services/account.service';
 import { CardController } from './controllers/card.controller';
@@ -25,7 +25,7 @@ import { CardService } from './services/card.service';
     CardService,
     AccountService,
     FindOne,
-    CreateAccount,
+    ManageAccount,
     SearchCard,
     CreateNewCard
     ],

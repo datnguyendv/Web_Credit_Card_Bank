@@ -6,7 +6,7 @@ export const loginSchema = yup.object().shape({
     .max(20, 'Too Long')
     .required('Required'),
     Password: yup.string()
-    .min(10, 'Too Short')
+    .min(7, 'Too Short')
     .max(20, 'Too Long')
     .required('Required'),
 })

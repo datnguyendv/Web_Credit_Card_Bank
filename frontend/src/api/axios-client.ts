@@ -20,11 +20,11 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
     // Handle token here ...
-    const token:any = localStorage.getItem("token");
+    const token:any = sessionStorage.getItem("token");
     if(token !== null){
         if(decodeToken.checkExpToken(token) === false) {
             config. headers = {
-                Authorization: 'Bearer ' + localStorage.getItem("token"),
+                Authorization: 'Bearer ' + sessionStorage.getItem("token"),
             }
         }
     }

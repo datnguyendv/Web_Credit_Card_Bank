@@ -36,7 +36,7 @@ export const RenderAuthen: React.FC<loginState> = ({token, status, errMsg, type}
 }
 export const Layout: React.FC = () => {
     let authenStatus: loginState = useAppSelector(selectLoginState);
-    let localToken = localStorage.getItem("token");
+    let localToken = sessionStorage.getItem("token");
     let type: string = '';
     let token: string = '';
     if(localToken !== null) {
@@ -44,7 +44,7 @@ export const Layout: React.FC = () => {
             token = localToken;
             type = decodeToken.jwtDecodeTypeFunc(token);
         } else {
-            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
         }
     }
     return (

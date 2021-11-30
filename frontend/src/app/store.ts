@@ -10,6 +10,8 @@ import userHomeReducer from '../features/home/user/userSlice';
 import sendMailReducer from '../features/sendmail/sendMailSlice';
 import cardInfoReducer from '../features/home/user/cardInfoSlice';
 import paymentLayoutReducer from '../features/payment/paymentLayoutSlice';
+import loginHistoryReducer from '../features/home/manage/loginHistorySlice';
+
 export const store = configureStore({
   reducer: {
     login: loginReducer,
@@ -23,6 +25,7 @@ export const store = configureStore({
     sendMail: sendMailReducer,
     cardInfo: cardInfoReducer,
     paymentLayoutState: paymentLayoutReducer,
+    loginHistoryState: loginHistoryReducer,
   },
 });
 

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AccountController } from './controllers/account.controller';
-import { CreateAccount, FindOne } from './modules';
+import { ManageAccount, FindOne } from './modules';
 import { AccountRepository, AdminRepository, UserRepository } from './repositories/account.repository';
 import { AccountService } from './services/account.service';
 
@@ -15,7 +15,7 @@ import { AccountService } from './services/account.service';
   controllers: [AccountController],
   providers: [
     AccountService, 
-    CreateAccount,
+    ManageAccount,
     FindOne
   ]
 })

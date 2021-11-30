@@ -5,7 +5,7 @@ export const bankName: string[] = [
 export const location: string [] = [
     "An Giang", "Vung Tau", "Tp. HCM", "Bac Lieu", "Soc Trang", "Ha Noi", "Binh Duong", "Can Tho", "Dong Nai", "Gia Lai", "Ha Nam", "Ha Noi", "Hoa Binh", "Lang Son", "Nam Dinh", "Nghe An", "Ha Tinh","Tay Ninh", "Tra Vinh", "Long An", "Vinh Long", "Thua Thien Hue"
 ] 
-export type internalPaymentDto = {
+export interface internalPaymentDto {
     CardSendId: string,
     CardReceiveId: string,
     Balance: string,
@@ -31,13 +31,8 @@ export const externalPaymentInit: externalPaymentDto = {
     OTP:'',
 
 }
-export type externalPaymentDto = {
-    CardSendId: string,
-    CardReceiveId: string,
+export interface externalPaymentDto extends internalPaymentDto {
     Bank: string,
-    Balance: string,
-    Description: string   
-    OTP: string,
 }
 
 export type paymentStateDto = {
@@ -47,14 +42,11 @@ export type paymentStateDto = {
     errMsg:'',
 }
 
-export type internalTransferInfoDto = {
-    CardIdSend: number,
+export interface internalTransferInfoDto extends externalTransferInfoDto {
     CardIdReceive: number,
-    Balance: number,
-    Location: string,
 }
 
-export type externalTransferInfoDto = {
+export interface externalTransferInfoDto {
     CardIdSend: number,
     Balance: number,
     Location: string,

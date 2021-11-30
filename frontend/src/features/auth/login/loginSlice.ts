@@ -38,7 +38,7 @@ export const loginSlice = createSlice({
         .addCase(loginFunction.fulfilled, (state, action: PayloadAction<any>) => {
             state.status = 'idle';
             state.token = action.payload;
-            localStorage.setItem("token",state.token);
+            sessionStorage.setItem("token",state.token);
             let decode = decodeToken.jwtDecodeTypeFunc(state.token);
             state.type = decode;
             

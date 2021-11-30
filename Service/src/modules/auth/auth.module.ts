@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
-import { CreateAccount, FindOne } from '../account/modules';
+import { ManageAccount, FindOne } from '../account/modules';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { AccountService } from '../account/services/account.service';
 import { CreateHistory } from '../loginHis/modules';
@@ -34,7 +34,7 @@ controllers: [AuthController],
   providers: [
     AccountService,
     FindOne,
-    CreateAccount,
+    ManageAccount,
     CreateHistory,
     AuthService,
     UserJwtStrategy, 

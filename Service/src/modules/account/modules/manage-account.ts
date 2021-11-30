@@ -1,16 +1,17 @@
 import { Injectable } from "@nestjs/common";
-import { AccountRegisterDto } from '../dto/account.dto';
 import * as bcrypt from 'bcryptjs';
+import { AccountRegisterDto, updatePassword } from '../dto/account.dto';
 import { UserRepository } from "../repositories/account.repository";
 
 @Injectable()
-export class CreateAccount {
+export class ManageAccount {
     constructor(
         private userRepository: UserRepository    
     ) {}
 
     async saveAccount(account: AccountRegisterDto): Promise<any> {
-        this.userRepository.save(account);
+        let result = await this.userRepository.save(account);
+        console.log(result);
         return true;
     }
 
@@ -21,6 +22,15 @@ export class CreateAccount {
         console.log("createAccount(): ", account);
         await this.saveAccount(account)
         return account;
+    }
+
+    async updateAccountPass(params: updatePassword):Promise<boolean> {
+        let salt = await bcrypt.genSalt(10)
+        let hashPassword = await bcrypt.hash(params.Password, salt);
+        console.log(params);
+        let result = await this.userRepository.update(params.ID, {Password: hashPassword});
+        console.log(result);
+        return true;
     }
 
 }
