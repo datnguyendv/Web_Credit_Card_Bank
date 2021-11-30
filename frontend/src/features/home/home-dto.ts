@@ -94,9 +94,9 @@ export type loginHisDto = {
 
 export type listLoginHistory = loginHisDto[];
 
-export type paymentInfoDto= {
+export type paymentHisInfoDto= {
     PaymentID: number,
-    Amount: number,
+    Amounts: number,
     CurrentBalance: number,
     Location: string,
     Time: string,
@@ -106,6 +106,18 @@ export type paymentInfoDto= {
 
 export type loginHistoryStateDto = {
     listLoginHis: listLoginHistory,
+    status: 'idle' | 'isLoading' | 'failed',
+    errMsg: string,
+}
+
+export type listPaymentHistoryStateDto = {
+    listPaymentHis: paymentHisInfoDto[],
+    status: 'idle' | 'isLoading' | 'failed',
+    errMsg: string,
+}
+
+export type fullCardStateDto = {
+    listCard: FullCardInfoDto[],
     status: 'idle' | 'isLoading' | 'failed',
     errMsg: string,
 

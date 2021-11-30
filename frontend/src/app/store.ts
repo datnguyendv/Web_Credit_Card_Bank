@@ -11,6 +11,8 @@ import sendMailReducer from '../features/sendmail/sendMailSlice';
 import cardInfoReducer from '../features/home/user/cardInfoSlice';
 import paymentLayoutReducer from '../features/payment/paymentLayoutSlice';
 import loginHistoryReducer from '../features/home/manage/loginHistorySlice';
+import listCardReducer from '../features/home/manage/allCardSlice';
+import listPaymentReducer from '../features/home/manage/paymentHistorySlice'
 
 export const store = configureStore({
   reducer: {
@@ -26,6 +28,8 @@ export const store = configureStore({
     cardInfo: cardInfoReducer,
     paymentLayoutState: paymentLayoutReducer,
     loginHistoryState: loginHistoryReducer,
+    listCardState: listCardReducer,
+    paymentHistoryState: listPaymentReducer,
   },
 });
 
