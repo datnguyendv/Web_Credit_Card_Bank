@@ -10,7 +10,7 @@ import { Alert } from 'reactstrap';
 import { selectCardState, setOneCard } from '../../home/user/cardInfoSlice';
 
 export const InternalPayment: React.FC = () => {
-    const accountId = useAppSelector(selectUserHomeState).accountInfo.IdentifyCard;
+    const account = useAppSelector(selectUserHomeState).accountInfo;
     const mailState = useAppSelector(selectSendMailState);
     const paymentState = useAppSelector(selectPaymentState);
     const cardState = useAppSelector(selectCardState);
@@ -18,14 +18,14 @@ export const InternalPayment: React.FC = () => {
         CardSendId: `${cardState.cardInfo[0].CardID}`,
         CardReceiveId: '',
         Balance: '',
-        Description: "",
+        Description: `${account.LastName} ${account.FirstName} transfer`,
         OTP: '',
     }
     const [submitBtnState, setSubmitBtnState] = useState<boolean>(true);
     const dispatch = useAppDispatch();
 
     const processOtp= () => {
-        dispatch(sendMailFunc(accountId));
+        dispatch(sendMailFunc(account.AccountId));
         setSubmitBtnState(false);
     }
 
@@ -49,9 +49,17 @@ export const InternalPayment: React.FC = () => {
                 {errors.CardSendId && touched.CardSendId ? (<div>{errors.CardSendId}</div>): null}
                 <label htmlFor="CardSendId">CardSendId</label>
                 <Field name="CardSendId" component="select">
-                {cardState.cardInfo.map(card => <option key = {card.CardID} value = {card.CardID} onChange = {() => dispatch(setOneCard(card.CardID))}>{card.CardID}</option>)}
-                </Field>
+                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName !== 'lock' && card.CardStatus.StatusName !== 'fraud') {
 
+                    <option 
+                    key = {card.CardID} 
+                    value = {card.CardID} 
+                    onChange = {() => dispatch(setOneCard(card.CardID))}>
+                    {card.CardID}
+                    </option>
+                }})}
+                </Field>
+                
                 {errors.CardReceiveId && touched.CardReceiveId ? (<div>{errors.CardReceiveId}</div>): null}
                 <label htmlFor="CardReceiveId">CardReceiveId</label>
                 <Field id="CardReceiveId" name="CardReceiveId" placeholder="CardReceiveId" />

@@ -55,4 +55,12 @@ export class SearchCard {
         }
         return listCard;
     }
+
+    async getAllCard(): Promise<any> {
+        return await this.cardRepository.find(
+            {
+                relations:['Account']
+            }
+        )
+    }
 }

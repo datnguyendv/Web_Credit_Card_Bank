@@ -42,4 +42,8 @@ export class CardService {
     async searchCardByAccount(id: number): Promise<any> {
         return await this.searchCardFunction.searchAllUserCard(id);
     }
+
+    async getAllCard(): Promise<any> {
+        return await this.searchCardFunction.getAllCard();
+    }
 }

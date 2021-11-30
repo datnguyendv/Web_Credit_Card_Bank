@@ -25,4 +25,9 @@ export class CardController {
         return this.cardService.searchCardByAccount(id);
     }
 
+    @Get()
+    async getAllCard(): Promise<any> {
+        return this.cardService.getAllCard()
+    }
+
 }
