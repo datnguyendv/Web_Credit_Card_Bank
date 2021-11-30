@@ -1,4 +1,5 @@
-import { Controller, Get, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { AdminJwtAuthGuard } from 'src/utils/guards/admin-jwt-auth.guard';
 import { LoginService } from '../services/login.service';
 
 @Controller('loginHis')
@@ -8,6 +9,7 @@ export class LoginController {
         private loginService: LoginService,
     ){}
 
+    @UseGuards(AdminJwtAuthGuard)
     @Get()
     async getAllLoginHis(): Promise<any> {
         return this.loginService.getAllLoginHis();

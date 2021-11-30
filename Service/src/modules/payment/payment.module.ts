@@ -4,7 +4,7 @@ import { SearchCard, UpdateCard } from '../card/modules';
 import { CardRepository } from '../card/repositories/card.repository';
 import { CardTypeRepository } from '../card/repositories/cardType.repository';
 import { PaymentController } from './controllers/payment.controller';
-import { checkBalance, CreatePayment, SearchPaymentStatus, SearchPaymentType, UpdatePayment } from './modules';
+import { checkBalance, CreatePayment, SearchPayment, SearchPaymentStatus, SearchPaymentType, UpdatePayment } from './modules';
 import { PaymentRepository } from './repositories/payment.repository';
 import { PaymentStatusRepository } from './repositories/paymentStatus.repository';
 import { PaymentTypeRepository } from './repositories/paymentType.repository';
@@ -23,6 +23,7 @@ import { PaymentService } from './services/payment.service';
   controllers: [PaymentController],
   providers: [
     PaymentService,
+    SearchPayment,
     SearchPaymentStatus,
     SearchPaymentType,
     SearchCard,

@@ -12,6 +12,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { SendMail } from './email/sendmail';
 import { Login, PasswordCompare, SignUp, SignUser } from './modules';
+import { AdminJwtStrategy } from './strategy/adminjwt.strategy';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 dotenv.config();
 const {JWT_SECRET} = process.env;
@@ -37,6 +38,7 @@ controllers: [AuthController],
     CreateHistory,
     AuthService,
     UserJwtStrategy, 
+    AdminJwtStrategy,
     Login,
     SignUp,
     SignUser,
