@@ -41,3 +41,18 @@ export const registerSchema = yup.object().shape({
     .max(50, 'Too Long')
     .min(7, 'Too Short')
 })
+
+export const forgotSchema = yup.object().shape({
+    UserName: yup.string()
+    .min(7, 'Too Short')
+    .max(20, 'Too Long')
+    .required('Required'),
+
+    Email:yup.string().email('Not a Email'),
+
+    ID:yup.number()
+    .max(1000000000000, "Too Long")
+    .min(100000000000, "Too Short"),
+
+    
+})

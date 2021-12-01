@@ -46,7 +46,6 @@ export const loginSlice = createSlice({
         .addCase(loginFunction.rejected, (state, action: PayloadAction<any>) => {
             state.status = 'failed';
             state.errMsg = action.payload;
-            console.log("errSlide(): ",state.errMsg);
         })
     }
 })
