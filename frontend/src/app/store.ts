@@ -12,7 +12,8 @@ import cardInfoReducer from '../features/home/user/cardInfoSlice';
 import paymentLayoutReducer from '../features/payment/paymentLayoutSlice';
 import loginHistoryReducer from '../features/home/manage/loginHistorySlice';
 import listCardReducer from '../features/home/manage/allCardSlice';
-import listPaymentReducer from '../features/home/manage/paymentHistorySlice'
+import listPaymentReducer from '../features/home/manage/paymentHistorySlice';
+import changePassReducer from '../features/auth/forgot-pass/forgotPassSlice';
 
 export const store = configureStore({
   reducer: {
@@ -30,6 +31,8 @@ export const store = configureStore({
     loginHistoryState: loginHistoryReducer,
     listCardState: listCardReducer,
     paymentHistoryState: listPaymentReducer,
+    changePasswordState: changePassReducer,
+
   },
 });
 

@@ -29,6 +29,9 @@ export const loginSlice = createSlice({
     name: 'Login',
     initialState,
     reducers: {
+        setToken: (state, action: PayloadAction<any>) => {
+            state.token = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -55,6 +58,6 @@ export const loginSlice = createSlice({
 
 
 export const { reducer, actions } = loginSlice;
-// export const { setloginInfo } = actions;
+export const { setToken } = actions;
 export const selectLoginState = (state: RootState) => state.login;
 export default reducer;

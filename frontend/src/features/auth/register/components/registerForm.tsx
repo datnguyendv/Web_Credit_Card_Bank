@@ -1,13 +1,15 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Field, Form, Formik } from 'formik';
 import React, { useEffect } from 'react';
+import { Container, InputGroup, InputGroupText, Row , Col } from 'reactstrap';
 import { generateArray } from '.';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { LoadingScreen } from '../../../waiting/loading-screen';
+import '../../../css/App.css';
+import '../../../css/auth.css';
 import { registerSchema } from '../../form-validate/auth-validate';
 import { checkAccountExist } from '../accountExistedSlice';
 import { cardType, registerFormDataDto, registerFormDto, registerInfoFormDto } from '../register-dto';
 import { cardTypeInfo, selectRegisterState } from '../registerInfoSlice';
-
 
 export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
     let registerForm: registerFormDto = registerFormDataDto;
@@ -35,92 +37,133 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
     }, [])
 
     return(
-        <div>
-            <h2>{errMsg}</h2>
-            <div>
-            <Formik
-            initialValues={registerForm}
-            validationSchema={registerSchema}
-            onSubmit={(values, actions) => {
-                //because phone number and indentifycard in form return string value so need change to number
-                values.PhoneNumber = Number(values.PhoneNumber);
-                values.IdentifyCard = Number(values.IdentifyCard);
-                dispatch(checkAccountExist(values));
-            }}>
-            {({errors, touched}) => (
-                <Form>
-                    <div>
-                        {errors.UserName && touched.UserName ? (<span>{errors.UserName}</span>): null}
-                        <label htmlFor="UserName">User Name</label>
-                        <Field id="UserName" name="UserName" placeholder="userName" />
-                    </div>
-                    <div>
-                        {errors.Password && touched.Password ? (<span>{errors.Password}</span>): null}
-                        <label htmlFor="password">Password</label>
-                        <Field id="Password" type="password" name="Password" placeholder="password" />
-                    </div>
-                    <div>
-                        {errors.FirstName && touched.FirstName ? (<span>{errors.FirstName}</span>): null}
-                        <label htmlFor="FirstName">First Name</label>
-                        <Field id="FirstName" name="FirstName" placeholder="First Name" />
-                    </div>
-                    <div>
-                        {errors.LastName && touched.LastName ? (<span>{errors.LastName}</span>): null}
-                        <label htmlFor="LastName">Last Name</label>
-                        <Field id="LastName" name="LastName" placeholder="Last Name" />
-                    </div>
-                    <div>
-                        {errors.Email && touched.Email ? (<span>{errors.Email}</span>): null}
-                        <label htmlFor="Email">Email</label>
-                        <Field id="Email" name="Email" placeholder="Email" />
-                    </div>
-                    <div>
-                        {errors.PhoneNumber && touched.PhoneNumber ? (<span>{errors.PhoneNumber}</span>): null}
-                        <label htmlFor="PhoneNumber">Phone Number</label>
-                        <Field id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" />
-                    </div>
-                    <div>
-                        {errors.IdentifyCard && touched.IdentifyCard ? (<span>{errors.IdentifyCard}</span>): null}
-                        <label htmlFor="IdentifyCard">Identify Card</label>
-                        <Field id="IdentifyCard" name="IdentifyCard" placeholder="Identify Card" />
-                    </div>
-                    <div>
-                        <label htmlFor="Date Of Birth">Date Of Birth </label>
-                        <Field name="day" component="select">
-                            {day.map(i => <option key={i} value={i} >{i}</option>)}
-                        </Field>
+        <Container
+        className = "container-center display-grid"
+        fluid = 'lg'>
 
-                        <Field name="month" component="select">
-                            {month.map(i => <option  key={i} value={i} >{i}</option>)}
-                        </Field>
+            <Row className= "auth-layout">
+                <Row md = "2" className='center-text margin-text'>
+                    <span className="welcome-font">Welcome to </span>
+                    <h1 className ="iub-auth-font">IU BANK</h1>
+                </Row>
+                <Row md = "1" className = 'center-text auth-form '>
+                    <p>{errMsg}</p>
+                    <Formik
+                        initialValues={registerForm}
+                        validationSchema={registerSchema}
+                        onSubmit={(values, actions) => {
+                        //because phone number and indentifycard in form return string value so need change to number
+                        values.PhoneNumber = Number(values.PhoneNumber);
+                        values.IdentifyCard = Number(values.IdentifyCard);
+                        dispatch(checkAccountExist(values));
+                    }}>
+                        {({errors, touched}) => (
+                            <Form>
+                                <Row xs = "2" className = "auth-row">
+                                    <Col>
+                                        {/* {errors.UserName && touched.UserName ? (<span>{errors.UserName}</span>): null} */}
+                                        {/* <InputGroup className={errors.UserName?"input-group wrong-input" : "input-group" }>
+                                            <InputGroupText className ="input-icons">
+                                                <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                            </InputGroupText> */}
+                                            <Field id="UserName" className="input-field-regis-form" name="UserName" placeholder="userName" />
+                                        {/* </InputGroup> */}
+                                    </Col>
+                                    <Col>
+                                        {/* {errors.Password && touched.Password ? (<span>{errors.Password}</span>): null}
+                                        <InputGroup className={errors.Password?"input-group wrong-input" : "input-group" }>
+                                            <InputGroupText className ="input-icons">
+                                                <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                            </InputGroupText> */}
+                                            <Field id="Password" className="input-field-regis-form" type="password" name="Password" placeholder="password" />
+                                        {/* </InputGroup> */}
+                                    </Col>
+                                </Row>
+                                <Row className = "auth-row">
+                                    {errors.FirstName && touched.FirstName ? (<span>{errors.FirstName}</span>): null}
+                                    <InputGroup className={errors.Password?"input-group wrong-input" : "input-group" }>
+                                        <InputGroupText className ="input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                        </InputGroupText>
+                                        <Field id="FirstName" className="input-field-regis-form" name="FirstName" placeholder="First Name" />
+                                    </InputGroup>
+                                </Row>
+                                <Row className = "auth-row">
+                                    {errors.LastName && touched.LastName ? (<span>{errors.LastName}</span>): null}
+                                    <InputGroup className={errors.Password?"input-group wrong-input" : "input-group" }>
+                                        <InputGroupText className ="input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                        </InputGroupText>
+                                        <Field id="LastName" className="input-field-regis-form" name="LastName" placeholder="Last Name" />
+                                    </InputGroup>
+                                </Row>
+                                <Row className = "auth-row">
+                                    {errors.Email && touched.Email ? (<span>{errors.Email}</span>): null}
+                                    <InputGroup className={errors.Password?"input-group wrong-input" : "input-group" }>
+                                        <InputGroupText className ="input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                        </InputGroupText>
+                                    <Field id="Email" className="input-field-regis-form" name="Email" placeholder="Email" />
+                                    </InputGroup>
+                                </Row>
+                                <Row className = "auth-row">
+                                    {errors.PhoneNumber && touched.PhoneNumber ? (<span>{errors.PhoneNumber}</span>): null}
+                                    <InputGroup className={errors.Password?"input-group wrong-input" : "input-group" }>
+                                        <InputGroupText className ="input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                        </InputGroupText>
+                                        <Field id="PhoneNumber" className="input-field-regis-form" name="PhoneNumber" placeholder= "PhoneNumber"/>
+                                    </InputGroup>
+                                </Row>
+                                <Row className = "auth-row">
+                                    {errors.IdentifyCard && touched.IdentifyCard ? (<span>{errors.IdentifyCard}</span>): null}
+                                    <InputGroup className={errors.IdentifyCard?"input-group wrong-input" : "input-group" }>
+                                        <InputGroupText className ="input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                        </InputGroupText>
+                                        <Field id="IdentifyCard" className="input-field-regis-form" name="IdentifyCard" placeholder="Identify Card" />
+                                    </InputGroup>
+                                </Row>
+                                <Row>
+                                    <label htmlFor="Date Of Birth">Date Of Birth </label>
+                                    <Field name="day" component="select">
+                                        {day.map(i => <option key={i} value={i} >{i}</option>)}
+                                    </Field>
 
-                        <Field name="year" component="select">
-                            {/* render Option choose Year */}
-                            {year.map(i => <option key={i} value={i} >{i}</option>)}
-                        </Field>
-                    </div>
-                    <div>
-                        {errors.Address && touched.Address ? (<span>{errors.Address}</span>): null}
-                        <label htmlFor="Address">Address</label>
-                        <Field id="Address" name="Address" placeholder="Address" />
-                    </div>
-                    <div>
-                        <label htmlFor="type">Card Type </label>
-                        {/* render when fetching cardtype from server */}
-                        {registerInfo.status === 'isLoading'? <LoadingScreen/>:
-                            <Field name="type" component="select">
-                                {cardType.map(item => <option key = {item.CardTypeId} value ={item.TypeName}> {item.TypeName}</option> )}
-                            </Field>
-                        }
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
-                </Form>
-            )}
-            </Formik>
-            </div>
-        </div>
+                                    <Field name="month" component="select">
+                                        {month.map(i => <option  key={i} value={i} >{i}</option>)}
+                                    </Field>
+
+                                    <Field name="year" component="select">
+                                        {/* render Option choose Year */}
+                                        {year.map(i => <option key={i} value={i} >{i}</option>)}
+                                    </Field>
+                                </Row>
+                                <Row className = "auth-row">
+                                    {errors.Address && touched.Address ? (<span>{errors.Address}</span>): null}
+                                    <InputGroup className={errors.IdentifyCard?"input-group wrong-input" : "input-group" }>
+                                        <InputGroupText className ="input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} size ='2x' color = "rgb(97, 53, 53)" />
+                                        </InputGroupText>
+                                    <Field id="Address" className="input-field-regis-form"  name="Address" placeholder="Address" />
+                                    </InputGroup>
+                                </Row>
+                                <Row className = "auth-row">
+                                    <label htmlFor="type">Card Type </label>
+                                    {/* render when fetching cardtype from server */}
+                                    <Field name="type" component="select">
+                                        {cardType.map(item => <option key = {item.CardTypeId} value ={item.TypeName}> {item.TypeName}</option> )}
+                                    </Field>
+                                </Row>
+                                <Row className = "auth-row">
+                                    <button type="submit">Submit</button>
+                                </Row>
+                            </Form>
+                        )}
+                    </Formik>
+                </Row>
+            </Row>
+        </Container>
     )
 }
 

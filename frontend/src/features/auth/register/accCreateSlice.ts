@@ -25,7 +25,7 @@ export const createAccountFunc = createAsyncThunk(
             return thunkApi.rejectWithValue(response.message);
         } else {
             let cardInfo: createCardInfoDto = {
-                IdentifyCard: params.IdentifyCard,
+                IdentifyCard: Number(params.IdentifyCard),
                 type: registerInfo.type
             }
             thunkApi.dispatch(createCard(cardInfo));

@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Field, Form, Formik } from 'formik';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectSendMailState, sendMailFunc } from '../../sendmail/sendMailSlice';
 import { selectCardState, setOneCard } from '../../home/user/cardInfoSlice';
-import { externalTransfer, selectPaymentState, setErrMsg } from '../paymentSlice';
 import { selectUserHomeState } from '../../home/user/userSlice';
-import { bankName, externalPaymentDto } from '../payment-dto';
+import { selectSendMailState, sendMailFunc } from '../../sendmail/sendMailSlice';
 import { ExternalFormValidate } from '../form-validate';
+import { bankName, externalPaymentDto } from '../payment-dto';
+import { externalTransfer, selectPaymentState, setErrMsg } from '../paymentSlice';
 
 export const ExternalPayment: React.FC = () => {
     const account = useAppSelector(selectUserHomeState).accountInfo;
@@ -28,7 +28,6 @@ export const ExternalPayment: React.FC = () => {
         dispatch(sendMailFunc(account.AccountId));
         setSubmitBtnState(false);
     }
-
     return (
         <div>
             <div>
@@ -50,14 +49,14 @@ export const ExternalPayment: React.FC = () => {
                 {errors.CardSendId && touched.CardSendId ? (<div>{errors.CardSendId}</div>): null}
                 <label htmlFor="CardSendId">CardSendId</label>
                 <Field name="CardSendId" component="select">
-                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName !== 'lock' && card.CardStatus.StatusName !== 'fraud') {
-
+                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName ==='open') {
+                    return(
                     <option 
                     key = {card.CardID} 
                     value = {card.CardID} 
                     onChange = {() => dispatch(setOneCard(card.CardID))}>
                     {card.CardID}
-                    </option>
+                    </option>)
                 }})}
                 </Field>
 

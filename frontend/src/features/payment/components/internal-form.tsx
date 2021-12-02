@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { internalPaymentDto } from '../payment-dto';
@@ -14,6 +14,8 @@ export const InternalPayment: React.FC = () => {
     const mailState = useAppSelector(selectSendMailState);
     const paymentState = useAppSelector(selectPaymentState);
     const cardState = useAppSelector(selectCardState);
+    console.log(cardState.cardInfo);
+    
     const internalPaymentInfo: internalPaymentDto = {
         CardSendId: `${cardState.cardInfo[0].CardID}`,
         CardReceiveId: '',
@@ -28,6 +30,7 @@ export const InternalPayment: React.FC = () => {
         dispatch(sendMailFunc(account.AccountId));
         setSubmitBtnState(false);
     }
+
 
     return (
         <div>
@@ -49,14 +52,14 @@ export const InternalPayment: React.FC = () => {
                 {errors.CardSendId && touched.CardSendId ? (<div>{errors.CardSendId}</div>): null}
                 <label htmlFor="CardSendId">CardSendId</label>
                 <Field name="CardSendId" component="select">
-                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName !== 'lock' && card.CardStatus.StatusName !== 'fraud') {
-
+                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName === 'open') {
+                    return(
                     <option 
                     key = {card.CardID} 
                     value = {card.CardID} 
                     onChange = {() => dispatch(setOneCard(card.CardID))}>
                     {card.CardID}
-                    </option>
+                    </option>)
                 }})}
                 </Field>
                 

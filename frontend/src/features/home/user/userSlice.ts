@@ -11,6 +11,7 @@ export const initialState: userInfoStateDto = {
 
 export const getAccountInfo = createAsyncThunk(
     'UserHome/getAccountInfo', async(id: number, thunkApi) => {
+        console.log(id);
         let response: any = await homeApi.getAccountById(id);
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);

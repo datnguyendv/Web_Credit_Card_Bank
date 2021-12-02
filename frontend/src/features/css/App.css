@@ -1,0 +1,55 @@
+.form {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-center {
+    /* background-image: url("./262160659_3072179129693632_637390560315396954_n.png"); */
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+.display-flex {
+    align-items: center;
+    justify-content: center;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.center-align {
+    align-items: center;
+}
+
+::placeholder {
+    color: grey;
+    text-align: left;
+    font-style: italic;
+    opacity: 1; /* Firefox */
+}
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-style: italic;
+    color: grey;
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-style: italic;
+    color: grey;
+}
+
+.wrong-input {
+    border: 1px solid red;
+}
+
+
+.reset-margin {
+    margin: 0 auto;
+}
+
+.reset-padding {
+    padding: 0 auto;
+}

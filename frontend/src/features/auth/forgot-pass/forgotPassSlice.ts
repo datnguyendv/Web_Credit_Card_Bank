@@ -1,4 +1,3 @@
-
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginApi } from '../../../api';
 import { RootState } from '../../../app/store';
@@ -53,5 +52,5 @@ export const changePassSlice = createSlice({
 
 export const { reducer, actions } = changePassSlice;
 // export const { setloginInfo } = actions;
-export const selectChangePassState = (state: RootState) => state.changePassState;
+export const selectChangePassState = (state: RootState) => state.changePasswordState;
 export default reducer;

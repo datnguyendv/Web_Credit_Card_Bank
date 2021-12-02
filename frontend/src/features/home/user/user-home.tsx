@@ -19,7 +19,6 @@ export const UserHome: React.FC = () => {
     useEffect(() => {
         dispatch(getAccountInfo(accountId));
         dispatch(getCardInfo(accountId));
-        dispatch(getCardInfo(accountId));
     }, [])
 
     const moveToPayment = (params: Layout) => {

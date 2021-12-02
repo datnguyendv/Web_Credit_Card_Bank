@@ -16,7 +16,6 @@ export class CardController {
         return this.cardService.createCard(request);
     }
 
-    @UseGuards(JwtAuthGuard)
     @Get('cardtype')
     async searchCardType():Promise<any> {
         return this.cardService.searchCardType();
