@@ -12,8 +12,8 @@ export const initialState: changePassState = {
 export const forgotPass = createAsyncThunk(
     'ChangePass/forgotPass', async(params: forgotPassDto, thunkApi) => {
         let forgotInfoRequest: changePassDto = {
-            UserName: params.UserName,
-            ID: params.ID,
+            PhoneNumber: Number(params.PhoneNumber),
+            ID: Number(params.ID),
             Email: params.Email,
             NewPassword: '',
             Status: 'forgot password'

@@ -1,5 +1,5 @@
 export type forgotPassDto = {
-    UserName: string,
+    PhoneNumber: number,
     ID: number,
     Email: string,
     NewPassword:string,

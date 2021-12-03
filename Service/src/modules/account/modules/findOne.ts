@@ -57,7 +57,7 @@ export class FindOne {
     async findUser(Info: forgotPassDto): Promise<any> {
         let UserRes:User = await this.userRepository.findOne({
             where: {
-                UserName: Info.UserName,
+                PhoneNumber: Info.PhoneNumber,
                 IdentifyCard: Info.ID,
                 Email: Info.Email
             }

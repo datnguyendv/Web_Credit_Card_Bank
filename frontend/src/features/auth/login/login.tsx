@@ -20,7 +20,7 @@ export const Login: React.FC = () => {
 
     return(
     <Container fluid className="container-center">
-        <Row className = "display-flex ">
+        <Row className = "display-flex  animate__animated animate__fadeIn">
             <Col lg = "5" md="6" sm= "8" xs = "11" className="margin-layout">
 
                 <Row className = "other-login"></Row>
@@ -33,7 +33,7 @@ export const Login: React.FC = () => {
                 </Row>
 
                 <Row md = "1" className = 'center-text auth-form'>
-                    <p>{loginStated.errMsg}</p>
+                    <p className ="reset-margin">{loginStated.errMsg}</p>
                     <Formik
                     initialValues={loginInfor}
                     validationSchema={loginSchema}

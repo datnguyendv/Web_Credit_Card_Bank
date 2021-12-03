@@ -1,9 +1,11 @@
 export interface forgotPassDto {
-    UserName: string,
-    ID: number,
+    PhoneNumber: string | number,
+    ID: string | number,
     Email: string,
 }
 export interface changePassDto extends forgotPassDto {
+    PhoneNumber: number,
+    ID:number,
     NewPassword: string,
     Status: 'Change Password' | 'forgot password',
 }

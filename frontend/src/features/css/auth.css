@@ -105,6 +105,7 @@
 }
 .auth-col-submit {
     display: grid;
+    padding-top: 1vh;
     align-items: center;
     justify-items: center;
     height: 11vh;
