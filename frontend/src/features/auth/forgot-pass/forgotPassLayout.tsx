@@ -21,20 +21,17 @@ export const ForgotPassForm: React.FC = () => {
     const dispatch = useAppDispatch();
 
     return(
-        <Container fluid className="container-center">
+        <Container fluid className="container-center forgot-background">
         <Row className = "display-flex  animate__animated animate__fadeIn">
             <Col lg = "5" md="6" sm= "8" xs = "11" className="margin-layout">
 
                 <Row className = "other-login"></Row>
 
                 <Row md = "1" className='center-text'>
-                    <div>
-                        <h4 className="welcome-font">Welcome back! </h4>
-                        <h1 className ="iub-auth-font">IU BANK</h1>
-                    </div>
+                    <h1 className ="fp-auth-font">Forgot Password ?</h1>
                 </Row>
-                <Row md = "1" className = 'center-text auth-form'>
-                    <p className ="reset-margin">{forgotPassState.errMsg}</p>
+                <Row md = "1" className = 'center-text auth-form-reset-pass'>
+                    <p className ="reset-margin err-msg">{forgotPassState.errMsg}</p>
                     <Formik
                     initialValues={forgotPassInfo}
                     validationSchema={forgotSchema}
@@ -51,7 +48,7 @@ export const ForgotPassForm: React.FC = () => {
                                         </div>
                                         <div className={errors.ID?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                             <div className= "input-icons">
-                                                <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'user']} />
                                             </div>
                                             <Field id="ID" name="ID" className="input-field" placeholder="Enter your ID card" />
                                         </div>
@@ -64,7 +61,7 @@ export const ForgotPassForm: React.FC = () => {
                                         </div>
                                         <div className={errors.PhoneNumber?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                             <div className= "input-icons">
-                                                <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'phone']} />
                                             </div>
                                             <Field id="PhoneNumber" className="input-field " name="PhoneNumber" placeholder="Enter your phone number" />
                                         </div>
@@ -77,7 +74,7 @@ export const ForgotPassForm: React.FC = () => {
                                         </div>
                                         <div className={errors.Email?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                             <div className= "input-icons">
-                                                <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'envelope']} />
                                             </div>
                                             <Field id="Email" type= 'Email' className="input-field " name="Email" placeholder="Enter your email" />
                                         </div>
@@ -85,12 +82,17 @@ export const ForgotPassForm: React.FC = () => {
                                 </Row>
                                 <Row md = "1" xs= "1" sm="1" className = 'center-text auth-col-submit'>
                                     <Col>
-                                        <button type="submit" className='auth-button'>ENTER</button>
+                                        <button type="submit" className='auth-button auth-button-forgot'>ENTER</button>
                                     </Col>
                                 </Row>
                             </Form>
                         )}
                     </Formik>
+                </Row>
+                <Row xs= "1" className ='register-link'>
+                    <Col className= "center-text">
+                        <a href ='/'> Back to previous page</a>
+                    </Col>
                 </Row>
             </Col>
         </Row>

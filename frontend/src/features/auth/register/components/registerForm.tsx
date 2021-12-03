@@ -73,7 +73,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         </div>
                                         <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                             <div className= 'regis-icon-field'>
-                                                <FontAwesomeIcon icon={['fas', 'user']} className= '' color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'user']}  />
                                             </div>
                                                 <Field id="UserName" className="regis-input-field" name="UserName" placeholder="userName" />
                                         </div>
@@ -84,7 +84,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         </div>
                                         <div className={errors.Password?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                                <FontAwesomeIcon icon={['fas', 'lock']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'lock']}  />
                                             </div>
                                             <Field id="Password" className="regis-input-field" type="password" name="Password" placeholder="password" />
                                         </div>
@@ -100,7 +100,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         </div>
                                         <div className={errors.FirstName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                                <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'user']} />
                                             </div>
                                             <Field id="FirstName" className="regis-input-field" name="FirstName" placeholder="First Name" />
                                         </div>
@@ -111,7 +111,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         </div>
                                         <div className={errors.FirstName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                            <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                            <FontAwesomeIcon icon={['fas', 'user']} />
                                         </div>
                                         <Field id="LastName" className="regis-input-field" name="LastName" placeholder="Last Name" />
                                     </div>
@@ -124,7 +124,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         </div>
                                         <div className={errors.FirstName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                            <FontAwesomeIcon icon={['fas', 'envelope']}color = "rgb(97, 53, 53)" />
+                                            <FontAwesomeIcon icon={['fas', 'envelope']} />
                                         </div>
                                         <Field id="Email" className="regis-input-field" name="Email" placeholder="Email" />
                                     </div>
@@ -137,7 +137,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         </div>
                                         <div className={errors.FirstName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                                <FontAwesomeIcon icon={['fas', 'phone']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'phone']} />
                                             </div>
                                             <Field id="PhoneNumber" className="regis-input-field" name="PhoneNumber" placeholder= "PhoneNumber"/>
                                         </div>
@@ -150,7 +150,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                             </div>
                                         <div className={errors.FirstName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                                <FontAwesomeIcon icon={['far', 'id-card']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['far', 'id-card']}  />
                                             </div>
                                             <Field id="IdentifyCard" className="regis-input-field" name="IdentifyCard" placeholder="Identify Card" />
                                         </div>
@@ -164,7 +164,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                     </div>
                                         <div className={errors.FirstName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex"}>
                                             <div className ="regis-icon-field">
-                                                <FontAwesomeIcon icon={['fas', 'map-marked']} color = "rgb(97, 53, 53)" />
+                                                <FontAwesomeIcon icon={['fas', 'map-marked']}  />
                                             </div>
                                             <Field id="Address" className="regis-input-field"  name="Address" placeholder="Address" />
                                         </div>

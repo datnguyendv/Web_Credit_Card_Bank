@@ -50,7 +50,7 @@ export const Login: React.FC = () => {
                                     </div>
                                     <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                         <div className= "input-icons">
-                                            <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                            <FontAwesomeIcon icon={['fas', 'user']} />
                                         </div>
                                         <Field id="UserName" className="input-field" name="UserName" placeholder="Enter your username" />
                                     </div>
@@ -63,7 +63,7 @@ export const Login: React.FC = () => {
                                     </div>
                                     <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                         <div className= "input-icons">
-                                            <FontAwesomeIcon icon={['fas', 'lock']} color = "rgb(97, 53, 53)" />
+                                            <FontAwesomeIcon icon={['fas', 'lock']} />
                                         </div>
                                         <Field id="Password" type= 'password' className="input-field "name="Password" placeholder="Enter your password" />
                                     </div>
@@ -84,9 +84,6 @@ export const Login: React.FC = () => {
             </Col>
 
             <Row xs= "1" className ='register-link'>
-                <Col className= "center-text">
-                    <span >Don't have account yet? </span><a href = 'http://localhost:3000/register'>Register here</a>
-                </Col>
                 <Col className= "center-text other-login"> 
                     <p> Login with</p>
                     <a href = "https://mail.google.com/" target= '_blank' rel = 'noopener'>

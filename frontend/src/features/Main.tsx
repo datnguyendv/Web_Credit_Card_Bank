@@ -9,6 +9,7 @@ import ForgotPassLayout from './auth/forgot-pass/forgotPassLayout';
 import { Layout } from './Layout';
 import { PaymentLayout } from './payment/paymentLayout';
 import 'animate.css';
+import { LoadingScreen } from './waiting/loading-screen';
 
 const Main: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Main: React.FC = () => {
       <Route path="/" element = {<Layout/>}/> 
       <Route path="/resetpass" element = {<ForgotPassLayout/>}/>
       <Route path = "/payment" element = {<PaymentLayout />}/>
+      <Route path ="/wat" element = {<LoadingScreen/>}/>
     </Routes>
   );
 }

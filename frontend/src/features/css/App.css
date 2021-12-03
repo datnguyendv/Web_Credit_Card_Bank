@@ -5,12 +5,17 @@
 }
 
 .container-center {
-    /* background-image: url("./262160659_3072179129693632_637390560315396954_n.png"); */
+    background-image: url(".//login-background.png");
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
 }
+
+.forgot-background {
+    background-image:  url("./forgot-background.png") !important;
+}
+
 .display-flex {
     align-items: center;
     justify-content: center;
@@ -52,4 +57,14 @@
 
 .reset-padding {
     padding: 0 auto;
+}
+
+.err-msg {
+    font-size: 16px;
+    color: red;
+
+}
+
+input {
+    font-size: 20px;
 }
