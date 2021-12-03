@@ -20,119 +20,87 @@ export const Login: React.FC = () => {
 
     return(
     <Container fluid className="container-center">
-        <Col lg = {{
-            offset: 3,
-            size:6
-        }}
-        md={{
-        offset: 2,
-        size: 8
-        }}
-        sm= {{
-        offset: 2,
-        size: 8
-        }}
-        xs = "11" className="margin-layout">
-        <Row className = "other-login">
+        <Row className = "display-flex ">
+            <Col lg = "5" md="6" sm= "8" xs = "11" className="margin-layout">
 
-        </Row>
-        <Row>
-            <Col className= "center-text">
-                <h4 className="welcome-font">Welcome back! </h4>
-                <h1 className ="iub-auth-font">IU BANK</h1>
-            </Col>
-        </Row>
-             
-            
-        <Row>
-            <Col
-            md= {{
-            }} xs = {{
-                size:12
-            }} 
-            className= "auth-form">
-            <p>{loginStated.errMsg}</p>
-            <Formik
-            initialValues={loginInfor}
-            validationSchema={loginSchema}
-            onSubmit={(values, actions) => {
-                // loginFunction(values);
-                dispatch(loginFunction(values));
-            }}>
-            {({errors, touched}) => (
-                <Form >
-                <Row className = "display-flex">
-                    <Col xs="12" md={{
-                        size:10
-                    }} className = "margin-text margin-layout err-msg">
-                        {errors.UserName && touched.UserName ? (<p>{errors.UserName}</p>): (<p> </p>)}
-                    </Col>
-                    <Col xs="12" md={{
-                        size:10
-                    }} className="margin-left">
-                        <Row xs ="2" className=" input-group display-flex" >
-                            <Col xs = "1" className = "input-icons">
-                                <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
-                            </Col>
-                            <Col xs="10">
-                                <Field id="UserName" className="input-field" name="UserName" placeholder="Enter your username" />
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col xs="12" md={{
-                        size:10
-                    }} className = "margin-text margin-layout err-msg">
-                        {errors.Password && touched.Password ? (<p>{errors.Password}</p>): (<p> </p>)}
-                    </Col>
-                    <Col xs="12" md={{
-                        size:10
-                    }} className="margin-left">
-                        <Row xs ="2" className = "input-group display-flex">
-                            <Col xs = "1" className = "input-icons">
-                                    <FontAwesomeIcon icon={['fas', 'lock']} color = "rgb(97, 53, 53)" />
-                            </Col>
-                            <Col xs = "10">
-                                <Field id="Password" type= 'password' className="input-field "name="Password" placeholder="Enter your password" />
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col sm="12" xs={{
-                        size:12
-                    }} className = "center-text auth-col-submit">
-                        <Row xs ="1">
-                            <Col>
-                                <button type="submit" className='auth-button'>ENTER</button>
-                            </Col>
-                            <Col> 
-                                <a href = 'http://localhost:3000/resetpass'>Forget password? </a>
-                            </Col>
-                        </Row>
-                    </Col>
+                <Row className = "other-login"></Row>
+
+                <Row md = "1" className='center-text'>
+                    <div>
+                        <h4 className="welcome-font">Welcome back! </h4>
+                        <h1 className ="iub-auth-font">IU BANK</h1>
+                    </div>
                 </Row>
-                </Form>
-            )}
-            </Formik>
-            </Col>
-        </Row>
 
-        <Row xs= "1" className ='register-link'>
-            <Col className= "center-text">
-                <span >Don't have account yet? </span><a href = 'http://localhost:3000/register'><span>Register here </span></a>
+                <Row md = "1" className = 'center-text auth-form'>
+                    <p>{loginStated.errMsg}</p>
+                    <Formik
+                    initialValues={loginInfor}
+                    validationSchema={loginSchema}
+                    onSubmit={(values, actions) => {
+                    // loginFunction(values);
+                    dispatch(loginFunction(values));
+                    }}>
+                    {({errors, touched}) => (
+                        <Form >
+                            <Row xs = "2" sm ="2" className ="display-flex center-text">
+                                <Col xs ="11" sm ="10" lg="9">
+                                    <div className= "regis-err-msg">
+                                        {errors.UserName && touched.UserName ? (<p>{errors.UserName}</p>): (<p> </p>)}
+                                    </div>
+                                    <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
+                                        <div className= "input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'user']} color = "rgb(97, 53, 53)" />
+                                        </div>
+                                        <Field id="UserName" className="input-field" name="UserName" placeholder="Enter your username" />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row xs = "2" sm ="2" className ="display-flex">
+                                <Col xs ="11" sm ="10" lg="9">
+                                    <div className= "regis-err-msg">
+                                        {errors.Password && touched.Password ? (<p>{errors.Password}</p>): (<p> </p>)}
+                                    </div>
+                                    <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
+                                        <div className= "input-icons">
+                                            <FontAwesomeIcon icon={['fas', 'lock']} color = "rgb(97, 53, 53)" />
+                                        </div>
+                                        <Field id="Password" type= 'password' className="input-field "name="Password" placeholder="Enter your password" />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row md = "1" xs= "1" sm="1" className = 'center-text auth-col-submit'>
+                                <Col>
+                                    <button type="submit" className='auth-button'>ENTER</button>
+                                </Col>
+                                <Col>
+                                    <a href = 'http://localhost:3000/resetpass'>Forget password? </a>
+                                </Col>
+                            </Row>
+                        </Form>
+                    )}
+                    </Formik>
+                </Row>
             </Col>
-            <Col className= "center-text other-login"> 
-                <p> Login with</p>
-                <a href = "https://mail.google.com/" target= '_blank' rel = 'noopener'>
-                    <FontAwesomeIcon icon={['fab', 'google-plus-g']} size ='2x' />
-                </a>
-                <a href = "https://www.facebook.com" target= '_blank' rel = 'noopener'>
-                    <FontAwesomeIcon icon={['fab', 'facebook-square']}  size ='2x'/>
-                </a>
-                <a href = "https://twitter.com" target= '_blank' rel = 'noopener'>
-                    <FontAwesomeIcon icon={['fab', 'twitter']} size ='2x' />
-                </a>
-            </Col>
+
+            <Row xs= "1" className ='register-link'>
+                <Col className= "center-text">
+                    <span >Don't have account yet? </span><a href = 'http://localhost:3000/register'>Register here</a>
+                </Col>
+                <Col className= "center-text other-login"> 
+                    <p> Login with</p>
+                    <a href = "https://mail.google.com/" target= '_blank' rel = 'noopener'>
+                        <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
+                    </a>
+                    <a href = "https://www.facebook.com" target= '_blank' rel = 'noopener'>
+                        <FontAwesomeIcon icon={['fab', 'facebook-square']} />
+                    </a>
+                    <a href = "https://twitter.com" target= '_blank' rel = 'noopener'>
+                        <FontAwesomeIcon icon={['fab', 'twitter']} />
+                    </a>
+                </Col>
+            </Row>
         </Row>
-        </Col>
     </Container>
     )
 }

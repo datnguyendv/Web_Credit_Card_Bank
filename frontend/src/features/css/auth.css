@@ -1,6 +1,7 @@
 .welcome-font {
     font-size: 2em;
     font-style: italic;
+    font-weight: 500;
     margin:0 auto;
     margin-top: 0;
     margin-bottom: 0;
@@ -41,9 +42,9 @@
   
 .input-icons {
   padding: 10px;
-  padding-top: 20px;
   font-size: 25px;
   color: white;
+  background-color: none;
   min-width: 40px;
   text-align: center;
 }
@@ -151,7 +152,7 @@
 
 .register-link a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 23px;
     color: grey;
     font-weight: bold;
 }
@@ -180,11 +181,19 @@
     color: #000;
     margin-left: 15px;
     margin-right: 15px;
+    font-size: 52px;
 }
 
 @media screen  and (max-width: 425px){
+    .other-login a {
+        font-size: 42px;
+    }
     .auth-layout {
         width: 375px;
+    }
+
+    .other-login {
+        height: 12vh;
     }
     /* .welcome-font {
         font-size: 1.5em;
@@ -197,6 +206,18 @@
 }
 
 @media screen  and (max-width: 375px){
+    .register-link a {
+        font-size: 18px;
+
+    }
+
+    .register-link .other-login a {
+        font-size: 30px;
+    }
+
+    .register-link span {
+        font-size: 14px;
+    }
 
     .margin-text {
         margin-top: 5px;
@@ -259,6 +280,7 @@
     .other-login {
         height: 12vh;
     }
+
     .center-text span{
         font-size: 13px;
     }
@@ -294,7 +316,7 @@
         font-size: 18px;
     }
     .register-link a, span {
-        font-size: 18px;
+        font-size: 32px;
     }
 }
 
