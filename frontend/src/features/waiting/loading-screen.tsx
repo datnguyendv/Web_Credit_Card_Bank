@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/loading.css'
 export const LoadingScreen: React.FC = () => {
     return (
-       <div className = "loading">
+       <div className = "loading animated animate__animated animate__fadeIn">
             <div className= "loading-body">
             <div className="spinner-border" role="status">
             </div>

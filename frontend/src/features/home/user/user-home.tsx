@@ -1,13 +1,14 @@
-import { replace } from 'formik';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from 'reactstrap';
+import { Button, Col, Container, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { decodeToken } from '../../auth/jwtProcess/decode-jwt';
 import { selectLoginState } from '../../auth/login/loginSlice';
+import { InternalPayment } from '../../payment/components';
 import { Layout } from '../../payment/payment-dto';
 import { setPaymentLayout } from '../../payment/paymentLayoutSlice';
 import { getCardInfo } from './cardInfoSlice';
+import { Header } from './Components/Header';
 import { getAccountInfo } from './userSlice';
 
 export const UserHome: React.FC = () => {
@@ -27,18 +28,25 @@ export const UserHome: React.FC = () => {
     }
 
     return (
-        <div>
-            <Button
-             onClick = {() => moveToPayment('internal')
-             }>
-                internal
-            </Button>
-            <Button
-             onClick = {() => moveToPayment('external')
-             }>
-                external
-            </Button>
-
-        </div>
+        <Container fluid className="container-center">
+            <Row sm = "3">
+            <Col sm="3"  className = "">
+                <Header />
+            </Col>
+            <Col sm = "9" className = "user-home-func-background">
+                <InternalPayment/>
+                {/* <Button
+                 onClick = {() => moveToPayment('internal')
+                }>
+                    external
+                </Button> */}
+                {/* <Button
+                 onClick = {() => moveToPayment('external')
+                }>
+                    external
+                </Button> */}
+            </Col>
+            </Row>
+        </Container>
     )
 }
