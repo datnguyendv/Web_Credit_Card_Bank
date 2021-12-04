@@ -90,3 +90,13 @@ body {
 .margin-left-payment {
     margin-left: 0.8rem;
 }
+
+.header-bank-font {
+    color: #9960D2;
+    font-weight: bold;
+}
+
+.i-t-img {
+    background-image: url("./transfer.png");
+    background-repeat: no-repeat;
+}

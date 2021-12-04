@@ -29,7 +29,8 @@ export const ExternalPayment: React.FC = () => {
         OTP:'',
     }
     const processOtp= () => {
-        dispatch(sendMailFunc(account.AccountId));
+        dispatch(sendMailFunc(account.IdentifyCard));
+        window.alert("The OTP was send to your mail");
         setSubmitBtnState(false);
     }
     return (
@@ -37,7 +38,9 @@ export const ExternalPayment: React.FC = () => {
             <Col className="margin-layout">
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "12" xs = "11" >
-                        <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {paymentState.errMsg? true: false} role="alert"><p className = "font-weight-bold mx-3 err-msg" >{paymentState.errMsg}</p></Alert>
+                        <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {paymentState.errMsg? true: false} role="alert">
+                            <p className = "font-weight-bold mx-3 err-msg" >{paymentState.errMsg}</p>
+                        </Alert>
                         <Formik
                         initialValues={externalPayment}
                         validationSchema={ExternalFormValidate}
@@ -56,7 +59,7 @@ export const ExternalPayment: React.FC = () => {
                                         <p className = "mx-3 font-payment ">Account</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8">
-                                        <div className={errors.CardSendId?"payment-input-group justify-content-end ":  "payment-input-group justify-content-end " }>
+                                        <div className={errors.CardSendId?" payment-input-group justify-content-end " : "payment-input-group justify-content-end" }>
                                             <Field name="CardSendId" className ="payment-input-field" component="select">
                                                 {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName === 'open') {
                                                     return(
@@ -78,13 +81,13 @@ export const ExternalPayment: React.FC = () => {
                                             <p className = "text-right font-payment">{cardState.card.CurrentBalance} VND</p>
                                         </div>
                                     </Col>
-                                </Row>
+                                    </Row>
                                     <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                         <Col xs ="12" sm ="4" lg="4"></Col>
                                         <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                            <p className={errors.CardReceiveId?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
+                                        <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                                 {errors.CardReceiveId && touched.CardReceiveId ? (<div>{errors.CardReceiveId}</div>): null}
-                                            </p>
+                                            </div>
                                         </Col>
                                         <Col xs ="12" sm ="4" lg="4">
                                             <p className = "mx-3 font-payment mb-3">Beneficiary Account</p>
@@ -114,9 +117,9 @@ export const ExternalPayment: React.FC = () => {
                                     <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                         <Col xs ="12" sm ="4" lg="4"></Col>
                                         <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                        <p className={errors.CardReceiveId?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
+                                        <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                                 {errors.Balance && touched.Balance ? (<div>{errors.Balance}</div>): null}
-                                            </p>
+                                            </div>
                                         </Col>
                                         <Col xs ="12" sm ="4" lg="4">
                                             <p className = "mx-3 font-payment mb-3">Amount</p>
@@ -142,9 +145,9 @@ export const ExternalPayment: React.FC = () => {
                                         </Col>   
                                         <Col xs ="12" sm ="4" lg="4"></Col>
                                         <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                            <p className={errors.Description?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
+                                        <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                                 {errors.Description && touched.Description ? (<div>{errors.Description}</div>): null}
-                                            </p>
+                                            </div>
                                         </Col>
                                         <Col xs ="12" sm ="4" lg="4">
                                             <p className = "mx-3 font-payment mb-3">Content</p>
@@ -159,21 +162,21 @@ export const ExternalPayment: React.FC = () => {
                                     <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                         <Col xs ="12" sm ="4" lg="4"></Col>
                                         <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                            <p className={errors.OTP?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
+                                        <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                                 {errors.OTP && touched.OTP ? (<div>{errors.OTP}</div>): null}
-                                            </p>
+                                            </div>
                                         </Col>
                                         <Col xs ="12" sm ="4" lg="4">
                                             <p className = "mx-3 font-payment mb-1">OTP</p>
                                         </Col>
                                         <Col xs ="12" sm ="8" lg="8" className= "mb-2">
-                                            <div className={errors.Description?" payment-input-group  wrong-input" : "payment-input-group justify-content-end" }>   
-                                                <Field id="OTP" name="OTP" className ="payment-input-field otp-check" placeholder="OTP" />
-                                            <button className= "btn btn-grad mx-2" onClick = {() => {
-                                                processOtp();
-                                            }}>Get Otp</button>
-                                            </div>
-                                        </Col>
+                                        <div className={errors.OTP?" payment-input-group  wrong-input" : "payment-input-group justify-content-end" }>   
+                                            <Field id="OTP" name="OTP" className ="payment-input-field otp-check" placeholder="OTP" />
+                                        <button className= "btn btn-grad mx-2" onClick = {() => {
+                                            processOtp();
+                                        }}>Get Otp</button>
+                                        </div>
+                                    </Col>
                                     </Row>
                                     <div className="d-flex justify-content-center ">
                                         <button className= "btn btn-grad" disabled = {submitBtnState} type="submit">Submit</button>

@@ -14,6 +14,7 @@ export const initialState:paymentStateDto = {
 
 export const internalTransfer = createAsyncThunk(
     'Payment/InternalTransfer', async(params: internalPaymentDto, thunkApi) => {
+        console.log(params);
         let randomLocation = Math.round(Math.random() * (location.length - 1));
         let internalRequest: internalTransferInfoDto = {
             CardIdSend: parseInt(params.CardSendId),
