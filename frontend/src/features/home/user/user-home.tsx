@@ -30,10 +30,10 @@ export const UserHome: React.FC = () => {
     return (
         <Container fluid className="container-center">
             <Row sm = "3">
-            <Col sm="3"  className = "">
+            <Col sm="3" xs="12" lg="3"  className = "">
                 <Header />
             </Col>
-            <Col sm = "9" className = "user-home-func-background">
+            <Col sm = "9" xs ="12" lg = "9" className = "user-home-func-background">
                 <InternalPayment/>
                 {/* <Button
                  onClick = {() => moveToPayment('internal')

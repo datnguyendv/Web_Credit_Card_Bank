@@ -37,8 +37,11 @@
 
 }
 .alert-height {
-    height: 5vh;
+    height: 4vh;
     padding: 0px;
+    margin: 0 auto;
+    margin-bottom: 2px;
+    
 }
 
 .btn-grad {background-image: linear-gradient(to right, #5A466E, #963DED, #5A466E)}
@@ -93,17 +96,27 @@
     color: #5A466E;
     font-weight:700;
 }
-
+.payment-btn-submit {
+    margin-top: 2px;
+}
 
 @media screen  and (max-width: 425px){
-
+    .transform-body {
+        /* height: 100vh; */
+        /* display: block; */
+        overflow: scroll;
+    }
 }
 
 @media screen  and (max-width: 375px){
-    
 }
 
 @media screen  and (max-width: 320px){
-    
+    .mb-4 {
+        margin-bottom: 0.7rem !important ;
+    }
+    .btn-grad {
+        font-size: 0.8rem;
+    }
 }
 

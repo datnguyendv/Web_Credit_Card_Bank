@@ -20,7 +20,6 @@ export const InternalPayment: React.FC = () => {
     const paymentState = useAppSelector(selectPaymentState);
     const cardState = useAppSelector(selectCardState);
     console.log(cardState.cardInfo);
-    
     const internalPaymentInfo: internalPaymentDto = {
         CardSendId: `${cardState.cardInfo[0].CardID}` ,
         CardReceiveId: '',
@@ -40,12 +39,10 @@ export const InternalPayment: React.FC = () => {
 
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn payment-transfer-background">
-            <Col  className="transform-header margin-layout"> 
-            </Col>
-            <Col className="margin-layout ">
+            <Col className="margin-layout">
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "12" xs = "11" >
-                        <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {paymentState.errMsg? true: false} role="alert"><p className = "font-weight-bold mx-3" >{paymentState.errMsg}</p></Alert>
+                        <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {paymentState.errMsg? true: false} role="alert"><p className = "font-weight-bold mx-3 err-msg" >{paymentState.errMsg}</p></Alert>
                         <Formik
                         initialValues={internalPaymentInfo}
                         validationSchema={InternalFormValidate}
@@ -79,10 +76,10 @@ export const InternalPayment: React.FC = () => {
                                             </Field>
                                         </div>
                                     </Col>
-                                    <Col xs ="12" sm ="4" lg="4" className= "mb-3 mt-3 ">
+                                    <Col xs ="6" sm ="4" lg="4" className= "mb-3 mt-3 ">
                                         <p className = "mx-3 font-payment ">Available balances </p>
                                     </Col>
-                                    <Col xs ="12" sm ="8" lg="8" className= "mb-3 mt-3">
+                                    <Col xs ="6" sm ="8" lg="8" className= "mb-3 mt-3">
                                         <div className="width-balance">
                                             <p className = "text-right font-payment">{cardState.card.CurrentBalance} VND</p>
                                         </div>
@@ -161,9 +158,9 @@ export const InternalPayment: React.FC = () => {
                                         </p>
                                     </Col>
                                     <Col xs ="12" sm ="4" lg="4">
-                                        <p className = "mx-3 font-payment mb-3">OTP</p>
+                                        <p className = "mx-3 font-payment mb-1">OTP</p>
                                     </Col>
-                                    <Col xs ="12" sm ="8" lg="8" className= "mb-4 pb-1">
+                                    <Col xs ="12" sm ="8" lg="8" className= "mb-2">
                                         <div className={errors.Description?" payment-input-group  wrong-input" : "payment-input-group justify-content-end" }>   
                                             <Field id="OTP" name="OTP" className ="payment-input-field otp-check" placeholder="OTP" />
                                         <button className= "btn btn-grad mx-2" onClick = {() => {
@@ -172,7 +169,7 @@ export const InternalPayment: React.FC = () => {
                                         </div>
                                     </Col>
                                 </Row>
-                                <div className="d-flex justify-content-center">
+                                <div className="d-flex justify-content-center ">
                                     <button className= "btn btn-grad" disabled = {submitBtnState} type="submit">Submit</button>
                                 </div>
                             </Form>
