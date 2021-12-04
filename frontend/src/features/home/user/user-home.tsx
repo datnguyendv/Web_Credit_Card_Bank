@@ -4,7 +4,7 @@ import { Button, Col, Container, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { decodeToken } from '../../auth/jwtProcess/decode-jwt';
 import { selectLoginState } from '../../auth/login/loginSlice';
-import { InternalPayment } from '../../payment/components';
+import { ExternalPayment, InternalPayment } from '../../payment/components';
 import { Layout } from '../../payment/payment-dto';
 import { setPaymentLayout } from '../../payment/paymentLayoutSlice';
 import { getCardInfo } from './cardInfoSlice';
@@ -34,7 +34,8 @@ export const UserHome: React.FC = () => {
                 <Header />
             </Col>
             <Col sm = "9" xs ="12" lg = "9" className = "user-home-func-background">
-                <InternalPayment/>
+                {/* <InternalPayment/> */}
+                <ExternalPayment/>
                 {/* <Button
                  onClick = {() => moveToPayment('internal')
                 }>

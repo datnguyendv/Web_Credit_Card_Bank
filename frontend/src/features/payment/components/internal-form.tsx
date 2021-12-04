@@ -47,7 +47,6 @@ export const InternalPayment: React.FC = () => {
                         initialValues={internalPaymentInfo}
                         validationSchema={InternalFormValidate}
                         onSubmit={(values, actions) => {
-                            console.log(values);
                             // because type of otp is number but type of values.otp is string so do this to compare
                             if(parseInt(values.OTP) === mailState.code) {
                                 dispatch(internalTransfer(values));
@@ -89,7 +88,7 @@ export const InternalPayment: React.FC = () => {
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                     <Col xs ="12" sm ="4" lg="4"></Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                        <p className={errors.CardSendId?"text-danger font-weight-bold mb-0":" text-center text-danger font-weight-bold mb-2 payment-err"}>
+                                        <p className={errors.CardReceiveId?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
                                             {errors.CardReceiveId && touched.CardReceiveId ? (<div>{errors.CardReceiveId}</div>): null}
                                         </p>
                                     </Col>
@@ -97,9 +96,9 @@ export const InternalPayment: React.FC = () => {
                                         <p className = "mx-3 font-payment mb-3">Beneficiary Account</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mb-4 pb-1">
-                                        <div className={errors.CardSendId?" payment-input-group  wrong-input" : "payment-input-group justify-content-end" }>
+                                        <div className={errors.CardReceiveId?"payment-input-group justify-content-end ":  "payment-input-group justify-content-end " }>
                                             
-                                        <Field id="CardReceiveId" name="CardReceiveId" className ="payment-input-field" placeholder="CardReceiveId" />
+                                            <Field id="CardReceiveId" name="CardReceiveId" className ="payment-input-field" placeholder="CardReceiveId" />
                                         </div>
                                     </Col>
                                 </Row>
@@ -107,7 +106,7 @@ export const InternalPayment: React.FC = () => {
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                     <Col xs ="12" sm ="4" lg="4"></Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                        <p className={errors.CardSendId?"text-danger font-weight-bold mb-0":" text-center text-danger font-weight-bold mb-2 payment-err"}>
+                                        <p className={errors.Balance?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
                                             {errors.Balance && touched.Balance ? (<div>{errors.Balance}</div>): null}
                                         </p>
                                     </Col>
@@ -115,7 +114,7 @@ export const InternalPayment: React.FC = () => {
                                         <p className = "mx-3 font-payment mb-3">Amount</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mb-4 pb-1">
-                                        <div className={errors.Description?" payment-input-group  wrong-input" : "payment-input-group justify-content-end" }>        
+                                        <div className={errors.Balance?"payment-input-group justify-content-end":  "payment-input-group  justify-content-end" }>
                                             <Field id="Balance" name="Balance" className ="payment-input-field" placeholder="Balance" />
                                         </div>
                                     </Col>
@@ -136,7 +135,7 @@ export const InternalPayment: React.FC = () => {
 
                                     <Col xs ="12" sm ="4" lg="4"></Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mr-4">
-                                        <p className={errors.Description?"text-danger font-weight-bold mb-0":" text-center text-danger font-weight-bold mb-2 payment-err"}>
+                                        <p className={errors.Balance?"text-center text-danger font-weight-bold mb-2 payment-err":"  text-danger font-weight-bold mb-0"}>
                                             {errors.Description && touched.Description ? (<div>{errors.Description}</div>): null}
                                         </p>
                                         </Col>
@@ -144,12 +143,11 @@ export const InternalPayment: React.FC = () => {
                                         <p className = "mx-3 font-payment mb-3">Content</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mb-4 pb-1">
-                                        <div className={errors.Description?" payment-input-group  wrong-input" : "payment-input-group justify-content-end" }>   
+                                        <div className={errors.Description?"payment-input-group justify-content-end":  "payment-input-group justify-content-end " }>
                                             <Field id="Description" name="Description" className ="payment-input-field"  placeholder="Description" />
                                         </div>
                                     </Col>
                                 </Row>
-
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                     <Col xs ="12" sm ="4" lg="4"></Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mr-4">
