@@ -40,6 +40,9 @@ export const InternalPayment: React.FC = () => {
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn payment-transfer-background">
             <Col className="margin-layout">
+                <Row className="hint">
+                    <h2 className= "background d-flex">IU BANK</h2>
+                </Row>
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "12" xs = "11" >
                         <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {paymentState.errMsg? true: false} role="alert">
@@ -170,7 +173,7 @@ export const InternalPayment: React.FC = () => {
                                     </Col>
                                 </Row>
                                 <div className="d-flex justify-content-center ">
-                                    <button className= "btn btn-grad" type="submit">Submit</button>
+                                    <button className= "btn btn-grad" disabled={submitBtnState} type="submit">Submit</button>
                                 </div>
                             </Form>
                         )}

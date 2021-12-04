@@ -5,7 +5,7 @@
     height: 28vh;
 }
 
-.btn {
+.btn-home {
     height: 10.2vh;
     width: 10.2vh;
     border-radius: 27px;
@@ -47,3 +47,12 @@
     border: 0px solid;
     font-size: 0.7rem;
  }
+
+.background {
+   background-color: #5A466E;
+   height: 6vh;
+   font-weight: bold;
+   align-items: center;
+   font-size: 1.8rem;
+   color: white;
+}

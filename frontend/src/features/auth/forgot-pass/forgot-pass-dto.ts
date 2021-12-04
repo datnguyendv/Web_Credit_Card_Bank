@@ -15,3 +15,8 @@ export type changePassState = {
     status: 'idle' | 'isLoading' | 'failed',  
     errMsg: string
 }
+
+export interface changePass extends forgotPassDto {
+    Password: string,
+    NewPassword: string
+}

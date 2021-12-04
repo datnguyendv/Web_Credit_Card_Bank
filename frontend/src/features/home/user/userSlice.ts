@@ -4,6 +4,7 @@ import { RootState } from "../../../app/store";
 import { userInfoDto, userInfoInitial, userInfoStateDto } from "../home-dto";
 
 export const initialState: userInfoStateDto = {
+    layout:'Home',
     status: 'idle',
     errMsg: '',
     accountInfo: userInfoInitial
@@ -25,7 +26,9 @@ export const userHomeSlice = createSlice ({
     name:'UserHome',
     initialState,
     reducers: {
-
+        setUserHomeLayout: (state, action: PayloadAction<any>) => {
+            state.layout = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -45,6 +48,6 @@ export const userHomeSlice = createSlice ({
 
 
 export const { reducer, actions } = userHomeSlice;
-// export const { setUserInfo } = actions;
+export const { setUserHomeLayout } = actions;
 export const selectUserHomeState = (state: RootState) => state.userHomeState;
 export default reducer;

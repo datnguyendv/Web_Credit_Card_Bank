@@ -70,6 +70,14 @@
     background-size: cover;
 }
 
+.font {
+    color:#8669A2;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 2vh;
+
+}
+
 input {
     font-size: 20px;
 }
@@ -92,11 +100,20 @@ body {
 }
 
 .header-bank-font {
-    color: #9960D2;
+    color: #9960D2 !important;
     font-weight: bold;
 }
 
 .i-t-img {
     background-image: url("./transfer.png");
     background-repeat: no-repeat;
+}
+
+.custom-tag {
+    /* height: 20vh; */
+    border-radius: 23px;
+}
+
+.change-pass-bg {
+    background-image: url('./change-pass-bg.png');
 }

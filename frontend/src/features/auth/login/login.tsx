@@ -33,7 +33,7 @@ export const Login: React.FC = () => {
                 </Row>
 
                 <Row md = "1" className = 'center-text auth-form'>
-                    <p className ="reset-margin">{loginStated.errMsg}</p>
+                    <p className ="reset-margin text-danger font-weight-bolder font-italic">{loginStated.errMsg}</p>
                     <Formik
                     initialValues={loginInfor}
                     validationSchema={loginSchema}

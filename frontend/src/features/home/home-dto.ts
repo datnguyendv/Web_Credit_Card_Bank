@@ -24,6 +24,7 @@ export const userInfoInitial:userInfoDto = {
 };
 
 export type userInfoStateDto = {
+    layout: 'payment' | 'lockCard' | 'changePass' | 'Home',
     status: 'idle' | 'isLoading' | 'failed',
     errMsg: string,
     accountInfo: userInfoDto
