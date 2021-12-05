@@ -1,12 +1,9 @@
-
-export interface registerFormDto {
+export interface coreRegisterInfoDto {
     UserName: string,
     Password: string,
     FirstName:string,
     LastName:string,
     Email:string,
-    PhoneNumber:number,
-    IdentifyCard:number,
     DateOfBirth: string | null | Date ,
     Address: string, 
     day: string, 
@@ -15,14 +12,26 @@ export interface registerFormDto {
     type: string,
 }
 
+
+export interface registerFormDto extends coreRegisterInfoDto {
+    PhoneNumber: number | string,
+    IdentifyCard:number | string,
+    
+}
+
+export interface registerFormInitDto extends coreRegisterInfoDto {
+    PhoneNumber: number | string,
+    IdentifyCard:number | string,
+}
+
 export const registerFormDataDto: registerFormDto = {
     UserName: '',
     Password: '',
     FirstName:'',
     LastName:'',
     Email:'',
-    PhoneNumber:0,
-    IdentifyCard:0,
+    PhoneNumber:'',
+    IdentifyCard:'',
     DateOfBirth: '',
     Address: '', 
     day:'',
@@ -59,14 +68,14 @@ export interface registerFormRequestDto {
     Password: string,
     FirstName:string,
     LastName:string,
-    PhoneNumber:number,
-    IdentifyCard:number,
+    PhoneNumber:number |string,
+    IdentifyCard:number | string,
     DateOfBirth: string | null | Date ,
     Address: string, 
 }
 
 export interface cardCreatedStateDto {
-    isCreated: '' | true | false,
+    isCreated: string,
     status: 'idle' | "isLoading" | "failed",
     errMsg: string
 }

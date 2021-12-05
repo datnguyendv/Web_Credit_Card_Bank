@@ -4,6 +4,7 @@ import { initialState } from '../login/loginInfoSlice';
 
 export const decodeToken = {
     jwtDecodeTypeFunc: (token: string) => {
+        console.log(token);
         let result:decodeJwtDto = jwt_decode(token);
         return result.type
     },

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { AccountRegisterDto, findUserDto, fineOneDto } from '../dto/account.dto';
+import { AccountRegisterDto, findUserDto, fineOneDto, updatePassword } from '../dto/account.dto';
 import { User } from '../entities/account.entity';
-import { CreateAccount, FindOne } from '../modules';
+import { ManageAccount, FindOne } from '../modules';
 import { UserRepository } from '../repositories/account.repository';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class AccountService {
     constructor (
         private userRepository: UserRepository, 
         private findOneModule: FindOne,
-        private createNewAccount: CreateAccount
+        private ManageAccount: ManageAccount
     ){}
 
     async findOne(Info: fineOneDto):Promise<any> {
@@ -18,7 +18,7 @@ export class AccountService {
 
     // add account into database
     async createAccount(account: AccountRegisterDto): Promise<any> {
-        let accountCreated:AccountRegisterDto = await this.createNewAccount.createAccount(account);
+        let accountCreated:AccountRegisterDto = await this.ManageAccount.createAccount(account);
         return accountCreated;
     }
 
@@ -31,6 +31,8 @@ export class AccountService {
         return res
     }
 
-    
+    async updateAccountPass(params: updatePassword) : Promise<boolean> {
+        return await this.ManageAccount.updateAccountPass(params);
+    }
 
 }

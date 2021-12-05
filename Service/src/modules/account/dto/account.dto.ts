@@ -80,3 +80,9 @@ export type AccountTypeDto = {
     LoginHistory?: []
 
 }
+
+export type updatePassword = {
+    UserName: string,
+    ID: number,
+    Password: string,
+}

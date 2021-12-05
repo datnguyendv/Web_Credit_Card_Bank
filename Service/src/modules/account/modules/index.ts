@@ -1,2 +1,2 @@
-export * from './create-account';
+export * from './manage-account';
 export * from './findOne';

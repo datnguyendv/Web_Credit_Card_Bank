@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router';
 import { useAppSelector } from '../../app/hooks';
 import { ExternalPayment, InternalPayment, TransferSuccessFrom } from './components';
-import { externalPaymentDto, Layout, paymentLayoutState } from './payment-dto';
+import { externalPaymentDto, paymentLayoutState } from './payment-dto';
 import { selectPaymentLayoutState } from './paymentLayoutSlice';
 import { selectPaymentState } from './paymentSlice';
 

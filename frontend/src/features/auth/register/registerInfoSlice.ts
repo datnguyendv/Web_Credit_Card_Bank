@@ -36,6 +36,7 @@ export const registerSlice = createSlice ({
         .addCase(cardTypeInfo.fulfilled, (state, actions: PayloadAction<any>) => {
             state.status = 'idle';
             state.cardType = actions.payload;
+            console.log(state.cardType);
         })
     }
 })

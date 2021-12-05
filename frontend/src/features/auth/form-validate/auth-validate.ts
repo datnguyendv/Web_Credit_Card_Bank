@@ -6,7 +6,7 @@ export const loginSchema = yup.object().shape({
     .max(20, 'Too Long')
     .required('Required'),
     Password: yup.string()
-    .min(10, 'Too Short')
+    .min(7, 'Too Short')
     .max(20, 'Too Long')
     .required('Required'),
 })
@@ -40,4 +40,29 @@ export const registerSchema = yup.object().shape({
     Address: yup.string()
     .max(50, 'Too Long')
     .min(7, 'Too Short')
+})
+
+export const forgotSchema = yup.object().shape({
+    PhoneNumber:yup.number()
+    .max(1000000000, 'Too Long')
+    .min(100000000,'Too Short')
+    .required('Required'),
+
+    Email:yup.string().email('Not a Email').required("Required"),
+
+    ID:yup.number()
+    .max(1000000000000, "Too Long")
+    .min(100000000000, "Too Short")
+    .required("Required"),
+})
+
+export const changePassSchema = yup.object().shape({
+    Password: yup.string()
+    .min(7, 'Too Short')
+    .max(20, 'Too Long')
+    .required('Required'),
+    NewPassword: yup.string()
+    .min(7, 'Too Short')
+    .max(20, 'Too Long')
+    .required('Required'),
 })

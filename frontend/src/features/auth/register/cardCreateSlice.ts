@@ -12,7 +12,7 @@ export const initialState: cardCreatedStateDto = {
 
 export const createCard = createAsyncThunk(
     'CreateCard/create', async(params:createCardInfoDto, thunkApi) => {
-        console.log('in here');
+        console.log(params);
         let response:any = await registerApi.createCard(params);
         //because status Code fail always greater than 2xx
         if(response.statusCode >300 ) {

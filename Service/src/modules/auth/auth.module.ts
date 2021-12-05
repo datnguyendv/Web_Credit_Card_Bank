@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
-import { CreateAccount, FindOne } from '../account/modules';
+import { ManageAccount, FindOne } from '../account/modules';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { AccountService } from '../account/services/account.service';
 import { CreateHistory } from '../loginHis/modules';
@@ -12,6 +12,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { SendMail } from './email/sendmail';
 import { Login, PasswordCompare, SignUp, SignUser } from './modules';
+import { AdminJwtStrategy } from './strategy/adminjwt.strategy';
 import { UserJwtStrategy } from './strategy/jwt.strategy';
 dotenv.config();
 const {JWT_SECRET} = process.env;
@@ -33,10 +34,11 @@ controllers: [AuthController],
   providers: [
     AccountService,
     FindOne,
-    CreateAccount,
+    ManageAccount,
     CreateHistory,
     AuthService,
     UserJwtStrategy, 
+    AdminJwtStrategy,
     Login,
     SignUp,
     SignUser,

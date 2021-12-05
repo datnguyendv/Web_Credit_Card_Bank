@@ -29,6 +29,9 @@ export const loginSlice = createSlice({
     name: 'Login',
     initialState,
     reducers: {
+        setToken: (state, action: PayloadAction<any>) => {
+            state.token = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -38,7 +41,7 @@ export const loginSlice = createSlice({
         .addCase(loginFunction.fulfilled, (state, action: PayloadAction<any>) => {
             state.status = 'idle';
             state.token = action.payload;
-            localStorage.setItem("token",state.token);
+            sessionStorage.setItem("token",state.token);
             let decode = decodeToken.jwtDecodeTypeFunc(state.token);
             state.type = decode;
             
@@ -46,7 +49,6 @@ export const loginSlice = createSlice({
         .addCase(loginFunction.rejected, (state, action: PayloadAction<any>) => {
             state.status = 'failed';
             state.errMsg = action.payload;
-            console.log("errSlide(): ",state.errMsg);
         })
     }
 })
@@ -56,6 +58,6 @@ export const loginSlice = createSlice({
 
 
 export const { reducer, actions } = loginSlice;
-// export const { setloginInfo } = actions;
+export const { setToken } = actions;
 export const selectLoginState = (state: RootState) => state.login;
 export default reducer;

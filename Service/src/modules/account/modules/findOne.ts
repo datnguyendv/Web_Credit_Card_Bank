@@ -1,6 +1,7 @@
 
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { AccountLoginDto, AccountTypeDto, findUserDto, fineOneDto } from 'src/modules/account/dto/account.dto';
+import { forgotPassDto } from 'src/modules/auth/auth-dto';
 import { Admin, User } from '../entities/account.entity';
 import { AccountRepository, AdminRepository, UserRepository } from '../repositories/account.repository';
 
@@ -50,6 +51,17 @@ export class FindOne {
 
     async findUserByIdentifyCard(Info: findUserDto): Promise<User> {
         let UserRes:User = await this.userRepository.findOne(Info)
+        return UserRes;
+    }
+
+    async findUser(Info: forgotPassDto): Promise<any> {
+        let UserRes:User = await this.userRepository.findOne({
+            where: {
+                PhoneNumber: Info.PhoneNumber,
+                IdentifyCard: Info.ID,
+                Email: Info.Email
+            }
+        })
         return UserRes;
     }
 }

@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { Cards } from 'src/modules/card/entities/card.entity';
 import { SearchCard } from 'src/modules/card/modules';
 import { cardUpdateDto, externalPaymentDto, internalPaymentDto } from '../dto/paymentType.dto';
-import { checkBalance, CreatePayment, UpdatePayment } from '../modules';
+import { checkBalance, CreatePayment, SearchPayment, UpdatePayment } from '../modules';
 
 @Injectable()
 export class PaymentService {
@@ -11,6 +11,7 @@ export class PaymentService {
         private checkBalance: checkBalance,
         private updatePayment: UpdatePayment,
         private createPaymentHis: CreatePayment,
+        private searchPayment: SearchPayment,
     ){}
 
     async internalTransfer(paymentData: internalPaymentDto, type:string) {
@@ -80,5 +81,9 @@ export class PaymentService {
             let transferHis = await this.createPaymentHis.createPayment(cardTransfer.CardID, paymentData.Balance, paymentData.Location, type, "Transfer");
             return "Done"
         }
+    }
+
+    async getAllPayment(): Promise<any> {
+        return await this.searchPayment.searchAllPayment();
     }
 }

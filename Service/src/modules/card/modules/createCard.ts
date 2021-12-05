@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { time } from "console";
-import { newCardDto, typeCardToSearch } from "../dto/cardType.dto";
+import { typeCardToSearch } from "../dto/cardType.dto";
 import { CardRepository } from '../repositories/card.repository';
 import { SearchCard } from './searchCard';
 
@@ -9,14 +8,15 @@ import { SearchCard } from './searchCard';
 export class CreateNewCard {
     constructor(
         private searchCard: SearchCard,
-        private cardRepository: CardRepository
+        private cardRepository: CardRepository,
+
     ) {}
 
     dateExpired() {
         let date_ob = new Date();
         let date = date_ob.getDate();
         let month = date_ob.getMonth() + 1;
-        let year = date_ob.getFullYear();
+        let year = date_ob.getFullYear() +5;
         let hours: number | string = date_ob.getHours();
         if(hours < 10) hours = "0" + hours;
         let minutes: number | string = date_ob.getMinutes();
@@ -49,7 +49,7 @@ export class CreateNewCard {
             CardStatus: 1
         }
         console.log(newCard);
-        await this.cardRepository.save(newCard);
+        let result: any = await this.cardRepository.save(newCard);
         return "done"
     }
 }

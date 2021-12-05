@@ -3,11 +3,7 @@ import { homeApi } from "../../../api";
 import { RootState } from "../../../app/store";
 import { cardInfoStateDto } from "../home-dto";
 
-export const initialState: cardInfoStateDto = {
-    status: 'idle',
-    errMsg: '',
-    cardInfo: [],
-    card:{
+const cardInit = {
         CardID: 0,
         CurrentBalance: 0,
         DateOfExpired: '',
@@ -21,6 +17,12 @@ export const initialState: cardInfoStateDto = {
             TypeName: '',
         },
     }
+
+export const initialState: cardInfoStateDto = {
+    status: 'idle',
+    errMsg: '',
+    cardInfo: [cardInit],
+    card:cardInit
 }
 
 export const getCardInfo = createAsyncThunk(
@@ -29,6 +31,7 @@ export const getCardInfo = createAsyncThunk(
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {
+            
             return response
         }
     }
@@ -59,6 +62,8 @@ export const cardInfoSlice = createSlice ({
         .addCase(getCardInfo.fulfilled, (state, action: PayloadAction<any>) => {
             state.status = 'idle';
             state.cardInfo = action.payload;
+            //because set default is first card
+            state.card = state.cardInfo[0];
         })
     }
 })
