@@ -1,9 +1,7 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, TableInheritance } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Cards } from '../../card/entities/card.entity';
-import { paymentType } from "../dto/paymentType.dto";
-import { PaymentType } from "./paymentType.entity";
-import { User } from 'src/modules/account/entities/account.entity';
 import { PaymentStatus } from './paymentStatus.entity';
+import { PaymentType } from "./paymentType.entity";
 
 @Entity('Payments')
 export class Payments {
@@ -12,23 +10,26 @@ export class Payments {
     PaymentID: number;
 
     @Column({type: 'int', name:'Amount'})
-    Amount: number;
+    Amounts: number;
+
+    @Column({type: 'bigint', name:'CurrentBalance'})
+    CurrentBalance: number;
 
     @Column({type:'varchar', name:'Location'})
     Location: string;
 
     @Column({type:'time', name: 'Time'})
-    Time: string;
+    Time: Date;
 
     @Column({type:'date', name:'Date'})
-    Date:string;
+    Date:Date;
 
-    @ManyToOne(() => User, user => user.Payment)
-    User:User;
+    @ManyToOne(() => Cards, card => card.Payment,{eager:true})
+    Card:Cards;
 
-    @ManyToOne(() => PaymentType, paymentType => paymentType.Payment)
+    @ManyToOne(() => PaymentType, paymentType => paymentType.Payment,{eager:true})
     PaymentType: PaymentType;
 
-    @ManyToOne(() => PaymentStatus, PaymentStatus => PaymentStatus.Payment)
+    @ManyToOne(() => PaymentStatus, PaymentStatus => PaymentStatus.Payment,{eager:true})
     PaymentStatus: PaymentStatus;
 }

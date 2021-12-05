@@ -1,6 +1,5 @@
 
-import { Payments } from 'src/modules/payment/entities/payment.entity';
-import { ChildEntity, Column, Entity, OneToMany, PrimaryColumn, TableInheritance } from 'typeorm';
+import { ChildEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, TableInheritance } from 'typeorm';
 import { Cards } from '../../card/entities/card.entity';
 import { LoginHistory } from '../../loginHis/entities/loginHis.entity';
 import { role } from '../dto/accountRole.dto';
@@ -10,7 +9,7 @@ import { role } from '../dto/accountRole.dto';
     column: {type:'enum', enum: role, name: 'Role', nullable:false}
 })
 export class Accounts {
-    @PrimaryColumn( {name: 'AccountId', type: 'int'})
+    @PrimaryGeneratedColumn( {name: 'AccountId', type: 'int'})
     AccountId: number;
 
     @Column({name: 'FirstName', type: 'varchar', length: 20})
@@ -38,11 +37,11 @@ export class Accounts {
 @ChildEntity(role.User)
 export class User extends Accounts {
     
-    @Column({type:'int', name:'IdentifyCard'})
+    @Column({type:'bigint', name:'IdentifyCard'})
     IdentifyCard:number;
 
     @Column({type:'date', name:'DateOfBirth'}) // format of mysql: yyyy-mm-dd
-    DateOfBirth: string;
+    DateOfBirth: Date;
 
     @Column({type:'varchar', name: 'Address'})
     Address: string;
@@ -50,8 +49,6 @@ export class User extends Accounts {
     @OneToMany(() => Cards, card => card.Account)
     Card: Cards[];
 
-    @OneToMany(() => Payments, payment => payment.User)
-    Payment:Payments[];
 }
 
 @ChildEntity(role.Admin)

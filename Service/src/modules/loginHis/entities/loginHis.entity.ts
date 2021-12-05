@@ -11,11 +11,8 @@ export class LoginHistory {
     @Column({type:'date', name: 'Date'})
     Date: string;
 
-    @Column({type: 'varchar', name:'Location'})
-    Location: string;
-
     @Column ({type:'time', name: 'Time'})
-    Time:string;
+    Time:Date;
 
     @Column({type:'varchar', name:'Username'})
     UserName:string;
@@ -23,9 +20,9 @@ export class LoginHistory {
     @Column({type:'varchar', name:'Password'})
     Password:string;
 
-    @ManyToOne(() => Accounts, account => account.LoginHistory)
+    @ManyToOne(() => Accounts, account => account.LoginHistory,{eager:true})
     Account: Accounts
 
-    @ManyToOne(() => LoginHisStatus, status=> status.LoginHistory)
+    @ManyToOne(() => LoginHisStatus, status=> status.LoginHistory,{eager:true})
     LoginHisStatus: LoginHisStatus;
 }

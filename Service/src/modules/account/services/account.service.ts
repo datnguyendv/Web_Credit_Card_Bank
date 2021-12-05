@@ -1,49 +1,38 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { AccountRepository, UserRepository } from '../repositories/account.repository';
-import { Accounts, User } from '../entities/account.entity';
-import { AccountRegisterDto, AccountInfoResponse, AccountLoginDto } from '../dto/account.dto';
-import * as bcrypt from 'bcrypt';
+import { Injectable } from '@nestjs/common';
+import { AccountRegisterDto, findUserDto, fineOneDto, updatePassword } from '../dto/account.dto';
+import { User } from '../entities/account.entity';
+import { ManageAccount, FindOne } from '../modules';
+import { UserRepository } from '../repositories/account.repository';
+
 @Injectable()
 export class AccountService {
     constructor (
-        private accountRepository: AccountRepository,
-        private userRepository: UserRepository,
+        private userRepository: UserRepository, 
+        private findOneModule: FindOne,
+        private ManageAccount: ManageAccount
     ){}
-    async findOne( status: string, id?: number, account?:AccountLoginDto) {
-        switch(status) {
-            case "GetRequest":
-                let user:User = await this.userRepository.findOne(id);
-                if(user !== undefined) {
-                    const {UserName, Password,...res} = user;
-                    return res;
-                } else {
-                    throw new BadRequestException("NotFound")
-                }
-            case "CheckExisted": 
-                let {Password, ...Info} = account;
-                let AccountRes: Accounts = await this.accountRepository.findOne(Info);
-                if(AccountRes !== undefined) {
-                    return true
-                }
-                return false
-            case "Login": 
-                let AccountLogin: Accounts = await this.accountRepository.findOne(account);
-                if(AccountLogin !== undefined) {
-                    return true
-                }
-                return false
 
-        default: 
-                break;
-        }
+    async findOne(Info: fineOneDto):Promise<any> {
+        return this.findOneModule.findOne(Info);
     }
 
-    async createAccount(account: AccountRegisterDto) {
-        let hashPassword = await bcrypt.hash(account.Password, 12);
-        account.Password = hashPassword;
+    // add account into database
+    async createAccount(account: AccountRegisterDto): Promise<any> {
+        let accountCreated:AccountRegisterDto = await this.ManageAccount.createAccount(account);
+        return accountCreated;
     }
+
     async findAll () {
-        let accountInfoResponse: AccountInfoResponse;
-        return this.userRepository.find(accountInfoResponse);
+        return this.userRepository.find();
     }
+
+    async findUserByIdentifyCard(Info: findUserDto): Promise<any> {
+        let res = await this.findOneModule.findUserByIdentifyCard(Info);
+        return res
+    }
+
+    async updateAccountPass(params: updatePassword) : Promise<boolean> {
+        return await this.ManageAccount.updateAccountPass(params);
+    }
+
 }

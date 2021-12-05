@@ -2,7 +2,8 @@
 ## The project for Software Engineering course
 
 
- [![Build Status](https://img.shields.io/badge/Build-passing-success)](https://nodejs.org/en/download/) [![Build Status](https://img.shields.io/badge/Node-v14.17.6-brightgreen)][node] [![Build Status](https://img.shields.io/badge/React-v17.0.2-important)][reactjs] [![Build Status](https://img.shields.io/badge/Redux-v7.5.0-orange)][redux] [![Build Status](https://img.shields.io/badge/Express-v4.17.1-yellow)][express] [![Build Status](https://img.shields.io/badge/MySql-v8.0.0-success)][mysql]
+ [![Build Status](https://img.shields.io/badge/Build-passing-success)](https://nodejs.org/en/download/) [![Build Status](https://img.shields.io/badge/Node-v14.17.6-brightgreen)][node] [![Build Status](https://img.shields.io/badge/React-v17.0.2-important)][reactjs] [![Build Status](https://img.shields.io/badge/Redux-v7.5.0-orange)][redux] 
+ [![Build Status](https://img.shields.io/badge/MySql-v8.0.0-success)][mysql] [![Build Status](https://img.shields.io/badge/Nestjs-v8.1.0-success)][Nestjs]
 
 Banking name is a web banking 
 ReactJS-powered HTML5 Markdown editor.
@@ -20,7 +21,7 @@ Banking name uses a number of open source projects to work properly:
 - [ReactRouter] - Routing screen app
 - [Reactstrap] - great UI boilerplate for modern web apps
 - [Node] - environment to run service 
-- [Express] - fast node.js network app library
+- [Nestjs] - fast node.js network app library
 - [Docker] - deploy project 
 - [TypeORM] - library connect service to database
 
@@ -83,7 +84,7 @@ MIT
    [MySql]: <http://mysql.com>
    [node]: <http://nodejs.org>
    [Reactstrap]: <http://twitter.github.com/bootstrap/>
-   [express]: <http://expressjs.com>
+   [Nestjs]: <https://docs.nestjs.com>
    [ReactJS]: <https://reactjs.org>
    [Docker]: <https://www.docker.com>
    [ReactRouter]: <https://reactrouter.com>
