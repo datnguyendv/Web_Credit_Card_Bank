@@ -56,7 +56,7 @@ export const UserHome: React.FC = () => {
             <Col sm="3" xs="12" lg="3"  className = "">
                 <Header />
             </Col>
-            <Col sm = "9" xs ="12" lg = "9" className = "user-home-func-background p-0">
+            <Col sm = "9" xs ="12" lg = "9" className = "user-home-func-background">
                 <UserHomeHandleLayout layout = {layout}/>
             </Col>
             </Row>
