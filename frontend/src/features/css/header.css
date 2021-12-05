@@ -68,3 +68,36 @@
     color: #9253D2;
     font-size: 23px;
 }
+
+@media screen and (max-device-width: 425px) {
+    .header-full-view {
+        height: auto;
+    }
+    .header-flex {
+        display: block;
+        flex-direction: row;
+    }
+    .header-body{
+        display: none;
+    }
+    .header-flex-end {
+        display: none;
+        flex-direction: row;
+    }
+}
+@media screen and (max-device-width: 548px) {
+    .header-full-view {
+        height: auto;
+    }
+    .header-flex {
+        display: block;
+        flex-direction: row;
+    }
+    .header-body{
+        display: none;
+    }
+    .header-flex-end {
+        display: none;
+        flex-direction: row;
+    }
+}
