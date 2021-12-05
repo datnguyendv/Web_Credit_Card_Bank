@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
     }
 
     return (
-        <Row className = "full-view bg-white mb-0">
+        <Row className = "header-full-view bg-white mb-0">
             <Col md='2' sm ="3" xs ='12'  className ="mb-0 header-bg">
                 <Row className =' header-full-view pb-3'>
                     <Col className= "m-0 header-flex mb-2 mt-3 p-0">
@@ -41,6 +41,7 @@ export const Header: React.FC = () => {
                         <FontAwesomeIcon className ="header-icon text-white" icon={['fas', 'language']} />
                         <FontAwesomeIcon className ="header-icon text-white" icon={['fas', 'headset']} />
                     </Col>
+                    
                 </Row>
             </Col>
             <Col md= '10' sm ="9" className='header-body '>
