@@ -1,7 +1,7 @@
 FROM node:14.17.5-alpine
 
 WORKDIR /app
-COPY packkage.json ./
+COPY package.json ./
 
 RUN npm install 
 
