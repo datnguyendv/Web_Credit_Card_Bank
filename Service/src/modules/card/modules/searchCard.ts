@@ -15,7 +15,7 @@ export class SearchCard {
     ) {}
 
     findCardTypeId(typeRequest: string) {
-        let cardTypeId = ["Normal","Visa", "MasterCard", "VisaDebit"]
+        let cardTypeId = ["Normal","Visa", "Master", "Debit"]
         for ( let i in cardTypeId){
             if (typeRequest == cardTypeId[i])
                 return Number(i) +1

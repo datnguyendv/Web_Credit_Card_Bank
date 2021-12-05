@@ -26,7 +26,7 @@ export class SendMail {
             subject: "[IU Bank] Mã Xác Thực Giao Dịch / Transaction Verification Code", // Subject line
             html: `<p style="font-size:16px;">Mã xác thực là <b>${otp}</b>, có hiệu lực trong vòng 1 phút. Chi tiết giao dịch: Chuyển khoản bằng thẻ trên  website IUB Digibank.</p>
 
-            <p style="font-size:16px;">Đây là email tự động. Quý khách vui lòng không gửi thư vào địa chỉ này. Mọi vướng mắc liên quan đến dịch vụ, Quý khách vui lòng tham khảo tại website InternationalUniversityBank https://portal.iubank.com.vn hoặc liên hệ với Hotline 24/7 theo số 1900545454.</p>
+            <p style="font-size:16px;">Đây là email tự động. Quý khách vui lòng không gửi thư vào địa chỉ này. Mọi vướng mắc liên quan đến dịch vụ, Quý khách vui lòng tham khảo tại website InternationalUniversityBank https://portal.iubank.com.vn hoặc liên hệ với Hotline 24/7 theo số 1900156868.</p>
 
             <p style="font-size:16px;"><b>Cám ơn Quý khách đã sử dụng dịch vụ của InternationalUniversityBank!</b></p>
 
@@ -36,7 +36,7 @@ export class SendMail {
             
             <p style="font-size:16px;">Please do not reply to this automatically-generated email. For further information, please direct your inquiries to: <br>
             - Our website: https://portal.iubank.com.vn <br>
-            - Our Hotline 24/7 at 1900 54 54 54</p>
+            - Our Hotline 24/7 at 1900 15 68 68</p>
 
             <p style="font-size:16px;"><b>Thank you for banking with InternationalUniversityBank!</b></p>
             `
@@ -65,14 +65,14 @@ export class SendMail {
         let mailOption = {
             from: `${EMAIL_USERNAME}`, //email username is email
             to: `${email}`, // list of receivers
-            subject: `[IU Bank] Cấp lại mật khẩu VCB Digibank/Reset VCB Digibank’s password`, // Subject line
+            subject: `[IU Bank] Cấp lại mật khẩu IU Bank/Reset IU Bank’s password`, // Subject line
             html: `<p style="font-size:16px;">InternationalUniversityBank xin thông báo yêu cầu cấp lại mật khẩu dịch vụ VCB Digibank đã được thực hiện thành công. Mật khẩu mới là:</p>
 
             <p style="font-size:16px;"><b>${generatePass}</b></p>
 
             <p style="font-size:16px;">Quý khách vui lòng kích hoạt dịch vụ trong vòng 24 giờ để sử dụng dịch vụ.</p>
 
-            <p style="font-size:16px;">Đây là email tự động. Quý khách vui lòng không gửi thư vào địa chỉ này. Mọi vướng mắc liên quan đến dịch vụ, Quý khách vui lòng tham khảo tại website InternationalUniversityBank https://portal.iubank.com.vn hoặc liên hệ với Hotline 24/7 theo số 1900545454.</p>
+            <p style="font-size:16px;">Đây là email tự động. Quý khách vui lòng không gửi thư vào địa chỉ này. Mọi vướng mắc liên quan đến dịch vụ, Quý khách vui lòng tham khảo tại website InternationalUniversityBank https://portal.iubank.com.vn hoặc liên hệ với Hotline 24/7 theo số 1900156868.</p>
 
             <p style="font-size:16px;"><b>Cám ơn Quý khách đã sử dụng dịch vụ của InternationalUniversityBank!</b></p>
 
@@ -86,7 +86,7 @@ export class SendMail {
 
             <p style="font-size:16px;">Please do not reply to this automatically-generated email. For further information, please direct your inquiries to: <br>
             - Our website: https://portal.iubank.com.vn <br>
-            - Our Hotline 24/7 at 1900 54 54 54</p>
+            - Our Hotline 24/7 at 1900 15 68 68</p>
 
             <p style="font-size:16px;"><b>Thank you for using our services!</b></p>
             `
@@ -103,4 +103,61 @@ export class SendMail {
         })
         return generatePass;
     }
+
+    // async sendNewUser (User: any, Card:any): Promise<any> {
+    //     let transporter = nodemailer.createTransport({
+    //         service:'gmail',
+    //         auth: {
+    //           user: EMAIL_USERNAME, // username of gmail
+    //           pass: EMAIL_PASSWORD, // password of this gmail
+    //         },
+    //     });
+
+    //     let mailOption = {
+    //         from: `${EMAIL_USERNAME}`, //email username is email
+    //         to: `${User.email}`, // list of receivers
+    //         subject: `[IU Bank] Cấp tài khoản IU Digibank/ Create new account IU Digibank’s password`, // Subject line
+    //         html: `<p style="font-size:16px;">InternationalUniversityBank xin thông báo yêu cầu cấp tài khoản mới dịch vụ VCB Digibank đã được thực hiện thành công. Tài khoản mới là:</p>
+ 
+    //         <p style="font-size:16px;">Full name: <b>${User.FirstName} ${User.LastName}</b></p>
+    //         <p style="font-size:16px;">Date Of Birth: <b>${User.DateOfBirth}</b></p>
+    //         <p style="font-size:16px;">Phone Number: <b>0${User.PhoneNumber}</b></p>
+    //         <p style="font-size:16px;">Card Number: <b>${Card.CardID}</b></p>
+    //         <p style="font-size:16px;">CurrenBalance: <b>${Card.CurrentBalance}</b></p>
+
+    //         <p style="font-size:16px;">Quý khách vui lòng kích hoạt dịch vụ trong vòng 24 giờ để sử dụng dịch vụ.</p>
+
+    //         <p style="font-size:16px;">Đây là email tự động. Quý khách vui lòng không gửi thư vào địa chỉ này. Mọi vướng mắc liên quan đến dịch vụ, Quý khách vui lòng tham khảo tại website InternationalUniversityBank https://portal.iubank.com.vn hoặc liên hệ với Hotline 24/7 theo số 1900156868.</p>
+
+    //         <p style="font-size:16px;"><b>Cám ơn Quý khách đã sử dụng dịch vụ của InternationalUniversityBank!</b></p>
+
+    //         <hr>
+
+    //         <p style="font-size:16px;">We would like to inform you that your account has been created at your request. Your new account is:</p>
+
+    //         <p style="font-size:16px;">Full name: <b>${User.FirstName} ${User.LastName}</b></p>
+    //         <p style="font-size:16px;">Date Of Birth: <b>${User.DateOfBirth}</b></p>
+    //         <p style="font-size:16px;">Phone Number: <b>0${User.PhoneNumber}</b></p>
+    //         <p style="font-size:16px;">Card Number: <b>${Card.CardID}</b></p>
+    //         <p style="font-size:16px;">CurrenBalance: <b>${Card.CurrentBalance}</b></p>
+
+    //         <p style="font-size:16px;">Please activate service during 24 hours since you have received PIN.</p>
+
+    //         <p style="font-size:16px;">Please do not reply to this automatically-generated email. For further information, please direct your inquiries to: <br>
+    //         - Our website: https://portal.iubank.com.vn <br>
+    //         - Our Hotline 24/7 at 1900 15 68 68</p>
+
+    //         <p style="font-size:16px;"><b>Thank you for using our services!</b></p>
+    //         `
+    //     }
+    //     let info = await transporter.sendMail(mailOption, (err,data) => {
+    //         if(err) {
+    //             console.log("SentMailErr(): ",err);
+    //             throw new BadRequestException('can not sent');
+    //         } else {
+    //             console.log("SentMail(): sent");
+    //         }
+    //     })
+    //     return "done";
+    // }
 }

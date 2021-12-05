@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { time } from "console";
-import { newCardDto, typeCardToSearch } from "../dto/cardType.dto";
+import { typeCardToSearch } from "../dto/cardType.dto";
 import { CardRepository } from '../repositories/card.repository';
 import { SearchCard } from './searchCard';
 
@@ -9,7 +8,8 @@ import { SearchCard } from './searchCard';
 export class CreateNewCard {
     constructor(
         private searchCard: SearchCard,
-        private cardRepository: CardRepository
+        private cardRepository: CardRepository,
+
     ) {}
 
     dateExpired() {
@@ -49,7 +49,7 @@ export class CreateNewCard {
             CardStatus: 1
         }
         console.log(newCard);
-        await this.cardRepository.save(newCard);
+        let result: any = await this.cardRepository.save(newCard);
         return "done"
     }
 }

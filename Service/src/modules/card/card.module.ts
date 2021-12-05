@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ManageAccount, FindOne } from '../account/modules';
 import { AccountRepository, AdminRepository, UserRepository } from '../account/repositories/account.repository';
 import { AccountService } from '../account/services/account.service';
+import { SendMail } from '../auth/email/sendmail';
 import { CardController } from './controllers/card.controller';
 import { CreateNewCard, SearchCard, UpdateCard } from './modules';
 import { CardRepository } from './repositories/card.repository';
@@ -29,6 +30,7 @@ import { CardService } from './services/card.service';
     SearchCard,
     CreateNewCard,
     UpdateCard,
+    SendMail
     ],
   controllers: [CardController]
 })

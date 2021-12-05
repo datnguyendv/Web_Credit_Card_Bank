@@ -13,6 +13,7 @@ export class CardController {
     // @UseGuards(JwtAuthGuard)
     @Post() 
     async createBankCard(@Body() request: cardRequestDto): Promise<any>{ 
+        console.log(request);
         return this.cardService.createCard(request);
     }
 

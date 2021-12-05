@@ -7,6 +7,7 @@ import { User } from 'src/modules/account/entities/account.entity';
 import { Cards } from '../entities/card.entity';
 import { CardStatus } from '../entities/cardStatus.entity';
 import { UpdateCard } from 'src/modules/card/modules';
+import { SendMail } from 'src/modules/auth/email/sendmail';
 
 
 @Injectable()
@@ -16,6 +17,7 @@ export class CardService {
         private accountService: AccountService,
         private searchCardFunction: SearchCard,
         private updateCard: UpdateCard,
+        private sendMail: SendMail,
     ) {}
 
     async searchCardByType(cardRequest: typeCardToSearch): Promise<any> {
@@ -25,6 +27,7 @@ export class CardService {
     async createCard(cardRequest: cardRequestDto): Promise<any> {
         let {type,...findUser} = cardRequest;
         console.log(findUser);
+        console.log(cardRequest.type);
         let UserRes:User = await this.accountService.findUserByIdentifyCard(findUser);
         let findCard:typeCardToSearch = {
             Account: UserRes.AccountId,
@@ -34,7 +37,14 @@ export class CardService {
         if(cardRes !== undefined) {
             throw new BadRequestException("Card Existed");
         } else {
-            return this.createNewCard.createNewCard(findCard);
+            let result:any = await this.createNewCard.createNewCard(findCard);
+            return result;
+            // if (result !== "false") {
+                // let {Password, AccountId, UserName, ...userSendMail} = UserRes;
+                // let {CVV, Account, ...cardSendMail} = result;
+                // return await this.sendMail.sendNewUser(userSendMail, cardSendMail);
+            // } else {
+                // throw new BadRequestException("failed to create");
         }
     }
 
