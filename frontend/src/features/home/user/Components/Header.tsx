@@ -46,11 +46,11 @@ export const Header: React.FC = () => {
             </Col>
             <Col md= '10' sm ="9" className='header-body '>
                 <Row xs="1" className ="justify-content-center">
-                    <Col className ="text-center mt-3"> 
+                    <Col className ="text-center mt-3 header-body-hint"> 
                         <p className ="header-text"><span className="bold">IUB</span> Digibank</p>
                     </Col>
                     <Col className = "text-center header-body-background">
-                        <img className="people-img" src ={peopleImg} />
+                        <img className="people-img header-body-hint" src ={peopleImg} />
                         <p>hello</p>
                         <h4 className = 'header-icon-color'>{accountInfo.LastName.toUpperCase()} {accountInfo.FirstName.toUpperCase()}</h4>
                         <p>the last login</p>
@@ -66,23 +66,23 @@ export const Header: React.FC = () => {
                             <Col xs = "2">
                                 <p className ="text-small header-icon-color bold">Details</p>
                             </Col>
-                            <Col xs ="6">
+                            <Col xs ="8">
                                 <p className ="text-small header-icon-color bold">Account Id</p>
                             </Col>
-                            <Col xs = "5">
+                            <Col xs = "3">
                                 <p className ="text-small header-icon-color bold">{accountInfo.IdentifyCard}</p>
                             </Col>
-                            <Col xs ="8">
+                            <Col xs ="6">
                                 <p className ="text-small header-icon-color bold">Balance Number</p>
                             </Col>
-                            <Col xs = "11">
-                                <p className ="mx-4 text-small header-icon-color bold">{card.CurrentBalance} VND</p>
+                            <Col xs = "6">
+                                <p className ="text-right mx-4 text-small header-icon-color bold">{card.CurrentBalance} VND</p>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
                 <Row xs="1" className ="justify-content-center">
-                    <Col className = "text-center header-body-background">
+                    <Col className = "text-center header-body-background header-body-hint">
                         <Col>
                             <p className ="text-small header-icon-color bold">Customer services 24/7</p>
                             <p className ="phone-text header-icon-color bold">1900 15 68 68</p>

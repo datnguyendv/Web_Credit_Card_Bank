@@ -35,11 +35,11 @@ export const UserHomeLayout: React.FC = () => {
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn">
             <Col>
             <Row>
-                <h2 className= "header-bank-font mx-3 mb-2 mt-2">IU BANK</h2>
+                <h2 className= "hint header-bank-font mx-3 mb-2 mt-2">IU BANK</h2>
             </Row>
             <Row md = "1" lg = "1" xs="1" className = 'display-flex transform-body overflow-auto'>
                 <Col lg = "8" md="8" sm= "12" xs = "11" >
-                    <Row>
+                    <Row className ="hint">
                             <HomeCarousel/>
                     </Row>
                     <Row className="justify-content-center">
