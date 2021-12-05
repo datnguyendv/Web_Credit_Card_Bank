@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { cardApi } from "../../api/card-api";
 import { RootState } from "../../app/store";
 import { cardInfoDto } from "../home/home-dto";
 
@@ -34,6 +35,23 @@ export const initialState: cardLayout = {
     card:cardInit
 }
 
+export const lockCard = createAsyncThunk(
+    'LockCard/lock', async(cardId: number,  thunkApi) => {
+        let info = {
+            CardID: cardId,
+            StatusName: 'lock'
+        }
+        console.log(info);
+        let response: any = await cardApi.lockCard(info);
+        console.log(response);
+        if(response.statusCode >300 ) {
+            return thunkApi.rejectWithValue(response.message);
+        } else {
+            return response
+        }
+    })
+
+
 export const lockCardSlice = createSlice ({
     name:'LockCard',
     initialState,
@@ -46,22 +64,19 @@ export const lockCardSlice = createSlice ({
             state.screen = action.payload;
         },
     },
-    // extraReducers: (builder) => {
-    //     builder
-    //     .addCase(getCardInfo.pending, (state) => {
-    //         state.status = 'isLoading';
-    //     })
-    //     .addCase(getCardInfo.rejected, (state, action: PayloadAction<any>) => {
-    //         state.status = 'failed';
-    //         state.errMsg = action.payload;
-    //     })
-    //     .addCase(getCardInfo.fulfilled, (state, action: PayloadAction<any>) => {
-    //         state.status = 'idle';
-    //         state.cardInfo = action.payload;
-    //         //because set default is first card
-    //         state.card = state.cardInfo[0];
-    //     })
-    // }
+    extraReducers: (builder) => {
+        builder
+        .addCase(lockCard.pending, (state) => {
+            state.status = 'isLoading';
+        })
+        .addCase(lockCard.rejected, (state, action: PayloadAction<any>) => {
+            state.status = 'failed';
+            state.errMsg = action.payload;
+        })
+        .addCase(lockCard.fulfilled, (state, action: PayloadAction<any>) => {
+            state.status = 'idle';
+        })
+    }
 })
 
 export const { reducer, actions } = lockCardSlice;

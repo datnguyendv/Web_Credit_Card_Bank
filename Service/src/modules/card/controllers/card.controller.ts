@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { AdminJwtAuthGuard } from 'src/utils/guards/admin-jwt-auth.guard';
 import { JwtAuthGuard } from 'src/utils/guards/jwt-auth.guard';
-import { cardRequestDto, cardType } from '../dto/cardType.dto';
+import { cardRequestDto, CardSearchByIdDto, cardType, lockCardDto } from '../dto/cardType.dto';
 import { CardService } from '../services/card.service';
 
 @Controller('card')
@@ -30,6 +30,11 @@ export class CardController {
     @Get()
     async getAllCard(): Promise<any> {
         return this.cardService.getAllCard()
+    }
+
+    @Post('lock')
+    async lockCardService(@Body() request:lockCardDto): Promise<any> {
+        return this.cardService.lockCard(request);
     }
 
 }

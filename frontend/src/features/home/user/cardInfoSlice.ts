@@ -31,6 +31,7 @@ export const getCardInfo = createAsyncThunk(
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {
+            
             return response
         }
     }

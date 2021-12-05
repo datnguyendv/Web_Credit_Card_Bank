@@ -75,7 +75,7 @@ export interface registerFormRequestDto {
 }
 
 export interface cardCreatedStateDto {
-    isCreated: '' | true | false,
+    isCreated: string,
     status: 'idle' | "isLoading" | "failed",
     errMsg: string
 }

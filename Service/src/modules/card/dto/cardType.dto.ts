@@ -33,6 +33,10 @@ export type newCardDto = {
     CardStatus:number,
 }
 
-export type CardSearchByIdDto = {
+export interface CardSearchByIdDto  {
     CardID: number
+}
+
+export interface lockCardDto extends CardSearchByIdDto {
+    StatusName: string;
 }

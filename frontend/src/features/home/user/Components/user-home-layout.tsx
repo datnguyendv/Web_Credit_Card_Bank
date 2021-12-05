@@ -35,7 +35,7 @@ export const UserHomeLayout: React.FC = () => {
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn">
             <Col>
             <Row>
-                <h2 className= "header-bank-font">IU BANK</h2>
+                <h2 className= "header-bank-font mx-3 mb-2 mt-2">IU BANK</h2>
             </Row>
             <Row md = "1" lg = "1" xs="1" className = 'display-flex transform-body overflow-auto'>
                 <Col lg = "8" md="8" sm= "12" xs = "11" >
@@ -48,9 +48,10 @@ export const UserHomeLayout: React.FC = () => {
                             <img src={TranferImg} />
                             <p>Internal Transfer</p>
                         </Button>
-                        <Button className ="function-btn btn-home btn-grad-home m-4 border-0" >
-                            <img src={dimond} />
-                            <p>IUB Rewards</p>
+                        <Button className ="function-btn btn-home btn-grad-home m-4 border-0" 
+                        onClick = {() => movingLayout("addCard")}>
+                            <FontAwesomeIcon icon = {['fas', 'credit-card']} />
+                            <p>Create New Card</p>
                         </Button>
                         <Button className ="function-btn btn-home btn-grad-home m-4 border-0" 
                         onClick= {() => moveToPayment('external', 'payment')}>
@@ -69,7 +70,7 @@ export const UserHomeLayout: React.FC = () => {
                         </Button>
                     </Row>
                 </Col>
-                <Col lg = "12" md="12" sm= "12" xs = "11" className = "p-0" >
+                <Col lg = "12" md="12" sm= "12" xs = "12" className = "px-3" >
                     <div className = "hastag">
                         <p>Transfer</p>
                     </div>
@@ -102,6 +103,14 @@ export const UserHomeLayout: React.FC = () => {
                         <Button className ="btn-home m-4 btn-other" >
                             <img src ={qr} />
                             <p>Transfer by QR code</p>
+                        </Button>
+                        <Button className ="btn-home m-4 btn-other" >
+                            <FontAwesomeIcon icon ={['fas', 'gift']} />
+                            <p>Lucky gift</p>
+                        </Button>
+                        <Button className ="btn-home m-4 btn-other" >
+                            <FontAwesomeIcon icon ={['fas', 'virus-slash']} />
+                            <p>Covid Vaccine Fund</p>
                         </Button>
                     </Row>
                 </Col>

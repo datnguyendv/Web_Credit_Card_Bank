@@ -26,7 +26,7 @@ export const ChangePassForm: React.FC = () => {
     const dispatch = useAppDispatch();
 
     return(
-        <Container fluid className="container-center change-pass-bg">
+        <Container fluid className="container-center change-pass-bg p-0">
         <Row className = "display-flex  animate__animated animate__fadeIn">
             <Col lg = "6" md="8" sm= "10" xs = "11" className="margin-layout">
 

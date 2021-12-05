@@ -1,13 +1,13 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Field, Form, Formik } from 'formik';
-import React from 'react';
-import { Col, Container, InputGroup, InputGroupText, Row } from 'reactstrap';
+import React, { useEffect } from 'react';
+import { Col, Container, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import '../../css/App.css';
+import '../../css/auth.css';
 import { loginSchema } from '../form-validate/auth-validate';
 import { loginInfo, loginState } from './login-dto';
 import { loginFunction, selectLoginState } from './loginSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../css/App.css';
-import '../../css/auth.css'
 
 
 export const Login: React.FC = () => {
@@ -17,6 +17,11 @@ export const Login: React.FC = () => {
     }
     let loginStated:loginState = useAppSelector(selectLoginState);
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        sessionStorage.clear();
+            
+    }, [])
 
     return(
     <Container fluid className="container-center">

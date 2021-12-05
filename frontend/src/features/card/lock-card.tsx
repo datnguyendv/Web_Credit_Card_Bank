@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { cardInfoDto, listCardInfoDto } from '../home/home-dto';
 import { selectCardState } from '../home/user/cardInfoSlice';
 import { setUserHomeLayout } from '../home/user/userSlice';
-import { selectLockCardState, setCardToLock } from './lockCardSlice';
+import { lockCard, selectLockCardState, setCardToLock } from './lockCardSlice';
 
 export const LockCard: React.FC = () => {
     let cardRecent:cardInfoDto = useAppSelector(selectCardState).card;
@@ -13,8 +13,11 @@ export const LockCard: React.FC = () => {
     
 
     const onProcess = () => {
-        // dispatch();
+        let cardId = cardRecent.CardID;
+        dispatch(lockCard(cardId));
         dispatch(setUserHomeLayout('home'));
+        window.alert("your card was locked");
+        
     }
 
     useEffect(() => {

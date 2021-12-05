@@ -21,7 +21,7 @@ export const InternalPayment: React.FC = () => {
     const cardState = useAppSelector(selectCardState);
     console.log(cardState.cardInfo);
     const internalPaymentInfo: internalPaymentDto = {
-        CardSendId: `${cardState.cardInfo[0].CardID}` ,
+        CardSendId: `${cardState.card.CardID}` ,
         CardReceiveId: '',
         Balance: '',
         Description:descriptionInit,
@@ -35,7 +35,9 @@ export const InternalPayment: React.FC = () => {
         window.alert("The OTP was send to your mail");
         setSubmitBtnState(false);
     }
-
+    const testFunc = () => {
+        console.log("Test");
+    }
 
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn payment-transfer-background">
@@ -44,7 +46,8 @@ export const InternalPayment: React.FC = () => {
                     <h2 className= "background d-flex">IU BANK</h2>
                 </Row>
                 <Row md = "1" className = 'display-flex transform-body'>
-                    <Col lg = "7" md="7" sm= "12" xs = "11" >
+                    <Col lg = "7" md="7" sm= "11" xs = "11" >
+                        
                         <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {paymentState.errMsg? true: false} role="alert">
                             <p className = "font-weight-bold mx-3 err-msg" >{paymentState.errMsg}</p></Alert>
                         <Formik
@@ -67,16 +70,7 @@ export const InternalPayment: React.FC = () => {
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8">
                                         <div className={errors.CardSendId?" payment-input-group justify-content-end" : "payment-input-group justify-content-end" }>
-                                            <Field name="CardSendId" className ="payment-input-field" component="select">
-                                                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName === 'open') {
-                                                    return(
-                                                    <option 
-                                                    key = {card.CardID} 
-                                                    value = {card.CardID} 
-                                                    onChange = {() => dispatch(setOneCard(card.CardID))}>
-                                                    {card.CardID}
-                                                    </option>)
-                                                }})}
+                                            <Field name="CardSendId" className ="payment-input-field">
                                             </Field>
                                         </div>
                                     </Col>

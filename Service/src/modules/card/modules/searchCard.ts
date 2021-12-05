@@ -4,12 +4,14 @@ import { CardSearchByIdDto, cardType, typeCardToSearch } from '../dto/cardType.d
 import { CardRepository } from '../repositories/card.repository';
 import { Cards } from '../entities/card.entity';
 import { CardTypeRepository } from '../repositories/cardType.repository';
+import { CardStatusRepository } from '../repositories/cardStatus.repository';
 
 @Injectable()
 export class SearchCard {
     constructor(
         private cardRepository: CardRepository,
-        private cardTypeRepository: CardTypeRepository
+        private cardTypeRepository: CardTypeRepository,
+        private cardStatusRepo: CardStatusRepository,
     ) {}
 
     findCardTypeId(typeRequest: string) {
@@ -44,6 +46,10 @@ export class SearchCard {
         return await this.cardTypeRepository.find();
     }
 
+    async searchAllCardStatus(): Promise<any> {
+        return await this.cardStatusRepo.find();
+    }
+
     async searchAllUserCard(id: number): Promise<any> {
         let listCard: Cards[] = await this.cardRepository.find({
             where: {
@@ -52,6 +58,11 @@ export class SearchCard {
         });
         for (let i=0; i < listCard.length ; i++) {
             delete listCard[i].CVV;
+        }
+        for (let i =0; i < listCard.length; i++) {
+            if(listCard[i].CardStatus.StatusName === 'lock' || listCard[i].CardStatus.StatusName === 'fraud') {
+                listCard.splice(i,1);
+            }
         }
         return listCard;
     }
