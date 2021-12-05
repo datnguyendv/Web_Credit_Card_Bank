@@ -10,13 +10,14 @@ services:
     ports:
       - "3000:3000"
     restart: always
-    depend_on:
+    depends_on:
       - backend
     links:
       -backend
     volumes: 
       - ./frontend:/app
       - /app/node_modules
+
     command: 'yarn start'
 
   database:
