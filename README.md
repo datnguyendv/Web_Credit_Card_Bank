@@ -72,7 +72,7 @@ Docker-compose up -d
 
 -d is optional if you want to run in the background
 
-
+After running the application successfully, you can open Database folder and run all the mysql file for the example data
 
 ## Author
  [Nguyen Van Dat](https://github.com/Laughing6901)
