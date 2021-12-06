@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { typeCardToSearch } from "../dto/cardType.dto";
 import { CardRepository } from '../repositories/card.repository';
 import { SearchCard } from './searchCard';
@@ -48,8 +48,11 @@ export class CreateNewCard {
             CardType: cardTypeId,
             CardStatus: 1
         }
-        console.log(newCard);
         let result: any = await this.cardRepository.save(newCard);
-        return "done"
+        if(result !== undefined) {
+            return "done";
+        } else {
+            return undefined;
+        }
     }
 }

@@ -40,3 +40,16 @@ export interface CardSearchByIdDto  {
 export interface lockCardDto extends CardSearchByIdDto {
     StatusName: string;
 }
+
+export interface newAccountSendMail {
+    FirstName: string,
+    LastName: string,
+    UserName: string,
+    Email: string,
+    PhoneNumber: number, 
+    IdentifyCard: number, 
+    DateOfBirth: Date
+    CardID: number,
+    CurrentBalance: number,
+    DateOfExpired: string,
+}
