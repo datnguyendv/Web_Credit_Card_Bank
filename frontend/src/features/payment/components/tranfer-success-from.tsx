@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router';
-import { externalPaymentDto, internalPaymentDto } from '../payment-dto';
+import { useNavigate } from 'react-router';
+import { externalPaymentDto } from '../payment-dto';
 
 export const TransferSuccessFrom: React.FC<externalPaymentDto> = ({CardSendId, CardReceiveId, Balance, Bank, Description, OTP}) => {
     const navigate = useNavigate();

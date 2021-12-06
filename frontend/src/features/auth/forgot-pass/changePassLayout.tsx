@@ -1,16 +1,15 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router';
 import { Col, Container, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { LoadingScreen } from '../../waiting/loading-screen';
-import { changePassSchema, forgotSchema } from '../form-validate/auth-validate';
-import { changePass, changePassState, forgotPassDto } from './forgot-pass-dto';
-import { forgotPass, selectChangePassState, changePassword } from './forgotPassSlice';
 import '../../css/App.css';
-import '../../css/auth.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../css/auth.css';
 import { selectUserHomeState, setUserHomeLayout } from '../../home/user/userSlice';
+import { LoadingScreen } from '../../waiting/loading-screen';
+import { changePassSchema } from '../form-validate/auth-validate';
+import { changePass, changePassState } from './forgot-pass-dto';
+import { changePassword, selectChangePassState } from './forgotPassSlice';
 
 export const ChangePassForm: React.FC = () => {
     const accountInfo =useAppSelector(selectUserHomeState).accountInfo;
@@ -95,7 +94,6 @@ export const ChangePassForm: React.FC = () => {
 }
 
 export const SuccessChangePass: React.FC = () => {
-    let navigate = useNavigate();
     const dispatch = useAppDispatch()
 
     const processDone = () => {

@@ -1,12 +1,12 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { Login, Register } from './auth';
+import { Login } from './auth';
 import { decodeToken } from './auth/jwtProcess/decode-jwt';
 import { loginState } from './auth/login/login-dto';
 import { selectLoginState, setToken } from './auth/login/loginSlice';
 import { AdminHome } from './home/admin/admin-home';
-import {  UserHome } from './home/user/user-home';
+import { UserHome } from './home/user/user-home';
 import { LoadingScreen } from './waiting/loading-screen';
 
 export const RenderAuthen: React.FC<loginState> = ({token, status, errMsg, type}) => {

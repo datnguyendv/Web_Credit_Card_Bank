@@ -1,19 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Col, Row } from 'reactstrap';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { useAppDispatch } from '../../../../app/hooks';
 import '../../../css/header.css';
 import peopleImg from '../../../css/people-circle.png';
-import { selectCardState } from '../cardInfoSlice';
-import { selectUserHomeState, setUserHomeLayout } from '../userSlice';
+import { setAdminHomeLayout } from '../adminSlice';
 
-export const Header: React.FC = () => {
+export const AdminHeader: React.FC<{accountId:number}> = ({accountId}) => {
     let dispatch = useAppDispatch();
-    let accountInfo = useAppSelector(selectUserHomeState).accountInfo;
-    let card = useAppSelector(selectCardState);
-
+    
     const homeScreen = () => {
-        dispatch(setUserHomeLayout("Home"));
+        dispatch(setAdminHomeLayout("Home"));
     }
 
     const logout = () => {
@@ -52,41 +49,9 @@ export const Header: React.FC = () => {
                     <Col className = "text-center header-body-background">
                         <img className="people-img header-body-hint" src ={peopleImg} />
                         <p>hello</p>
-                        <h4 className = 'header-icon-color'>{accountInfo.LastName.toUpperCase()} {accountInfo.FirstName.toUpperCase()}</h4>
+                        <h4 className = 'header-icon-color'>ADMIN {accountId}</h4>
                         <p>the last login</p>
                         <p> - - - </p>
-                    </Col>
-                </Row>
-                <Row xs="1" className ="justify-content-center">
-                    <Col className = " header-body-background">
-                        <Row xs = "2">
-                            <Col xs ="9">
-                                <p className ="text-small header-icon-color bold">List of accounts/cards</p>
-                            </Col>
-                            <Col xs = "2">
-                                <p className ="text-small header-icon-color bold">Details</p>
-                            </Col>
-                            <Col xs ="6">
-                                <p className ="text-small header-icon-color bold">Account Id</p>
-                            </Col>
-                            <Col xs = "4">
-                                <p className ="text-small header-icon-color bold">{accountInfo.IdentifyCard}</p>
-                            </Col>
-                            <Col xs ="6">
-                                <p className ="text-small header-icon-color bold">Balance Number</p>
-                            </Col>
-                            <Col xs = "6">
-                                <p className ="text-right mx-4 text-small header-icon-color bold">{card.card.CurrentBalance} VND</p>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row xs="1" className ="justify-content-center">
-                    <Col className = "text-center header-body-background header-body-hint">
-                        <Col>
-                            <p className ="text-small header-icon-color bold">Customer services 24/7</p>
-                            <p className ="phone-text header-icon-color bold">1900 15 68 68</p>
-                        </Col>
                     </Col>
                 </Row>
             </Col>
