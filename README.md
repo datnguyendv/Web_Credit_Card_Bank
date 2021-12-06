@@ -36,8 +36,14 @@ BankingName requires [Node.js](https://nodejs.org/) v10+ to run.
 ```bash
 git clone https://github.com/Laughing6901/Web_Credit_Card_Bank.git
 ```
-There are 2 way to run this project: 
+
+After clone code successfully you need to create new two file .env (first in service folder and second in frontend folder) and config them as you want with the variable sample on .env.example.
+
+when you done all config file, there are 2 way to run this project: 
+
 First way:
+
+__Notice__ : before running the app following this way you need mysql database server
 
 Frontend:
 
@@ -57,6 +63,16 @@ yarn start
 
 The second way:
 You can run this project on docker by using docker compose
+
+After clone source code, you need to run
+
+```bash
+Docker-compose up -d
+```
+
+-d is optional if you want to run in the background
+
+
 
 ## Author
  [Nguyen Van Dat](https://github.com/Laughing6901)
