@@ -50,7 +50,7 @@ export class CreateNewCard {
         }
         let result: any = await this.cardRepository.save(newCard);
         if(result !== undefined) {
-            return "done";
+            return newCard;
         } else {
             return undefined;
         }

@@ -13,12 +13,15 @@ import '../../css/App.css';
 import '../../css/payment-form.css';
 
 
+
 export const InternalPayment: React.FC = () => {
     const account = useAppSelector(selectUserHomeState).accountInfo;
     let descriptionInit = `${account.LastName} ${account.FirstName} transfer` ;
     const mailState = useAppSelector(selectSendMailState);
     const paymentState = useAppSelector(selectPaymentState);
-    const cardState = useAppSelector(selectCardState);
+    let cardState = useAppSelector(selectCardState);
+    console.log(cardState.card);
+
     console.log(cardState.cardInfo);
     const internalPaymentInfo: internalPaymentDto = {
         CardSendId: `${cardState.card.CardID}` ,
@@ -30,13 +33,17 @@ export const InternalPayment: React.FC = () => {
     const [submitBtnState, setSubmitBtnState] = useState<boolean>(true);
     const dispatch = useAppDispatch();
 
+    const test =() => {
+        console.log("test");
+    }
+
     const processOtp= () => {
         dispatch(sendMailFunc(account.IdentifyCard));
         window.alert("The OTP was send to your mail");
         setSubmitBtnState(false);
     }
-    const testFunc = () => {
-        console.log("Test");
+    const testFunc = (sel:any) => {
+        console.log("Test", sel);
     }
 
     return (
@@ -61,16 +68,24 @@ export const InternalPayment: React.FC = () => {
                             } else 
                                 dispatch(setErrMsg('wrong otp'));
                         }}>
-                        {({errors, touched}) => (
+                        {({errors, touched,handleChange}) => (
                             <Form>
-
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
                                     <Col xs ="12" sm ="4" lg="4">
                                         <p className = "mx-3 font-payment ">Account</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8">
                                         <div className={errors.CardSendId?" payment-input-group justify-content-end" : "payment-input-group justify-content-end" }>
-                                            <Field name="CardSendId" className ="payment-input-field">
+                                            <Field name="CardSendId" className ="payment-input-field" component="select">
+                                                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName === 'open') {
+                                                     return(
+                                                     <option 
+                                                     key = {card.CardID} 
+                                                     value = {card.CardID} 
+                                                     >
+                                                     {card.CardID}
+                                                     </option>)
+                                                 }})}
                                             </Field>
                                         </div>
                                     </Col>

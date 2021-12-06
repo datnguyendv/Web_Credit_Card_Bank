@@ -1,16 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Button, Col, Row } from 'reactstrap';
+import { Button, Col, Input, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import '../../../css/header.css';
 import { selectUserHomeState, setUserHomeLayout } from '../userSlice';
 import peopleImg from  '../../../css/people-circle.png'
-import { selectCardState } from '../cardInfoSlice';
+import { selectCardState, setOneCard } from '../cardInfoSlice';
 
 export const Header: React.FC = () => {
     let dispatch = useAppDispatch();
     let accountInfo = useAppSelector(selectUserHomeState).accountInfo;
-    let card = useAppSelector(selectCardState).card;
+    let card = useAppSelector(selectCardState);
 
     const homeScreen = () => {
         dispatch(setUserHomeLayout("Home"));
@@ -66,17 +66,17 @@ export const Header: React.FC = () => {
                             <Col xs = "2">
                                 <p className ="text-small header-icon-color bold">Details</p>
                             </Col>
-                            <Col xs ="8">
+                            <Col xs ="6">
                                 <p className ="text-small header-icon-color bold">Account Id</p>
                             </Col>
-                            <Col xs = "3">
+                            <Col xs = "4">
                                 <p className ="text-small header-icon-color bold">{accountInfo.IdentifyCard}</p>
                             </Col>
                             <Col xs ="6">
                                 <p className ="text-small header-icon-color bold">Balance Number</p>
                             </Col>
                             <Col xs = "6">
-                                <p className ="text-right mx-4 text-small header-icon-color bold">{card.CurrentBalance} VND</p>
+                                <p className ="text-right mx-4 text-small header-icon-color bold">{card.card.CurrentBalance} VND</p>
                             </Col>
                         </Row>
                     </Col>
