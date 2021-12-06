@@ -7,7 +7,6 @@ import { selectListAllCard } from '../allCardSlice';
 export const ViewAllCard :React.FC = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const listCard = useAppSelector(selectListAllCard);
-    console.log(listCard.listCard);
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn admin-bg">
             <Col className="margin-layout">

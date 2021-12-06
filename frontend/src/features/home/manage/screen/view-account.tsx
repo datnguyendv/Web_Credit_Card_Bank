@@ -1,14 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import { useAppSelector } from '../../../../app/hooks';
 import { selectListAllAccount } from '../allAccountSlice';
-import { selectListAllCard } from '../allCardSlice';
 
 export const ViewAllAccount :React.FC = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const listAccount = useAppSelector(selectListAllAccount);
-    console.log("Account:", listAccount.listAccount);
     
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn admin-bg">

@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Button, Col, Input, Row } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import '../../../css/header.css';
+import peopleImg from '../../../css/people-circle.png';
+import { selectCardState } from '../cardInfoSlice';
 import { selectUserHomeState, setUserHomeLayout } from '../userSlice';
-import peopleImg from  '../../../css/people-circle.png'
-import { selectCardState, setOneCard } from '../cardInfoSlice';
 
 export const Header: React.FC = () => {
     let dispatch = useAppDispatch();

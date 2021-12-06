@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Field, Form, Formik } from 'formik';
+import React, { useState } from 'react';
+import { Alert, Col, Input, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { internalPaymentDto } from '../payment-dto';
-import { InternalFormValidate } from '../form-validate';
-import { selectSendMailState, sendMailFunc } from '../../sendmail/sendMailSlice';
-import { selectUserHomeState } from '../../home/user/userSlice';
-import { internalTransfer, selectPaymentState, setErrMsg } from '../paymentSlice';
-import { Alert, Col, Row, Input } from 'reactstrap';
-import { selectCardState, setOneCard } from '../../home/user/cardInfoSlice';
-import '../../css/auth.css';
 import '../../css/App.css';
+import '../../css/auth.css';
 import '../../css/payment-form.css';
+import { selectCardState } from '../../home/user/cardInfoSlice';
+import { selectUserHomeState } from '../../home/user/userSlice';
+import { selectSendMailState, sendMailFunc } from '../../sendmail/sendMailSlice';
+import { InternalFormValidate } from '../form-validate';
+import { internalPaymentDto } from '../payment-dto';
+import { internalTransfer, selectPaymentState, setErrMsg } from '../paymentSlice';
 
 
 
@@ -32,11 +32,7 @@ export const InternalPayment: React.FC = () => {
     }
     const [submitBtnState, setSubmitBtnState] = useState<boolean>(true);
     const dispatch = useAppDispatch();
-
-    const test =() => {
-        console.log("test");
-    }
-
+    
     const processOtp= () => {
         dispatch(sendMailFunc(account.IdentifyCard));
         window.alert("The OTP was send to your mail");

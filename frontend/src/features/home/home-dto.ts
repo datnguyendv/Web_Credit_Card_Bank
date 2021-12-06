@@ -106,6 +106,17 @@ export type loginHisDto = {
 
 export type listLoginHistory = loginHisDto[];
 
+export type paymentTypeDto = {
+    PaymentTypeID: number,
+    PaymentFee: number,
+    TypeName: string,
+}
+
+export type paymentStatusDto = {
+    PaymentStatusID: number,
+    StatusName: string
+}
+
 export type paymentHisInfoDto= {
     PaymentID: number,
     Amounts: number,
@@ -113,7 +124,9 @@ export type paymentHisInfoDto= {
     Location: string,
     Time: string,
     Date: string,
-    Card: cardInfoDto
+    Card: cardInfoDto,
+    PaymentType: paymentTypeDto,
+    PaymentStatus:paymentStatusDto
 }
 
 export type loginHistoryStateDto = {

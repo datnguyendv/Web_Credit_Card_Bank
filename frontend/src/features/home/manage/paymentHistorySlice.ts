@@ -12,6 +12,7 @@ export const initialState: listPaymentHistoryStateDto = {
 export const getAllPaymentHis = createAsyncThunk(
     "PaymentHistory/getAllPaymentHis", async(state:any, thunkApi) => {
         let response: any = await homeApi.getAllPayment();
+        console.log(response);
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {

@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import { useAppSelector } from '../../../../app/hooks';
-import { selectListAllCard } from '../allCardSlice';
 import { selectLoginHistory } from '../loginHistorySlice';
 
 export const ViewAllLoginHistory :React.FC = () => {

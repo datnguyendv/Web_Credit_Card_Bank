@@ -12,6 +12,7 @@ import { getAllPaymentHis } from '../manage/paymentHistorySlice';
 import { ViewAllAccount } from '../manage/screen/view-account';
 import { ViewAllCard } from '../manage/screen/view-card';
 import { ViewAllLoginHistory } from '../manage/screen/view-loginHis';
+import { ViewAllPayment } from '../manage/screen/view-payment';
 import { selectAdminHomeState, setAdminHomeLayout } from './adminSlice';
 import { AdminHeader } from './Components/admin-header';
 import { AdminLayout } from './Components/admin-layout';
@@ -29,8 +30,8 @@ export const AdminHomeHandleLayout: React.FC<layoutInit> = ({Layout}) => {
             return(<ViewAllCard />)
         case 'loginHis': 
             return(<ViewAllLoginHistory />)
-        // case "payment": 
-        //     return (<UserHomeLayout />)
+        case "payment": 
+            return (<ViewAllPayment />)
         case 'createNewAccount': 
             return(<RegisterLayout />)
         default:
@@ -45,14 +46,13 @@ export const AdminHome: React.FC = () => {
     const layout = useAppSelector(selectAdminHomeState).layout;
     const accountId:number = parseInt(decodeToken.getIdFromJwt(token));
     let navigate = useNavigate();
-    console.log(accountId);
     
     useEffect(() => {
+        dispatch(setAdminHomeLayout('Home'));
         dispatch(getAllLoginHis(""));
         dispatch(getAllPaymentHis(""));
         dispatch(getAllCard(""));
         dispatch(getAllAccount(""));
-        dispatch(setAdminHomeLayout('Home'));
     }, [])
     return (
         <Container fluid className="container-center">

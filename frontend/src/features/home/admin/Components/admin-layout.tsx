@@ -34,7 +34,7 @@ export const AdminLayout: React.FC = () => {
                     </Row>
                     <Row className="justify-content-center">
                         <Button className ="function-btn btn-home btn-grad-home m-4 border-0" 
-                         onClick= {() => movingLayout('internal')}>
+                         onClick= {() => movingLayout('payment')}>
                             <img src={TranferImg} />
                             <p>Transaction history</p>
                         </Button>
@@ -64,7 +64,7 @@ export const AdminLayout: React.FC = () => {
                 <Col lg = "8" md="8" sm= "12" xs = "11" className = "mb-4" >
                     <Row className="justify-content-center ">
                         <Button className ="btn-home m-4 btn-other" 
-                        onClick= {() => movingLayout('internal')}>
+                        onClick= {() => movingLayout('payment')}>
                             <img src={TranferImg} />
                             <p>Transaction history</p>
                         </Button>

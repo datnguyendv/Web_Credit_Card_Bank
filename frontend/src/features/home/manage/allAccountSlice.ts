@@ -11,7 +11,7 @@ export const initialState: listAccountDto= {
 }
 
 export const getAllAccount = createAsyncThunk(
-    "ListCard/getListCard", async(state:any, thunkApi) => {
+    "ListAccount/getListAccount", async(state:any, thunkApi) => {
         let response: any = await homeApi.getAllAccount();
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
@@ -40,7 +40,6 @@ export const allAccountInfoSlice = createSlice({
         .addCase(getAllAccount.fulfilled, (state, action:PayloadAction<any>) => {
             state.status = 'idle';
             state.listAccount = action.payload;
-            console.log(state.listAccount);
         })
     }
 
