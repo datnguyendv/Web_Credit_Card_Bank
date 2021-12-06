@@ -1,6 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { decodeJwtDto, loginInfo } from '../login/login-dto';
-import { initialState } from '../login/loginInfoSlice';
+import { decodeJwtDto } from '../login/login-dto';
 
 export const decodeToken = {
     jwtDecodeTypeFunc: (token: string) => {
@@ -11,7 +10,6 @@ export const decodeToken = {
     checkExpToken: (extoken:string) => {
         let tokenDecoded:decodeJwtDto = jwt_decode(extoken);
         let dateExp = Date.now();
-        let loginInfo: loginInfo = initialState;
         console.log("token is expired?: ", dateExp > (tokenDecoded.exp * 1000));
         if(dateExp > tokenDecoded.exp* 1000) {
         //return true mean that token is expired        

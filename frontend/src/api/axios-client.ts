@@ -23,7 +23,7 @@ axiosClient.interceptors.request.use(async (config) => {
     const token:any = sessionStorage.getItem("token");
     if(token !== null){
         if(decodeToken.checkExpToken(token) === false) {
-            config. headers = {
+            config.headers = {
                 Authorization: 'Bearer ' + sessionStorage.getItem("token"),
             }
         }

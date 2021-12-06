@@ -2,7 +2,8 @@
 import React from 'react';
 import { Navigate } from 'react-router';
 import { Register } from '..';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { setAdminHomeLayout } from '../../home/admin/adminSlice';
 import { LoadingScreen } from '../../waiting/loading-screen';
 import { selectAccountCreatedState } from './accCreateSlice';
 import { selectAccountExistedState } from './accountExistedSlice';
@@ -10,6 +11,7 @@ import { selectCardCreatedState } from './cardCreateSlice';
 import { accountRegisterStateDto, cardCreatedStateDto, registerLayout, registerStateDto } from './register-dto';
 
 export const RenderRegisterLayout: React.FC<registerLayout> = ({accountExisted, accountCreated, cardCreated}) => {
+    let dispatch = useAppDispatch();
     if(accountCreated.status === 'isLoading' || accountExisted.status === 'isLoading' || cardCreated.status === 'isLoading') {
         return (
             <LoadingScreen/>
@@ -21,6 +23,8 @@ export const RenderRegisterLayout: React.FC<registerLayout> = ({accountExisted, 
             <Register errMsg = {errMsg}/>
         )
     } else if(accountCreated.token !== '' && accountExisted.isExisted !== '' && cardCreated.isCreated !== '') {
+        dispatch(setAdminHomeLayout('Home'));
+        window.alert("account was sent to email register")
         return (
             <Navigate to ='/' replace = {true}/>
             )   

@@ -12,7 +12,7 @@ export const initialState: fullCardStateDto= {
 
 export const getAllCard = createAsyncThunk(
     "ListCard/getListCard", async(state:any, thunkApi) => {
-        let response: any = await homeApi.getAllLoginHis();
+        let response: any = await homeApi.getAllCard();
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {

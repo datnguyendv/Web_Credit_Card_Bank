@@ -1,6 +1,6 @@
-import { loginInfo } from "./login-dto";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../../app/store";
+import { loginInfo } from "./login-dto";
 
 export const initialState: loginInfo = {
     UserName: '',

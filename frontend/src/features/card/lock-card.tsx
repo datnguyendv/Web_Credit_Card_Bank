@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import { Row, Col } from 'reactstrap';
+import React, { useEffect } from 'react';
+import { Col, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { cardInfoDto, listCardInfoDto } from '../home/home-dto';
+import { cardInfoDto } from '../home/home-dto';
 import { selectCardState } from '../home/user/cardInfoSlice';
 import { setUserHomeLayout } from '../home/user/userSlice';
 import { lockCard, selectLockCardState, setCardToLock } from './lockCardSlice';

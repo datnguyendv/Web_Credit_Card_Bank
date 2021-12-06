@@ -1,22 +1,21 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Button, Carousel, CarouselCaption, CarouselIndicators, CarouselItem, Col, Row } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
+import { useAppDispatch } from '../../../../app/hooks';
 import '../../../css/App.css';
 import '../../../css/auth.css';
-import '../../../css/register.css';
-import '../../../css/home.css';
-import TranferImg from '../../../css/transfer.png';
-import dimond from '../../../css/diamond.png';
-import quick from '../../../css/Group 8.png';
+import bank from '../../../css/bank.png';
+import saveMoney from '../../../css/coin-bag-line.png';
 import Cash from '../../../css/Group 10.png';
 import transtatus from '../../../css/Group 11.png';
-import saveMoney from '../../../css/coin-bag-line.png';
+import quick from '../../../css/Group 8.png';
+import '../../../css/home.css';
 import qr from '../../../css/qr-scanner.png';
-import bank from '../../../css/bank.png';
-import { useAppDispatch } from '../../../../app/hooks';
-import { setPaymentLayout } from '../../../payment/paymentLayoutSlice';
+import '../../../css/register.css';
+import TranferImg from '../../../css/transfer.png';
 import { Layout } from '../../../payment/payment-dto';
+import { setPaymentLayout } from '../../../payment/paymentLayoutSlice';
 import { setUserHomeLayout } from '../userSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { HomeCarousel } from './Carousel';
 
 export const UserHomeLayout: React.FC = () => {
@@ -35,11 +34,11 @@ export const UserHomeLayout: React.FC = () => {
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn">
             <Col>
             <Row>
-                <h2 className= "header-bank-font mx-3 mb-2 mt-2">IU BANK</h2>
+                <h2 className= "hint header-bank-font mx-3 mb-2 mt-2">IU BANK</h2>
             </Row>
             <Row md = "1" lg = "1" xs="1" className = 'display-flex transform-body overflow-auto'>
                 <Col lg = "8" md="8" sm= "12" xs = "11" >
-                    <Row>
+                    <Row className ="hint">
                             <HomeCarousel/>
                     </Row>
                     <Row className="justify-content-center">

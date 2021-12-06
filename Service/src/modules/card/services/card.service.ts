@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { cardRequestDto, CardSearchByIdDto, cardType, lockCardDto, typeCardToSearch } from '../dto/cardType.dto';
+import { cardRequestDto, CardSearchByIdDto, cardType, lockCardDto, newAccountSendMail, typeCardToSearch } from '../dto/cardType.dto';
 import { CreateNewCard, SearchCard } from '../modules';
 import { findUserDto } from 'src/modules/account/dto/account.dto';
 import { AccountService } from 'src/modules/account/services/account.service';
@@ -38,13 +38,24 @@ export class CardService {
             throw new BadRequestException("Card Existed");
         } else {
             let result:any = await this.createNewCard.createNewCard(findCard);
-            return result;
-            // if (result !== "false") {
-                // let {Password, AccountId, UserName, ...userSendMail} = UserRes;
-                // let {CVV, Account, ...cardSendMail} = result;
-                // return await this.sendMail.sendNewUser(userSendMail, cardSendMail);
-            // } else {
-                // throw new BadRequestException("failed to create");
+            if(result == undefined) {
+                throw new BadRequestException("failed");
+            } else {
+                let infoSendMail:newAccountSendMail = {
+                    FirstName: UserRes.FirstName,
+                    LastName: UserRes.LastName,
+                    UserName: UserRes.UserName,
+                    Email: UserRes.Email,
+                    PhoneNumber: UserRes.PhoneNumber, 
+                    IdentifyCard: UserRes.IdentifyCard, 
+                    DateOfBirth: UserRes.DateOfBirth,
+                    CardID: result.CardID,
+                    CurrentBalance: result.CurrentBalance,
+                    DateOfExpired: result.DateOfExpired,
+                }
+                await this.sendMail.sendNewUser(infoSendMail);
+                return "done"    
+            }
         }
     }
 

@@ -56,3 +56,8 @@
    font-size: 1.8rem;
    color: white;
 }
+@media screen and (max-device-width: 584px) {
+.hint {
+   display: none;
+}
+}

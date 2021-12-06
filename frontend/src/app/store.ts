@@ -15,6 +15,8 @@ import listCardReducer from '../features/home/manage/allCardSlice';
 import listPaymentReducer from '../features/home/manage/paymentHistorySlice';
 import changePassReducer from '../features/auth/forgot-pass/forgotPassSlice';
 import lockCardReducer from '../features/card/lockCardSlice';
+import adminHomeReducer from '../features/home/admin/adminSlice';
+import listAccountReducer from '../features/home/manage/allAccountSlice';
 
 export const store = configureStore({
   reducer: {
@@ -34,6 +36,8 @@ export const store = configureStore({
     paymentHistoryState: listPaymentReducer,
     changePasswordState: changePassReducer,
     lockCardState: lockCardReducer,
+    adminHomeState: adminHomeReducer,
+    listAccountState: listAccountReducer,
   },
 });
 

@@ -29,6 +29,11 @@ export type userInfoStateDto = {
     errMsg: string,
     accountInfo: userInfoDto
 };
+export type adminInfoStateDto = {
+    layout: 'loginHis' | 'payment' | 'card' | 'Home' | 'account' | 'createNewAccount',
+    status: 'idle' | 'isLoading' | 'failed',
+    errMsg: string,
+};
 
 export type cardTypeDto = {
     CardTypeId: number,
@@ -78,6 +83,12 @@ export type accountInfoDto = {
     Address?: string,
 };
 
+export type listAccountDto = {
+    listAccount: accountInfoDto[],
+    errMsg:string,
+    status: 'idle' | 'isLoading' | 'failed',
+}
+
 export type loginHisStatusDto = {
     StatusID: number,
     StatusName: string,
@@ -95,6 +106,17 @@ export type loginHisDto = {
 
 export type listLoginHistory = loginHisDto[];
 
+export type paymentTypeDto = {
+    PaymentTypeID: number,
+    PaymentFee: number,
+    TypeName: string,
+}
+
+export type paymentStatusDto = {
+    PaymentStatusID: number,
+    StatusName: string
+}
+
 export type paymentHisInfoDto= {
     PaymentID: number,
     Amounts: number,
@@ -102,7 +124,9 @@ export type paymentHisInfoDto= {
     Location: string,
     Time: string,
     Date: string,
-    Card: cardInfoDto
+    Card: cardInfoDto,
+    PaymentType: paymentTypeDto,
+    PaymentStatus:paymentStatusDto
 }
 
 export type loginHistoryStateDto = {
