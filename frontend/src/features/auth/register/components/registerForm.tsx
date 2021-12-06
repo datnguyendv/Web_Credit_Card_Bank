@@ -149,11 +149,11 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         <p className = "mx-3 font-payment ">Date Of Birth</p>
                                     </Col>
                                     <Col>
-                                        <Field name="day" className="select-option" component="select">
+                                        <Field name="day" className="select-option mr-2" component="select">
                                             {day.map(i => <option key={i} value={i} >{i}</option>)}
                                         </Field>
 
-                                        <Field name="month" component="select" className="select-option">
+                                        <Field name="month" component="select" className="select-option mr-2">
                                             {month.map(i => <option  key={i} value={i} >{i}</option>)}
                                         </Field>
 

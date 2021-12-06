@@ -83,6 +83,12 @@ export type accountInfoDto = {
     Address?: string,
 };
 
+export type listAccountDto = {
+    listAccount: accountInfoDto[],
+    errMsg:string,
+    status: 'idle' | 'isLoading' | 'failed',
+}
+
 export type loginHisStatusDto = {
     StatusID: number,
     StatusName: string,

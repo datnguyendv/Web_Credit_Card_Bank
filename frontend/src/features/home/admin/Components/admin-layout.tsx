@@ -44,12 +44,12 @@ export const AdminLayout: React.FC = () => {
                             <p>Create New User</p>
                         </Button>
                         <Button className ="function-btn btn-home btn-grad-home m-4 border-0" 
-                        onClick = {() => movingLayout("addCard")}>
+                        onClick = {() => movingLayout("account")}>
                             <FontAwesomeIcon icon = {['fas', 'credit-card']} />
                             <p>User Infomation</p>
                         </Button>
                         <Button className ="function-btn btn-home btn-grad-home m-4 border-0" 
-                        onClick= {() => movingLayout('external')}>
+                        onClick= {() => movingLayout('loginHis')}>
                             <img src ={transtatus} />
                             <p>Login History</p>
                         </Button>
@@ -69,7 +69,7 @@ export const AdminLayout: React.FC = () => {
                             <p>Transaction history</p>
                         </Button>
                         <Button className ="btn-home m-4 btn-other" 
-                        onClick= {() => movingLayout('external')}>
+                        onClick= {() => movingLayout('card')}>
                             <img src={quick} />
                             <p>card Information</p>
                         </Button>
@@ -78,7 +78,8 @@ export const AdminLayout: React.FC = () => {
                             <img src={bank} />
                             <p>Banking system</p>
                         </Button>
-                        <Button className ="btn-home m-4 btn-other" >
+                        <Button className ="btn-home m-4 btn-other"
+                        onClick={()=> movingLayout("account")} >
                             <FontAwesomeIcon icon = {['fas', 'credit-card']} />
                             <p>User Infomation</p>
                         </Button>

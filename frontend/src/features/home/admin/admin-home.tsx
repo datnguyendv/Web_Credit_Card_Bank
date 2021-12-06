@@ -5,9 +5,13 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { decodeToken } from '../../auth/jwtProcess/decode-jwt';
 import { selectLoginState } from '../../auth/login/loginSlice';
 import { RegisterLayout } from '../../auth/register/RegisterLayout';
+import { getAllAccount } from '../manage/allAccountSlice';
 import { getAllCard } from '../manage/allCardSlice';
 import { getAllLoginHis } from '../manage/loginHistorySlice';
 import { getAllPaymentHis } from '../manage/paymentHistorySlice';
+import { ViewAllAccount } from '../manage/screen/view-account';
+import { ViewAllCard } from '../manage/screen/view-card';
+import { ViewAllLoginHistory } from '../manage/screen/view-loginHis';
 import { selectAdminHomeState, setAdminHomeLayout } from './adminSlice';
 import { AdminHeader } from './Components/admin-header';
 import { AdminLayout } from './Components/admin-layout';
@@ -17,14 +21,14 @@ interface  layoutInit{
 } 
 export const AdminHomeHandleLayout: React.FC<layoutInit> = ({Layout}) => {
     switch (Layout) {
-        // case 'account': 
-        //     return (
-        //     <PaymentLayout />
-        //     )
-        // case 'card': 
-        //     return(<LockCard />)
-        // case 'loginHis': 
-        //     return(<ChangePassLayout />)
+        case 'account': 
+            return (
+            <ViewAllAccount />
+            )
+        case 'card': 
+            return(<ViewAllCard />)
+        case 'loginHis': 
+            return(<ViewAllLoginHistory />)
         // case "payment": 
         //     return (<UserHomeLayout />)
         case 'createNewAccount': 
@@ -47,6 +51,7 @@ export const AdminHome: React.FC = () => {
         dispatch(getAllLoginHis(""));
         dispatch(getAllPaymentHis(""));
         dispatch(getAllCard(""));
+        dispatch(getAllAccount(""));
         dispatch(setAdminHomeLayout('Home'));
     }, [])
     return (

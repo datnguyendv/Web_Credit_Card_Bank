@@ -29,5 +29,9 @@ export const homeApi = {
     getAllCard: () => {
         let url = `${REACT_APP_CARD}`;
         return axiosClient.get(url);
+    },
+    getAllAccount: () => {
+        let url = `${REACT_APP_ACCOUNT}`;
+        return axiosClient.get(url);
     }
 }
