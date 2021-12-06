@@ -74,6 +74,12 @@ Docker-compose up -d
 
 After running the application successfully, you can open Database folder and run all the mysql file for the example data
 
+Now, you go to your terminal or powershell and get you ip address and then you can go to chrome or any browser and use with /3000.
+
+For example: my ip address is: 192.168.78.1
+
+In chrome i type: 192.198.78.1/3000 
+
 ## Author
  [Nguyen Van Dat](https://github.com/Laughing6901)
 
