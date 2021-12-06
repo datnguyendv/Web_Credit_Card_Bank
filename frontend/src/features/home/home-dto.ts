@@ -29,6 +29,11 @@ export type userInfoStateDto = {
     errMsg: string,
     accountInfo: userInfoDto
 };
+export type adminInfoStateDto = {
+    layout: 'loginHis' | 'payment' | 'card' | 'Home' | 'account' | 'createNewAccount',
+    status: 'idle' | 'isLoading' | 'failed',
+    errMsg: string,
+};
 
 export type cardTypeDto = {
     CardTypeId: number,
