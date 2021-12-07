@@ -39,9 +39,9 @@ git clone https://github.com/Laughing6901/Web_Credit_Card_Bank.git
 
 After clone code successfully you need to create new two file .env (first in service folder and second in frontend folder) and config them as you want with the variable sample on .env.example.
 
-when you done all config file, there are 2 way to run this project: 
+when you done all config file, there are 3 way to run this project: 
 
-First way:
+##### First way:
 
 __Notice__ : before running the app following this way you need mysql database server
 
@@ -61,7 +61,8 @@ npm i
 yarn start
 ```
 
-The second way:
+##### The second way:
+
 You can run this project on docker by using docker compose
 
 After clone source code, you need to run
@@ -72,13 +73,37 @@ Docker-compose up -d
 
 -d is optional if you want to run in the background
 
-After running the application successfully, you can open Database folder and run all the mysql file for the example data
-
-Now, you go to your terminal or powershell and get you ip address and then you can go to chrome or any browser and use with /3000.
 
 For example: my ip address is: 192.168.78.1
 
 In chrome i type: 192.198.78.1/3000 
+
+##### Third way: 
+
+Firstly, pull all image from [DockerHub]
+On terminal or powershell 
+
+```bash
+docker pull laughing6901/hcmiu-se-project:db
+
+docker pull laughing6901/hcmiu-se-project:backend
+
+docker pull laughing6901/hcmiu-se-project:web
+```
+
+After pull all images, you need to run image following this step
+
+```bash
+docker run --name hcmiu_se_db laughing6901/hcmiu-se-project:db
+
+docker run --name hcmiu_se_db laughing6901/hcmiu-se-project:backend 
+
+docker run --name hcmiu_se_db laughing6901/hcmiu-se-project:web
+```
+
+After running the application successfully, you can open Database folder and run all the mysql file for the example data
+
+Now, you go to your terminal or powershell and get you ip address and then you can go to chrome or any browser and use with /3000.
 
 ## Author
  [Nguyen Van Dat](https://github.com/Laughing6901)
@@ -111,3 +136,4 @@ MIT
    [Docker]: <https://www.docker.com>
    [ReactRouter]: <https://reactrouter.com>
    [TypeORM]: <https://typeorm.io/#/>
+   [DockerHub]: <https://hub.docker.com/repository/docker/laughing6901/hcmiu-se-project>
