@@ -17,6 +17,7 @@ export const ChangePassForm: React.FC = () => {
         ID:accountInfo.IdentifyCard,
         PhoneNumber: accountInfo.PhoneNumber,
         Email: accountInfo.Email,
+        OldPassword:'',
         Password: '',
         //this mean confirm password
         NewPassword: ''
@@ -40,13 +41,26 @@ export const ChangePassForm: React.FC = () => {
                     initialValues={forgotPassInfo}
                     validationSchema={changePassSchema}
                     onSubmit={(values, actions) => {
-                    // loginFunction(values);
+                    
                     dispatch(changePassword(values));
                     }}>
                         {({errors, touched}) => (
                             <Form>
                                 <p className ="font">Set your new password! There must be more than 8 characters for password.</p>
                                 <p className ="reset-margin err-msg">{changePassState.errMsg}</p>
+                                <Row xs = "2" sm ="2" className ="display-flex center-text">
+                                    <Col xs ="11" sm ="10" lg="9">
+                                        <div className= "regis-err-msg">
+                                            {errors && touched.OldPassword ? (<div>{errors.OldPassword}</div>): null}
+                                        </div>
+                                        <div className={errors.OldPassword?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
+                                            <div className= "input-icons">
+                                                <FontAwesomeIcon icon={['fas', 'lock']} />
+                                            </div>
+                                            <Field id="OldPassword" name="OldPassword" type="password" className="input-field" placeholder="Enter your recent password" />
+                                        </div>
+                                    </Col>
+                                </Row>
                                 <Row xs = "2" sm ="2" className ="display-flex center-text">
                                     <Col xs ="11" sm ="10" lg="9">
                                         <div className= "regis-err-msg">

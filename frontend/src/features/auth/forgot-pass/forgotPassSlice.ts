@@ -28,21 +28,26 @@ export const forgotPass = createAsyncThunk(
 
 export const changePassword = createAsyncThunk(
     'ChangePass/changePass', async(params: changePass, thunkApi) => {
-        if(params.Password === params.NewPassword) {
-            let forgotInfoRequest: changePassDto = {
-                PhoneNumber: Number(params.PhoneNumber),
-                ID: Number(params.ID),
-                Email: params.Email,
-                NewPassword: params.Password,
-                Status: 'Change Password'
-            }
-            let response: any = await loginApi.changePassword(forgotInfoRequest);
-            if (response.statusCode >300) {
-                return thunkApi.rejectWithValue(response.message);
-            }
-            return response;
+        if(params.OldPassword !== params.Password) {
+            console.log('we are there');
+            return thunkApi.rejectWithValue("wrong password recent");
         } else {
-            return thunkApi.rejectWithValue("wrong password");
+            if(params.Password === params.NewPassword) {
+                let forgotInfoRequest: changePassDto = {
+                    PhoneNumber: Number(params.PhoneNumber),
+                    ID: Number(params.ID),
+                    Email: params.Email,
+                    NewPassword: params.Password,
+                    Status: 'Change Password'
+                }
+                let response: any = await loginApi.changePassword(forgotInfoRequest);
+                if (response.statusCode >300) {
+                    return thunkApi.rejectWithValue(response.message);
+                }
+                return response;
+            } else {
+                return thunkApi.rejectWithValue("wrong password");
+            }
         }
     }
 )

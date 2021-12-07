@@ -57,6 +57,10 @@ export const forgotSchema = yup.object().shape({
 })
 
 export const changePassSchema = yup.object().shape({
+    OldPassword: yup.string()
+    .min(7, 'Too Short')
+    .max(20, 'Too Long')
+    .required('Required'),
     Password: yup.string()
     .min(7, 'Too Short')
     .max(20, 'Too Long')

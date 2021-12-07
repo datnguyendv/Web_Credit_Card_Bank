@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Field, Form, Formik } from 'formik';
 import React, { useEffect } from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import { useNavigate } from 'react-router';
+import { Button, Col, Container, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import '../../css/App.css';
 import '../../css/auth.css';
@@ -16,6 +17,7 @@ export const Login: React.FC = () => {
         Password: ''
     }
     let loginStated:loginState = useAppSelector(selectLoginState);
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -79,7 +81,8 @@ export const Login: React.FC = () => {
                                     <button type="submit" className='auth-button'>ENTER</button>
                                 </Col>
                                 <Col>
-                                    <a href = 'http://localhost:3000/resetpass'>Forget password? </a>
+                                    <button className="forgot-btn btn"
+                                     onClick = {() => navigate("/resetpass", {replace: true}) }>Forgot password? </button>
                                 </Col>
                             </Row>
                         </Form>

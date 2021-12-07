@@ -18,7 +18,7 @@ export const RenderRegisterLayout: React.FC<registerLayout> = ({accountExisted, 
         )
     } else if (accountCreated.errMsg !== '' || accountExisted.errMsg !== ''|| cardCreated.errMsg !== '') {
         let errMsg = accountCreated.errMsg + accountExisted.errMsg + cardCreated.errMsg;
-        console.log(errMsg);
+        console.log("err: ",errMsg);
         return (
             <Register errMsg = {errMsg}/>
         )

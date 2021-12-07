@@ -67,7 +67,7 @@ export class SendMail {
             from: `${EMAIL_USERNAME}`, //email username is email
             to: `${email}`, // list of receivers
             subject: `[IU Bank] Cấp lại mật khẩu IU Bank/Reset IU Bank’s password`, // Subject line
-            html: `<p style="font-size:16px;">InternationalUniversityBank xin thông báo yêu cầu cấp lại mật khẩu dịch vụ VCB Digibank đã được thực hiện thành công. Mật khẩu mới là:</p>
+            html: `<p style="font-size:16px;">InternationalUniversityBank xin thông báo yêu cầu cấp lại mật khẩu dịch vụ IUB Digibank đã được thực hiện thành công. Mật khẩu mới là:</p>
 
             <p style="font-size:16px;"><b>${generatePass}</b></p>
 
@@ -118,7 +118,7 @@ export class SendMail {
             from: `${EMAIL_USERNAME}`, //email username is email
             to: `${params.Email}`, // list of receivers
             subject: `[IU Bank] Cấp tài khoản IU Digibank/ Create new account IU Digibank’s`, // Subject line
-            html: `<p style="font-size:16px;">InternationalUniversityBank xin thông báo yêu cầu cấp tài khoản mới dịch vụ VCB Digibank đã được thực hiện thành công. Tài khoản mới là:</p>
+            html: `<p style="font-size:16px;">InternationalUniversityBank xin thông báo yêu cầu cấp tài khoản mới dịch vụ IUB Digibank đã được thực hiện thành công. Tài khoản mới là:</p>
  
             <p style="font-size:16px;">Họ và tên: <b>${params.FirstName} ${params.LastName}</b></p>
             <p style="font-size:16px;">Tên đăng nhập: <b>${params.UserName}</b></p>

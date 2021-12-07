@@ -33,7 +33,6 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
    
 
     useEffect(() => {
-        console.log(' in here');
         //fetch cardtype from server to client for user to choose
         dispatch(cardTypeInfo());
     }, [])
@@ -49,8 +48,8 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                     
                     <Row md = "1" className = 'display-flex'>
                         <Col lg = "7" md="7" sm= "11" xs = "11" >
-                            <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {registerInfo.errMsg? true: false} role="alert">
-                                <p className = "font-weight-bold mx-3 err-msg" >{registerInfo.errMsg}</p>
+                            <Alert className="alert alert-danger alert-height animate__animated animate__fadeIn" isOpen= {errMsg !== '' ? true: false} role="alert">
+                                <p className = "font-weight-bold mx-3 err-msg" >{errMsg}</p>
                             </Alert>
                             <Formik
                                 initialValues={registerForm}

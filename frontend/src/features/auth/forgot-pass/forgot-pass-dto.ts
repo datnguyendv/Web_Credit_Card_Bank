@@ -17,6 +17,7 @@ export type changePassState = {
 }
 
 export interface changePass extends forgotPassDto {
+    OldPassword: string,
     Password: string,
     NewPassword: string
 }

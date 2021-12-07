@@ -11,7 +11,12 @@
     background-position: center;
     height: 100vh;
 }
-
+.forgot-btn {
+    color: #5A466E;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: bold;
+}
 .forgot-background {
     background-image:  url("./forgot-background.png") !important;
 }
