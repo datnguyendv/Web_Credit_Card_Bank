@@ -31,17 +31,15 @@ And BankingName is open source with a [public repository](https://github.com/miq
 ## Installation
 
 BankingName requires [Node.js](https://nodejs.org/) v10+ to run.
-#### Install project
-- installing by git clone
+### Install project
+There are 2 way to run this project: 
+#### First way:
+- installing and running by clone from git
 ```bash
 git clone https://github.com/Laughing6901/Web_Credit_Card_Bank.git
 ```
 
 After clone code successfully you need to create new two file .env (first in service folder and second in frontend folder) and config them as you want with the variable sample on .env.example.
-
-when you done all config file, there are 3 way to run this project: 
-
-##### First way:
 
 __Notice__ : before running the app following this way you need mysql database server
 
@@ -61,7 +59,8 @@ npm i
 yarn start
 ```
 
-##### The second way:
+#### The second way:
+- installing similar to the first way and running using `docker-compose`
 
 You can run this project on docker by using docker compose
 
@@ -78,8 +77,8 @@ For example: my ip address is: 192.168.78.1
 
 In chrome i type: 192.198.78.1/3000 
 
-##### Third way: 
-
+#### Third way: 
+- using `docker images`
 Firstly, pull all image from [DockerHub]
 On terminal or powershell 
 
@@ -101,7 +100,7 @@ docker run --name hcmiu_se_backend laughing6901/hcmiu-se-project:backend
 docker run --name hcmiu_se_web laughing6901/hcmiu-se-project:web
 ```
 
-`hcmiu_se_db`, `hcmiu_se_backend`, `hcm_se_web` are the **important name** must need to follow to run the container name
+`hcmiu_se_db`, `hcmiu_se_backend`, `hcmiu_se_web` are the **important name** must need to follow to run the container name
 
 #### Setting database
 
