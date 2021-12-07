@@ -96,12 +96,29 @@ After pull all images, you need to run image following this step
 ```bash
 docker run --name hcmiu_se_db laughing6901/hcmiu-se-project:db
 
-docker run --name hcmiu_se_db laughing6901/hcmiu-se-project:backend 
+docker run --name hcmiu_se_backend laughing6901/hcmiu-se-project:backend 
 
-docker run --name hcmiu_se_db laughing6901/hcmiu-se-project:web
+docker run --name hcmiu_se_web laughing6901/hcmiu-se-project:web
 ```
 
-After running the application successfully, you can open Database folder and run all the mysql file for the example data
+`hcmiu_se_db`, `hcmiu_se_backend`, `hcm_se_web` are the **important name** must need to follow to run the container name
+
+#### Setting database
+
+After running the application successfully, you can open Database folder and run all the mysql file for the example data. Or adding data by using `MySqlWorkbench` or using Sql Query inside docker container.
+
+If you want to use sql query inside docker container, you can follow this step: 
+
+```bash 
+docker exec -it hcmiu_se_db bash
+
+mysql -u root -phcmiuse@14
+
+```
+
+And now you inside the mysql db container
+
+#### Running application
 
 Now, you go to your terminal or powershell and get you ip address and then you can go to chrome or any browser and use with /3000.
 
