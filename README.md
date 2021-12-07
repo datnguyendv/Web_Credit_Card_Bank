@@ -101,7 +101,7 @@ docker run --name hcmiu_se_backend laughing6901/hcmiu-se-project:backend
 docker run --name hcmiu_se_web laughing6901/hcmiu-se-project:web
 ```
 
-`hcmiu_se_db`, `hcmiu_se_backend`, `hcm_se_web` are the **important name** must need to follow to run the container name
+`hcmiu_se_db`, `hcmiu_se_backend`, `hcmiu_se_web` are the **important name** must need to follow to run the container name
 
 #### Setting database
 
