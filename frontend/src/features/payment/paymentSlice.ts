@@ -61,6 +61,11 @@ export const paymentSlice = createSlice ({
             state.status = 'failed';
         },
 
+        setDefaultStatus: (state) => {
+            state.errMsg = '';
+            state.status = 'idle';
+        },
+
         setInternalPaymentInfo:(state, action: PayloadAction<internalPaymentDto>) => {
             let temp: any = action.payload;
             temp["Bank"] = '';
@@ -102,6 +107,6 @@ export const paymentSlice = createSlice ({
 })
 
 export const { reducer, actions } = paymentSlice;
-export const { setErrMsg, setInternalPaymentInfo, setExternalPaymentInfo } = actions;
+export const { setErrMsg, setInternalPaymentInfo, setExternalPaymentInfo, setDefaultStatus } = actions;
 export const selectPaymentState = (state: RootState) => state.paymentState;
 export default reducer;

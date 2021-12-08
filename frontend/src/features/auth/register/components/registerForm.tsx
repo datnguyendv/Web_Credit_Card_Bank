@@ -128,7 +128,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8" className ='mb-2'>
                                         <div className={errors.IdentifyCard?" payment-input-group justify-content-start text-danger" : "payment-input-group justify-content-start" }>
-                                            {errors.IdentifyCard&& touched.IdentifyCard? (<span>{errors.IdentifyCard}</span>): null}
+                                            {errors.IdentifyCard && touched.IdentifyCard? (<span>{errors.IdentifyCard}</span>): null}
                                         </div>
                                             <Field id="IdentifyCard" className ="payment-input-field" name="IdentifyCard" placeholder="Identify Card" />
                                     </Col>
@@ -142,7 +142,7 @@ export const Register: React.FC<{errMsg:string}> = ({errMsg}) => {
                                         <div className={errors.Address?" payment-input-group justify-content-start text-danger" : "payment-input-group justify-content-start" }>
                                             {errors.Address&& touched.Address? (<span>{errors.Address}</span>): null}
                                         </div>
-                                            <Field id="Address" className="regis-input-field"  name="Address" placeholder="Address" />
+                                            <Field id="Address" className="payment-input-field"  name="Address" placeholder="Address" />
                                     </Col>
                                     <Col xs ="12" sm ="4" lg="4">
                                         <p className = "mx-3 font-payment ">Date Of Birth</p>

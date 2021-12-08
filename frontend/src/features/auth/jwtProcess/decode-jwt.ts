@@ -12,7 +12,9 @@ export const decodeToken = {
         let dateExp = Date.now();
         console.log("token is expired?: ", dateExp > (tokenDecoded.exp * 1000));
         if(dateExp > tokenDecoded.exp* 1000) {
-        //return true mean that token is expired        
+        //return true mean that token is expired
+        window.alert("expired time");
+        window.location.reload();
         return true
     }
     // loginFunction(loginInfo);

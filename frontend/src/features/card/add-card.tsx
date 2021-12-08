@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Field, Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router';
@@ -27,8 +28,16 @@ export const AddCardForm: React.FC<{errMsg:string}> = ({errMsg}) => {
     return(
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn payment-transfer-background">
             <Col className="margin-layout">
-                <Row className="hint">
-                    <h2 className= "background d-flex">IU BANK</h2>
+                <Row className="hint background">
+                    <h2 className= " d-flex mt-2">
+                        <span>
+                            <button className ="btn"
+                            onClick = {() => dispatch(setUserHomeLayout('Home'))}>
+                                <FontAwesomeIcon icon ={['fas', 'long-arrow-alt-left']} style={{fontSize: 32, color:'white', paddingBottom:3}}/>
+                            </button>
+                        </span>
+                        IU BANK
+                    </h2>
                 </Row>
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "11" xs = "11" >
@@ -89,7 +98,6 @@ export const AddCardForm: React.FC<{errMsg:string}> = ({errMsg}) => {
                             initialValues={initCardCreateInfo}
                             onSubmit={(values, actions) => {
                                 console.log(values);
-                                window.alert("The new card infomation was send to your mail");
                                 dispatch(createCard(values));
                             }}>
                             {({errors, touched}) => (

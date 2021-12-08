@@ -6,11 +6,12 @@ import '../../css/App.css';
 import '../../css/auth.css';
 import '../../css/payment-form.css';
 import { selectCardState } from '../../home/user/cardInfoSlice';
-import { selectUserHomeState } from '../../home/user/userSlice';
+import { selectUserHomeState, setUserHomeLayout } from '../../home/user/userSlice';
 import { selectSendMailState, sendMailFunc } from '../../sendmail/sendMailSlice';
 import { InternalFormValidate } from '../form-validate';
 import { internalPaymentDto } from '../payment-dto';
 import { internalTransfer, selectPaymentState, setErrMsg } from '../paymentSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
@@ -45,8 +46,16 @@ export const InternalPayment: React.FC = () => {
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn payment-transfer-background">
             <Col className="margin-layout">
-                <Row className="hint">
-                    <h2 className= "background d-flex">IU BANK</h2>
+                <Row className="hint background">
+                    <h2 className= " d-flex mt-2">
+                        <span>
+                            <button className ="btn"
+                            onClick = {() => dispatch(setUserHomeLayout('Home'))}>
+                                <FontAwesomeIcon icon ={['fas', 'long-arrow-alt-left']} style={{fontSize: 32, color:'white', paddingBottom:3}}/>
+                            </button>
+                        </span>
+                        IU BANK
+                    </h2>
                 </Row>
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "11" xs = "11" >

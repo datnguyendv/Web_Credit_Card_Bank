@@ -53,7 +53,8 @@ export const Login: React.FC = () => {
                             <Row xs = "2" sm ="2" className ="display-flex center-text">
                                 <Col xs ="11" sm ="10" lg="9">
                                     <div className= "regis-err-msg">
-                                        {errors.UserName && touched.UserName ? (<p>{errors.UserName}</p>): (<p> </p>)}
+                                        {errors.UserName && touched.UserName ?(<p>{errors.UserName}</p>) : errors.Password && touched.Password ? <p>{errors.Password}</p>: (<p> </p>)}
+                                        
                                     </div>
                                     <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                         <div className= "input-icons">
@@ -63,11 +64,8 @@ export const Login: React.FC = () => {
                                     </div>
                                 </Col>
                             </Row>
-                            <Row xs = "2" sm ="2" className ="display-flex">
+                            <Row xs = "2" sm ="2" className ="display-flex mt-3">
                                 <Col xs ="11" sm ="10" lg="9">
-                                    <div className= "regis-err-msg">
-                                        {errors.Password && touched.Password ? (<p>{errors.Password}</p>): (<p> </p>)}
-                                    </div>
                                     <div className={errors.UserName?" regis-input-group display-flex wrong-input" : "regis-input-group display-flex" }>
                                         <div className= "input-icons">
                                             <FontAwesomeIcon icon={['fas', 'lock']} />

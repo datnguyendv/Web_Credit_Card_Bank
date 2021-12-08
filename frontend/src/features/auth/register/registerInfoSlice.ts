@@ -22,6 +22,9 @@ export const registerSlice = createSlice ({
     name:'Register',
     initialState,
     reducers: {
+        setDefaultRegisterErrMsg: (state) => {
+            state.errMsg = "";
+        }
 
     },
     extraReducers: (builder) => {
@@ -41,6 +44,6 @@ export const registerSlice = createSlice ({
 })
 
 export const { reducer, actions } = registerSlice;
-// export const {  } = actions;
+export const { setDefaultRegisterErrMsg } = actions;
 export const selectRegisterState = (state: RootState) => state.register;
 export default reducer;

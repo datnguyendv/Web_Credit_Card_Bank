@@ -8,6 +8,7 @@ import { selectLoginState } from '../../auth/login/loginSlice';
 import { AddCardLayout } from '../../card/add-card';
 import { LockCard } from '../../card/lock-card';
 import { PaymentLayout } from '../../payment/paymentLayout';
+import { setDefaultStatus } from '../../payment/paymentSlice';
 import { getCardInfo } from './cardInfoSlice';
 import { Header } from './Components/Header';
 import { UserHomeLayout } from './Components/user-home-layout';

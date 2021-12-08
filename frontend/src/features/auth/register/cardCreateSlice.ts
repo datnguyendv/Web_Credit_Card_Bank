@@ -18,6 +18,7 @@ export const createCard = createAsyncThunk(
         if(response.statusCode >300 ) {
             return thunkApi.rejectWithValue(response.message);
         } else {
+            window.alert("The new card infomation was send to your mail");
             return response
         }
     }
@@ -27,7 +28,10 @@ export const createCardSlice = createSlice ({
     name:'CreateCard',
     initialState,
     reducers: {
-
+        setDefaultCreateCardErrMsg: (state) => {
+            state.errMsg = '';
+            state.status = 'idle';
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -47,6 +51,6 @@ export const createCardSlice = createSlice ({
 })
 
 export const { reducer, actions } = createCardSlice;
-// export const {  } = actions;
+export const { setDefaultCreateCardErrMsg } = actions;
 export const selectCardCreatedState = (state: RootState) => state.cardCreated;
 export default reducer;

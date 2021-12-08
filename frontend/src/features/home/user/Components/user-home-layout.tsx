@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { useAppDispatch } from '../../../../app/hooks';
+import { setDefaultCreateCardErrMsg } from '../../../auth/register/cardCreateSlice';
 import '../../../css/App.css';
 import '../../../css/auth.css';
 import bank from '../../../css/bank.png';
@@ -15,7 +16,9 @@ import '../../../css/register.css';
 import TranferImg from '../../../css/transfer.png';
 import { Layout } from '../../../payment/payment-dto';
 import { setPaymentLayout } from '../../../payment/paymentLayoutSlice';
-import { setUserHomeLayout } from '../userSlice';
+import { setDefaultStatus } from '../../../payment/paymentSlice';
+import { getCardInfo } from '../cardInfoSlice';
+import { getAccountInfo, setUserHomeLayout } from '../userSlice';
 import { HomeCarousel } from './Carousel';
 
 export const UserHomeLayout: React.FC = () => {
@@ -29,6 +32,11 @@ export const UserHomeLayout: React.FC = () => {
     const movingLayout = (params: string) => {
         dispatch(setUserHomeLayout(params))
     }
+
+    useEffect(() => {
+        dispatch(setDefaultStatus());
+        dispatch(setDefaultCreateCardErrMsg());
+    }, [])
 
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn">

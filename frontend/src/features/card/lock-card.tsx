@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Col, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -17,7 +18,6 @@ export const LockCard: React.FC = () => {
         dispatch(lockCard(cardId));
         dispatch(setUserHomeLayout('home'));
         window.alert("your card was locked");
-        
     }
 
     useEffect(() => {
@@ -28,8 +28,16 @@ export const LockCard: React.FC = () => {
     return (
         <Row xs = "1" lg = "1" sm = "1" md = "1" xl ="1" xxl = "1" className = "display-flex full-view animate__animated animate__fadeIn payment-transfer-background">
             <Col className="margin-layout">
-                <Row className="hint">
-                    <h2 className= "background d-flex">IU BANK</h2>
+                <Row className="hint background">
+                    <h2 className= " d-flex mt-2">
+                        <span>
+                            <button className ="btn"
+                            onClick = {() => dispatch(setUserHomeLayout('Home'))}>
+                                <FontAwesomeIcon icon ={['fas', 'long-arrow-alt-left']} style={{fontSize: 32, color:'white', paddingBottom:3}}/>
+                            </button>
+                        </span>
+                        IU BANK
+                    </h2>
                 </Row>
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "12" xs = "11" > 

@@ -2,8 +2,8 @@ import * as yup from 'yup';
 
 export const InternalFormValidate = yup.object().shape({
     CardReceiveId: yup.number()
-    .max(1000000000000, "Too Long")
-    .min(100000000000, "Too Short")
+    .max(1000000000000, "Wrong Input")
+    .min(100000000000, "Wrong Input")
     .required('Required'),
 
     Balance: yup.number()
@@ -11,8 +11,8 @@ export const InternalFormValidate = yup.object().shape({
     .required('Required'),
 
     Description: yup.string()
-    .min(10, "Too Short")
-    .max(150, "Too Long")
+    .min(10, "Wrong Input")
+    .max(150, "Wrong Input")
     .required('Required'),
 
     OTP: yup.number()
