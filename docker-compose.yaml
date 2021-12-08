@@ -17,7 +17,6 @@ services:
     volumes: 
       - ./frontend:/app
       - /app/node_modules
-
     command: 'yarn start'
 
   database:
@@ -32,7 +31,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     ports: 
-      - "8001:3001"
+      - "3308:3306"
 
   backend: 
     container_name: hcmiu_se_backend
