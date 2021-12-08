@@ -128,3 +128,7 @@ body {
 .change-pass-bg {
     background-image: url('./change-pass-bg.png');
 }
+
+.select-option {
+    background-color: none;
+}

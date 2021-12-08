@@ -7,6 +7,9 @@
     margin-bottom: 0;
     color: #7F7C82;
 }
+.card-send-info {
+    padding-top: 0.4rem;
+}
 .err-msg {
     width: 30vw;
     height: 5vh;

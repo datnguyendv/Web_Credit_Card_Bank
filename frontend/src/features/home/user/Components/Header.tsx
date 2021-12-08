@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import { Field } from 'formik';
+import React, {useEffect} from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import '../../../css/header.css';
 import peopleImg from '../../../css/people-circle.png';
-import { selectCardState } from '../cardInfoSlice';
+import { getCardInfo, selectCardState, setOneCard } from '../cardInfoSlice';
 import { selectUserHomeState, setUserHomeLayout } from '../userSlice';
 
 export const Header: React.FC = () => {
@@ -71,6 +72,24 @@ export const Header: React.FC = () => {
                             </Col>
                             <Col xs = "4">
                                 <p className ="text-small header-icon-color bold">{accountInfo.IdentifyCard}</p>
+                            </Col>
+                            <Col xs ="5">
+                                <p className ="text-small header-icon-color bold">CardId</p>
+                            </Col>
+                            <Col xs ="6">
+                                <select className="btn header-icon-color text-small bold" onChange = {e => {
+                                    console.log(e.target.value);
+                                    dispatch(setOneCard(e.target.value))}
+                                }>
+                                    {card.cardInfo.map(card => {
+                                        return (
+                                        <option
+                                            className ="header-icon-color text-small bold"
+                                            value ={card.CardID}>
+                                                {card.CardID}
+                                        </option>
+                                    )})}
+                                </select>
                             </Col>
                             <Col xs ="6">
                                 <p className ="text-small header-icon-color bold">Balance Number</p>

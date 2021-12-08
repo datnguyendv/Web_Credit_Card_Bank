@@ -22,8 +22,6 @@ export const InternalPayment: React.FC = () => {
     const paymentState = useAppSelector(selectPaymentState);
     let cardState = useAppSelector(selectCardState);
     console.log(cardState.card);
-
-    console.log(cardState.cardInfo);
     const internalPaymentInfo: internalPaymentDto = {
         CardSendId: `${cardState.card.CardID}` ,
         CardReceiveId: '',
@@ -31,6 +29,7 @@ export const InternalPayment: React.FC = () => {
         Description:descriptionInit,
         OTP: '',
     }
+    console.log(internalPaymentInfo.CardSendId);
     const [submitBtnState, setSubmitBtnState] = useState<boolean>(true);
     const dispatch = useAppDispatch();
     
@@ -80,18 +79,8 @@ export const InternalPayment: React.FC = () => {
                                         <p className = "mx-3 font-payment ">Account</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8">
-                                        <div className={errors.CardSendId?" payment-input-group justify-content-end" : "payment-input-group justify-content-end" }>
-                                            <Field name="CardSendId" className ="payment-input-field" component="select">
-                                                {cardState.cardInfo.map(card => {if(card.CardStatus.StatusName === 'open') {
-                                                     return(
-                                                     <option 
-                                                     key = {card.CardID} 
-                                                     value = {card.CardID} 
-                                                     >
-                                                     {card.CardID}
-                                                     </option>)
-                                                 }})}
-                                            </Field>
+                                        <div className={errors.CardSendId?" payment-input-group justify-content-end" : "payment-input-group justify-content-end align-items-center" }>
+                                                <p id="CardSendId" className ="payment-input-field bg-white card-send-info" >{internalPaymentInfo.CardSendId}</p>
                                         </div>
                                     </Col>
                                     <Col xs ="6" sm ="4" lg="4" className= "mb-3 mt-3 ">
@@ -105,8 +94,8 @@ export const InternalPayment: React.FC = () => {
                                 </Row>
 
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
-                                    <Col xs ="12" sm ="4" lg="4"></Col>
-                                    <Col xs ="12" sm ="8" lg="8" className= "mr-4">
+                                    <Col xs ="12" sm ="5" lg="5"></Col>
+                                    <Col xs ="12" sm ="6" lg="6" className= "mr-4">
                                     <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                             {errors.CardReceiveId && touched.CardReceiveId ? (<div>{errors.CardReceiveId}</div>): null}
                                         </div>
@@ -123,8 +112,8 @@ export const InternalPayment: React.FC = () => {
                                 </Row>
 
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
-                                    <Col xs ="12" sm ="4" lg="4"></Col>
-                                    <Col xs ="12" sm ="8" lg="8" className= "mr-4">
+                                    <Col xs ="12" sm ="5" lg="5"></Col>
+                                    <Col xs ="12" sm ="6" lg="6" className= "mr-4">
                                     <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                             {errors.Balance && touched.Balance ? (<div>{errors.Balance}</div>): null}
                                         </div>
@@ -152,8 +141,8 @@ export const InternalPayment: React.FC = () => {
                                         </label>
                                     </Col>   
 
-                                    <Col xs ="12" sm ="4" lg="4"></Col>
-                                    <Col xs ="12" sm ="8" lg="8" className= "mr-4">
+                                    <Col xs ="12" sm ="5" lg="5"></Col>
+                                    <Col xs ="12" sm ="6" lg="6" className= "mr-4">
                                         <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                             {errors.Description && touched.Description ? (<div>{errors.Description}</div>): null}
                                         </div>
@@ -168,8 +157,8 @@ export const InternalPayment: React.FC = () => {
                                     </Col>
                                 </Row>
                                 <Row xs = "2" sm ="2" className ="align-items-center input-background ">
-                                    <Col xs ="12" sm ="4" lg="4"></Col>
-                                    <Col xs ="12" sm ="8" lg="8" className= "mr-4">
+                                    <Col xs ="12" sm ="5" lg="5"></Col>
+                                    <Col xs ="12" sm ="6" lg="6" className= "mr-4">
                                     <div className=" payment-input-group  text-danger font-weight-bold mb-0">
                                             {errors.OTP && touched.OTP ? (<div>{errors.OTP}</div>): null}
                                         </div>
@@ -178,7 +167,7 @@ export const InternalPayment: React.FC = () => {
                                         <p className = "mx-3 font-payment mb-1">OTP</p>
                                     </Col>
                                     <Col xs ="12" sm ="8" lg="8" className= "mb-2">
-                                        <div className={errors.OTP?" payment-input-group " : "payment-input-group justify-content-end" }>   
+                                        <div className={errors.OTP?" payment-input-group justify-content-end" : "payment-input-group justify-content-end" }>   
                                             <Field id="OTP" name="OTP" className ="payment-input-field otp-check" placeholder="OTP" />
                                         <button className= "btn btn-grad mx-2" onClick = {() => {
                                             processOtp();
