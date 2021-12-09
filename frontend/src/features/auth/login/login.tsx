@@ -88,21 +88,6 @@ export const Login: React.FC = () => {
                     </Formik>
                 </Row>
             </Col>
-
-            <Row xs= "1" className ='register-link'>
-                <Col className= "center-text other-login"> 
-                    <p> Login with</p>
-                    <a href = "https://mail.google.com/" target= '_blank' rel = 'noopener'>
-                        <FontAwesomeIcon icon={['fab', 'google-plus-g']} />
-                    </a>
-                    <a href = "https://www.facebook.com" target= '_blank' rel = 'noopener'>
-                        <FontAwesomeIcon icon={['fab', 'facebook-square']} />
-                    </a>
-                    <a href = "https://twitter.com" target= '_blank' rel = 'noopener'>
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />
-                    </a>
-                </Col>
-            </Row>
         </Row>
     </Container>
     )

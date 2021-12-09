@@ -41,7 +41,7 @@ export class CreateNewCard {
         console.log(cardTypeId, timeExpired, cvv);
         let newCard:any = {
             CardID: cardId,
-            CurrentBalance: 100000,
+            CurrentBalance: 500000,
             CVV: cvv,
             DateOfExpired: timeExpired,
             Account: cardRequest.Account,

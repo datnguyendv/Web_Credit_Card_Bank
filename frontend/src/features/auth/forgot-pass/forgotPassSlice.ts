@@ -28,7 +28,7 @@ export const forgotPass = createAsyncThunk(
 
 export const changePassword = createAsyncThunk(
     'ChangePass/changePass', async(params: changePass, thunkApi) => {
-        if(params.OldPassword !== params.Password) {
+        if(params.OldPassword !== params.RecentPass) {
             console.log('we are there');
             return thunkApi.rejectWithValue("wrong password recent");
         } else {

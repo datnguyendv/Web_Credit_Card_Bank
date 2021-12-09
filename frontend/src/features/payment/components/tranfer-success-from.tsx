@@ -17,7 +17,7 @@ export const TransferSuccessFrom: React.FC<externalPaymentDto> = ({CardSendId, C
                 <Row md = "1" className = 'display-flex transform-body'>
                     <Col lg = "7" md="7" sm= "11" xs = "11" >
                         <Row xs = "12" sm ="12" className ="align-items-center justify-content-center mb-4">
-                            <h1 className = "text-center transfer-text mt-4">Transer Successfully</h1>
+                            <h1 className = "text-center transfer-text mt-4">Transfer Successfully</h1>
                         </Row>
                         <Row xs = "2" sm ="2" className ="align-items-center justify-content-center input-background ">
                             <Col xs ="12" sm ="7" lg="7" style ={{fontSize: 22}}>

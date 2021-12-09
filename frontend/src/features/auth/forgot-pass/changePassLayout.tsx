@@ -8,18 +8,21 @@ import '../../css/auth.css';
 import { selectUserHomeState, setUserHomeLayout } from '../../home/user/userSlice';
 import { LoadingScreen } from '../../waiting/loading-screen';
 import { changePassSchema } from '../form-validate/auth-validate';
+import { selectLoginInfoState } from '../login/loginInfoSlice';
+import { selectLoginState } from '../login/loginSlice';
 import { changePass, changePassState } from './forgot-pass-dto';
 import { changePassword, selectChangePassState } from './forgotPassSlice';
 
 export const ChangePassForm: React.FC = () => {
     const accountInfo =useAppSelector(selectUserHomeState).accountInfo;
+    const userInfo = useAppSelector(selectLoginInfoState);
     const forgotPassInfo: changePass = {
         ID:accountInfo.IdentifyCard,
         PhoneNumber: accountInfo.PhoneNumber,
         Email: accountInfo.Email,
+        RecentPass: userInfo.Password,
         OldPassword:'',
         Password: '',
-        //this mean confirm password
         NewPassword: ''
     }
     let changePassState:changePassState = useAppSelector(selectChangePassState);
@@ -113,7 +116,6 @@ export const SuccessChangePass: React.FC = () => {
     const processDone = () => {
         sessionStorage.removeItem('token');
         window.location.reload();
-        dispatch(setUserHomeLayout('Home'));
     }
 
     return (
