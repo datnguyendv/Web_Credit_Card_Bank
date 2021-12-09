@@ -51,7 +51,11 @@ export class Login {
         let res:User = await this.accountService.findOne(Info); 
 
         if(res !== undefined) {
-            return this.processResponseLogin(res,account.Password, "User")
+            if(account.UserName === res.UserName) {
+                return this.processResponseLogin(res,account.Password, "User");
+            } else {
+                throw new UnauthorizedException("Credential Incorrect");
+            }
         } else {
 
             let Info = this.setInfoLogin("AdminLogin",account)
