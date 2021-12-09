@@ -16,8 +16,8 @@ export const LockCard: React.FC = () => {
     const onProcess = () => {
         let cardId = cardRecent.CardID;
         dispatch(lockCard(cardId));
-        dispatch(setUserHomeLayout('home'));
         window.alert("your card was locked");
+        window.location.reload();
     }
 
     useEffect(() => {
