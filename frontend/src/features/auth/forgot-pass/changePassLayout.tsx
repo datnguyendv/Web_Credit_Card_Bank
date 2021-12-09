@@ -5,11 +5,10 @@ import { Col, Container, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import '../../css/App.css';
 import '../../css/auth.css';
-import { selectUserHomeState, setUserHomeLayout } from '../../home/user/userSlice';
+import { selectUserHomeState } from '../../home/user/userSlice';
 import { LoadingScreen } from '../../waiting/loading-screen';
 import { changePassSchema } from '../form-validate/auth-validate';
 import { selectLoginInfoState } from '../login/loginInfoSlice';
-import { selectLoginState } from '../login/loginSlice';
 import { changePass, changePassState } from './forgot-pass-dto';
 import { changePassword, selectChangePassState } from './forgotPassSlice';
 
