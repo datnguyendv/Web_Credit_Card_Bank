@@ -103,11 +103,27 @@ export const ForgotPassForm: React.FC = () => {
 export const SuccessResetPass: React.FC = () => {
     let navigate = useNavigate();
     return (
-        <div>
-            <h2>done reset pass </h2>
-            <button 
-            onClick ={() => navigate('/', {replace: true})}>Confirm</button>
-        </div>
+        <Container fluid className="container-center forgot-background">
+        <Row className = "display-flex animate__animated animate__fadeIn align-items-center full-view">
+            <Row>
+                    <Row md = "1" className='center-text'>
+                        <h1 className ="fp-auth-font">Reset Password Successfully</h1>
+                    </Row>
+                    <Row md = "1" className='center-text'>
+                        <h1 className ="font">your new password was send to your mail</h1>
+                    </Row>
+                    <Row md = "1" className='center-text  auth-col-submit'>
+                        <button 
+                            className ="auth-button auth-button-forgot"
+                            onClick ={() => {
+                                window.location.reload();
+                                navigate('/', {replace: true});
+                            }}>Confirm</button>
+                    </Row>
+            </Row>
+        </Row>
+        </Container>
+
     )
 }
 

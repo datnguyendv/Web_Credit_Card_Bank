@@ -15,7 +15,6 @@ const Main: React.FC = () => {
     <Routes>
       <Route path="/" element = {<Layout/>}/> 
       <Route path="/resetpass" element = {<ForgotPassLayout/>}/>
-      <Route path = "/payment" element = {<PaymentLayout />}/>
     </Routes>
   );
 }

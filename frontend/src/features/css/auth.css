@@ -95,10 +95,9 @@
 }
 
 .auth-form-reset-pass {
-    background-color: rgb(252, 186, 252, 0.4);
+    background-color: rgb(224, 213, 235, 0.9);
     border-radius: 30px;
     height: 60vh;
-    border:  1px solid rgb(252, 186, 252);
     box-shadow: 4px 4px 8px rgba(41, 29, 29, 0.2);
 }
 
