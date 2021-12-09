@@ -117,7 +117,6 @@ export const SuccessResetPass: React.FC = () => {
                             className ="auth-button auth-button-forgot"
                             onClick ={() => {
                                 window.location.reload();
-                                navigate('/', {replace: true});
                             }}>Confirm</button>
                     </Row>
             </Row>
