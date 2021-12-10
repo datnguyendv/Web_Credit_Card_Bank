@@ -15,7 +15,9 @@ export class UpdateCard {
     }
 
     async updateStatusCard(cardId: number, status: CardStatus): Promise<boolean> {
+        let card = await this.cardRepository.find({CardID: cardId});
         let result = await this.cardRepository.update(cardId, {CardStatus: status});
+        console.log(result);
         if(result.affected !== 0) {
             return true
         } else 

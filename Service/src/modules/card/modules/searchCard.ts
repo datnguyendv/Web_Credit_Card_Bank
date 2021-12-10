@@ -56,15 +56,17 @@ export class SearchCard {
                 Account: id,
             }
         });
+        let listCardRes = [];
         for (let i=0; i < listCard.length ; i++) {
             delete listCard[i].CVV;
         }
-        for (let i =0; i < listCard.length; i++) {
-            if(listCard[i].CardStatus.StatusName === 'lock' || listCard[i].CardStatus.StatusName === 'fraud') {
-                listCard.splice(i,1);
+        listCard.map(card => {
+            if(card.CardStatus.StatusName === 'open') {
+                listCardRes.push(card);
             }
-        }
-        return listCard;
+        })
+
+        return listCardRes;
     }
 
     async getAllCard(): Promise<any> {

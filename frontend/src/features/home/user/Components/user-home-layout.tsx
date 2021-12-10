@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Button, Col, Row } from 'reactstrap';
-import { useAppDispatch } from '../../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { decodeToken } from '../../../auth/jwtProcess/decode-jwt';
+import { selectLoginState } from '../../../auth/login/loginSlice';
 import { setDefaultCreateCardErrMsg } from '../../../auth/register/cardCreateSlice';
 import '../../../css/App.css';
 import '../../../css/auth.css';
@@ -18,12 +20,13 @@ import { Layout } from '../../../payment/payment-dto';
 import { setPaymentLayout } from '../../../payment/paymentLayoutSlice';
 import { setDefaultStatus } from '../../../payment/paymentSlice';
 import { getCardInfo } from '../cardInfoSlice';
-import { getAccountInfo, setUserHomeLayout } from '../userSlice';
+import { setUserHomeLayout } from '../userSlice';
 import { HomeCarousel } from './Carousel';
 
 export const UserHomeLayout: React.FC = () => {
     const dispatch = useAppDispatch();
-
+    const token = useAppSelector(selectLoginState).token;
+    const accountId:number = parseInt(decodeToken.getIdFromJwt(token));
 
     const moveToPayment = (params: Layout, layout:string) => {
         dispatch(setPaymentLayout(params));
@@ -36,6 +39,7 @@ export const UserHomeLayout: React.FC = () => {
     useEffect(() => {
         dispatch(setDefaultStatus());
         dispatch(setDefaultCreateCardErrMsg());
+        dispatch(getCardInfo(accountId));
     }, [])
 
     return (

@@ -30,6 +30,7 @@ export const createCardSlice = createSlice ({
     reducers: {
         setDefaultCreateCardErrMsg: (state) => {
             state.errMsg = '';
+            state.isCreated ='';
             state.status = 'idle';
         }
     },
