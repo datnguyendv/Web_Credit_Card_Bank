@@ -23,10 +23,9 @@ export const RenderRegisterLayout: React.FC<registerLayout> = ({accountExisted, 
             <Register errMsg = {errMsg}/>
         )
     } else if(accountCreated.token !== '' && accountExisted.isExisted !== '' && cardCreated.isCreated !== '') {
-        dispatch(setAdminHomeLayout('Home'));
-        window.alert("account was sent to email register")
+        window.location.reload();
         return (
-            <Navigate to ='/' replace = {true}/>
+            <></>
             )   
     } else 
         return (
