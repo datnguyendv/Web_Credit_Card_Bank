@@ -36,10 +36,10 @@ services:
   backend: 
     container_name: hcmiu_se_backend
     build: 
-      context: ./Service
+      context: ./service
     restart: always
     env_file: 
-      - ./Service/.env
+      - ./service/.env
     ports:
       - "8000:5000"
     command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
@@ -48,7 +48,7 @@ services:
     links: 
       - database
     volumes: 
-      - ./Service:/app
+      - ./service:/app
       - /app/node_modules
     command: 'yarn start'
 
