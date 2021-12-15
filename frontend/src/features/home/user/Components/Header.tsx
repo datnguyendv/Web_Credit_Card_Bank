@@ -67,16 +67,16 @@ export const Header: React.FC = () => {
                             <Col xs = "2">
                                 <p className ="text-small header-icon-color bold">Details</p>
                             </Col>
-                            <Col xs ="6">
+                            <Col sm ="7" xs ="6">
                                 <p className ="text-small header-icon-color bold">Account Id</p>
                             </Col>
-                            <Col xs = "4">
+                            <Col sm = "4" xs = "4">
                                 <p className ="text-small header-icon-color bold">{accountInfo.IdentifyCard}</p>
                             </Col>
-                            <Col xs ="5">
+                            <Col sm ="6" xs ="6">
                                 <p className ="text-small header-icon-color bold">CardId</p>
                             </Col>
-                            <Col xs ="6">
+                            <Col sm ="5" xs ="4">
                                 <select className="btn header-icon-color text-small bold" onChange = {e => {
                                     console.log(e.target.value);
                                     dispatch(setOneCard(e.target.value))}
