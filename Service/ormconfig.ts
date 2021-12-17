@@ -14,7 +14,7 @@ const typeOrmConfig: MysqlConnectionOptions = {
     port: parseInt(MS_DB_PORT),
     username: MS_DB_USERNAME ,
     password: MS_DB_PASSWORD ,
-    charset:'utf8mb4',
+    charset:"utf8mb4",
     database: "banking",
     entities: ['dist/src/**/*.entity{.ts,.js}'],
     synchronize: false, // true is Unsafe, not use for product and migration
