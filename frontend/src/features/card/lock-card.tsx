@@ -2,22 +2,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Col, Row } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { cardInfoDto } from '../home/home-dto';
+import { cardInfoDto, cardInfoStateDto, listCardInfoDto } from '../home/home-dto';
 import { selectCardState } from '../home/user/cardInfoSlice';
 import { setUserHomeLayout } from '../home/user/userSlice';
 import { lockCard, selectLockCardState, setCardToLock } from './lockCardSlice';
 
 export const LockCard: React.FC = () => {
     let cardRecent:cardInfoDto = useAppSelector(selectCardState).card;
+    let listCard: listCardInfoDto= useAppSelector(selectCardState).cardInfo;
     let cardInfo: cardInfoDto= useAppSelector(selectLockCardState).card;
     let dispatch = useAppDispatch();
     
 
     const onProcess = () => {
         let cardId = cardRecent.CardID;
-        dispatch(lockCard(cardId));
-        window.alert("your card was locked");
-        window.location.reload();
+        if(listCard.length >1) {
+            dispatch(lockCard(cardId));
+            window.alert("your card was locked");
+            dispatch(setUserHomeLayout('Home'));
+        } else {
+            window.alert("Cannot Lock Card");
+        }
+        
     }
 
     useEffect(() => {

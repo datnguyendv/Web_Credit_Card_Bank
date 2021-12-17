@@ -63,6 +63,11 @@ export const lockCardSlice = createSlice ({
         setScreen:(state, action:PayloadAction<any>) => {
             state.screen = action.payload;
         },
+        setCardDefaultState: (state) => {
+            state.status = "idle";
+            state.errMsg = "";
+
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -80,6 +85,6 @@ export const lockCardSlice = createSlice ({
 })
 
 export const { reducer, actions } = lockCardSlice;
-export const { setCardToLock, setScreen } = actions;
+export const { setCardToLock, setScreen, setCardDefaultState } = actions;
 export const selectLockCardState = (state: RootState) => state.lockCardState;
 export default reducer;

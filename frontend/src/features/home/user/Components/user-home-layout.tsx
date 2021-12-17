@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { decodeToken } from '../../../auth/jwtProcess/decode-jwt';
 import { selectLoginState } from '../../../auth/login/loginSlice';
 import { setDefaultCreateCardErrMsg } from '../../../auth/register/cardCreateSlice';
+import { setCardDefaultState } from '../../../card/lockCardSlice';
 import '../../../css/App.css';
 import '../../../css/auth.css';
 import bank from '../../../css/bank.png';
@@ -40,6 +41,7 @@ export const UserHomeLayout: React.FC = () => {
         dispatch(setDefaultStatus());
         dispatch(setDefaultCreateCardErrMsg());
         dispatch(getCardInfo(accountId));
+        dispatch(setCardDefaultState());
     }, [])
 
     return (
