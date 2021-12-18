@@ -34,9 +34,9 @@ export const registerFormDataDto: registerFormDto = {
     IdentifyCard:'',
     DateOfBirth: '',
     Address: '', 
-    day:'',
-    month: '',
-    year: '',
+    day:'1',
+    month: '1',
+    year: '1990',
     type:''
 }
 
