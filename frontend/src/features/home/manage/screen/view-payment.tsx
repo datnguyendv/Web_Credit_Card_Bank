@@ -12,7 +12,7 @@ export const ViewAllPayment :React.FC = () => {
             <Col className="margin-layout">
                 <Row md = "1" className='center-text'>
                     <div>
-                        <h3 className ="text-center manager-text mt-4">LOGIN HISTORY</h3>
+                        <h3 className ="text-center manager-text mt-4">TRANSACTIONS HISTORY</h3>
                     </div>
                 </Row>
                 <Row className="justify-content-center admin-view">
