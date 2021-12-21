@@ -116,7 +116,7 @@ export const ViewAllAccount :React.FC = () => {
                                 })
                                 .map((item,key) => {
                                     return(
-                                        <p className= "item-show" key ={key}>{item.PhoneNumber}</p>
+                                        <p className= "item-show" key ={key}>0{item.PhoneNumber}</p>
                                     )
                                 })}
                             </Col>
@@ -134,7 +134,7 @@ export const ViewAllAccount :React.FC = () => {
                                 })
                                 .map((item,key) => {
                                     return(
-                                        <p className= "item-show" key ={key}>0{item.DateOfBirth}</p>
+                                        <p className= "item-show" key ={key}>{item.DateOfBirth}</p>
                                     )
                                 })}
                             </Col>
